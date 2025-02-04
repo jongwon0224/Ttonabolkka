@@ -1,4 +1,4 @@
-package com.app.controller;
+package com.app.controller.main;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,12 +11,12 @@ public class MainController {
 	
 	@GetMapping("/main")
 	public String main() {
-		return "main";
+		return "main/main";
 	}
 	
 	@GetMapping("/")
 	public String root() {
-		return "redirect:/main";
+		return "redirect:/main/main";
 	}
 
 }
