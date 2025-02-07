@@ -1,11 +1,11 @@
-package com.app.dao.subMain;
+package com.app.service.subMain;
 
 import java.util.List;
 
 import com.app.dto.subMain.Places;
 
-public interface SubMainDAO {
+public interface SubMainService {
 
-	
 	List<Places> findPlacesList();
+	
 }

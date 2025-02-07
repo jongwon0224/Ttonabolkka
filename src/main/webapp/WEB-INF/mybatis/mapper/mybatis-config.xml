@@ -9,7 +9,7 @@
 	</settings>
 	
 	<typeAliases>
-<!-- 		<typeAlias type="com.app.dto.room.Room" alias="Room" /> -->
+		<typeAlias type="com.app.dto.subMain.Places" alias="Places" />
 	</typeAliases>
 	
 </configuration>
