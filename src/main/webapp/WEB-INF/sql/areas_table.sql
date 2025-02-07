@@ -1,0 +1,48 @@
+/*테이블 생성*/
+CREATE TABLE AREAS(
+    id NUMBER Primary key,
+    name VARCHAR2(255)
+);
+
+/*시퀀스 생성*/
+CREATE SEQUENCE SEQ_AREAS_PK
+START WITH 1
+INCREMENT BY 1
+NOCYCLE;
+
+
+/*시퀀스 삭제
+drop sequence SEQ_AREAS_PK;
+*/
+
+
+/*areas테이블 컬럼 삽입*/
+INSERT INTO AREAS(id, name)
+VALUES (SEQ_AREAS_PK.NEXTVAL, '경주');
+INSERT INTO AREAS(id, name)
+VALUES (SEQ_AREAS_PK.NEXTVAL, '부산');
+INSERT INTO AREAS(id, name)
+VALUES (SEQ_AREAS_PK.NEXTVAL, '대구');
+INSERT INTO AREAS(id, name)
+VALUES (SEQ_AREAS_PK.NEXTVAL, '서울');
+INSERT INTO AREAS(id, name)
+VALUES (SEQ_AREAS_PK.NEXTVAL, '인천');
+INSERT INTO AREAS(id, name)
+VALUES (SEQ_AREAS_PK.NEXTVAL, '수원');
+INSERT INTO AREAS(id, name)
+VALUES (SEQ_AREAS_PK.NEXTVAL, '천안');
+INSERT INTO AREAS(id, name)
+VALUES (SEQ_AREAS_PK.NEXTVAL, '아산');
+INSERT INTO AREAS(id, name)
+VALUES (SEQ_AREAS_PK.NEXTVAL, '대천');
+
+
+
+/* 테이블 삭제
+drop table areas;
+*/
+
+select * from areas;
+
+
+

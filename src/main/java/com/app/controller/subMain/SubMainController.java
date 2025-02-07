@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.app.dto.Places;
+import com.app.dto.subMain.Places;
 
 
 @Controller

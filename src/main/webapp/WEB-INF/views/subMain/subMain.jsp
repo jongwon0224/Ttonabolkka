@@ -126,7 +126,6 @@
             console.log('클릭완료 '+ icon.id);
             icon.classList.toggle("active");
         }
-    </script>
-    
+    </script>    
 </body>
 </html>
