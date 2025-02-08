@@ -5,7 +5,20 @@
 
 	
 	<select id="findPlacesList" resultType="Places">
-		select * from PLACES;
+		SELECT * FROM PLACES
+	</select>
+	
+	<select id="findCategoriesList" resultType="Categories">
+		SELECT * FROM CATEGORIES
+	</select>
+	
+	<select id="findPlacesByCategoriesId" resultType="Places" parameterType="java.util.List">
+		SELECT *
+		FROM PLACES P
+		WHERE P.category_id IN
+		<foreach collection="list" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
 	</select>
 </mapper>
 

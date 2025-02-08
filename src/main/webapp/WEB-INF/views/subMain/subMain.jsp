@@ -56,17 +56,20 @@
 				<h3>카테고리</h3>
 				<br>
 				<div>
-					<form>
+					<form action="/subMain" method="post" >
 						<div class="left_aside_chkBox">
-							<label><input type="checkbox" id="attraction"
-								name="attraction"> 관광지</label> <label><input
-								type="checkbox" id="themepark" name="themepark"> 테마파크</label> <label><input
-								type="checkbox" id="hotplace" name="hotplace"> 핫플레이스</label>
-						</div>
-						<button class="left_aside_btn">검색</button>
+							<c:forEach var="categories" items="${categoriesList}">
+								<label>
+									<input type="checkbox" name="categoriesId" value="${categories.id}">
+									${categories.name}
+								</label>
+							</c:forEach>
+						</div>                
+						<button class="left_aside_btn" type="submit">검색</button>
 					</form>
 				</div>
 			</div>
+			
 
 			<div class="left_aside_filter">
 				<h3>평점</h3>
@@ -90,11 +93,11 @@
 			<c:forEach var="places" items="${placesList}">
 				<div class="places_box">
 					<div class="places_img">
-						<img src="${places.description}" alt="${places.name}이미지">
+						<img src="${places.imageUrl}" alt="${places.name}이미지">
 					</div>
                     <div class="places_txt">
                         <div>${places.name}</div><br>
-                        <div>해당란 설명내용입니다. places.description</div>
+                        <div>${places.description}</div>
                     </div>
                     <div>
                         <i class="fa-solid fa-heart heart-icon" id="${places.name}"
@@ -126,6 +129,22 @@
             console.log('클릭완료 '+ icon.id);
             icon.classList.toggle("active");
         }
+        
+        // function handleCategoriesBtn() {
+		// 	const selectedCate = [];
+		// 	const checkboxes = document.querySelectorAll('.category-chkbox:checked');
+
+		// 	console.log('선택된체크박스:'  + checkboxes.length);
+
+		// 	checkboxes.forEach(items => {
+		// 		selectedCate.push(items.value);
+		// 	});
+
+			// console.log(selectedCate); //디버깅
+			// document.getElementById("categoryForm").submit();
+			
+			// location.href = "/subMain?categoriesId=" + selectedCate.join(","); 
+        // }
     </script>    
 </body>
 </html>

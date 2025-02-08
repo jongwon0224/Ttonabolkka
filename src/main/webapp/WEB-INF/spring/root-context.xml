@@ -19,7 +19,8 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 		<property name="mapperLocations"
 			value="/WEB-INF/mybatis/mapper/**/*_mapper.xml"></property>
 		<property name="configLocation"
-			value="/WEB-INF/mybatis/mybatis-config.xml"></property>
+			value="/WEB-INF/mybatis/mapper/mybatis-config.xml"></property>
+			
 	</bean>
 	<bean id="sqlSessionTemplate"
 		class="org.mybatis.spring.SqlSessionTemplate">

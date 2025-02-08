@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.app.dao.subMain.SubMainDAO;
+import com.app.dto.subMain.Categories;
 import com.app.dto.subMain.Places;
 
 @Repository
@@ -21,6 +22,24 @@ public class SubMainDAOImpl implements SubMainDAO {
 		
 		List<Places> placesList = sqlSessionTemplate.selectList("subMain_mapper.findPlacesList");
 		
+		return placesList;
+	}
+
+
+	@Override
+	public List<Categories> findCategoriesList() {
+		
+		List<Categories> categoriesList = sqlSessionTemplate.selectList("subMain_mapper.findCategoriesList");
+		
+		return categoriesList;
+	}
+
+
+	@Override
+	public List<Places> findPlacesByCategoriesId(List<String> categoriesId) {
+		
+		List<Places> placesList = sqlSessionTemplate.selectList("subMain_mapper.findPlacesByCategoriesId", categoriesId);
+			
 		return placesList;
 	}
 
