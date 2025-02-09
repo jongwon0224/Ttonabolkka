@@ -20,6 +20,17 @@
 			#{item}
 		</foreach>
 	</select>
+	
+	<select id="findPaginationList" resultType="Places" parameterType="java.util.Map">
+		SELECT *
+		FROM PLACES
+		ORDER BY id
+		LIMIT #{offset}, #{limit}
+	</select>
+	
+	<select id="getTotalPages" resultType="int">
+		SELECT COUNT(*) FROM PLACES
+	</select> 
 </mapper>
 
 

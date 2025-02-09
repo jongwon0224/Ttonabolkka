@@ -1,7 +1,9 @@
 package com.app.controller.subMain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -63,6 +65,28 @@ public class SubMainController {
 		
 		return "/subMain/subMain";
 	}
+	
+	
+	@GetMapping("/subMain/pages")
+	public String listPages(@RequestParam(defaultValue = "1") int page,
+							@RequestParam(defaultValue = "5") int pageSize,
+							Model model) {
+		
+		Map<String, Integer> paginationParams = new HashMap<>();
+		paginationParams.put("offset", (page-1) * pageSize);
+		paginationParams.put("limit", pageSize);
+		
+		List<Places> places = subMainService.findPlacesByPage(paginationParams);
+		int totalPages = subMainService.getTotalPages(pageSize);
+		
+		model.addAttribute("places", places);
+		model.addAttribute("currentPage", page);
+		model.addAttribute("totalPages", totalPages);
+		
+		return "/subMain/subMain";
+		
+	}
+	
 	
 	/*
 	 * 

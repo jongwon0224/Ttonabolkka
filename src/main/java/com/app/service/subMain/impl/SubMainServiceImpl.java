@@ -1,6 +1,7 @@
 package com.app.service.subMain.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,11 +35,28 @@ public class SubMainServiceImpl implements SubMainService{
 	}
 
 	@Override
-	public List<Places> findPlacesByCategoriesId(List<String> categoriesIde) {
+	public List<Places> findPlacesByCategoriesId(List<String> categoriesId) {
 		
-		List<Places> placesList = subMainDAO.findPlacesByCategoriesId(categoriesIde);
+		List<Places> placesList = subMainDAO.findPlacesByCategoriesId(categoriesId);
 		
 		return placesList;
+	}
+
+	@Override
+	public List<Places> findPlacesByPage(Map<String, Integer> paginationParams) {
+		
+		List<Places> paginationList = subMainDAO.findPlacesByPage(paginationParams);
+		
+		return paginationList;
+	}
+
+	@Override
+	public Integer getTotalPages(int pageSize) {
+		
+		int totalPages = subMainDAO.getTotalPages();
+		totalPages = (int) Math.ceil((double) totalPages / pageSize);
+		
+		return totalPages;
 	}
 
 }

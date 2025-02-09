@@ -1,6 +1,8 @@
 package com.app.dao.subMain.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,25 @@ public class SubMainDAOImpl implements SubMainDAO {
 		List<Places> placesList = sqlSessionTemplate.selectList("subMain_mapper.findPlacesByCategoriesId", categoriesId);
 			
 		return placesList;
+	}
+
+
+	@Override
+	public List<Places> findPlacesByPage(Map<String, Integer> paginationParams) {
+		
+		List<Places> paginationList = sqlSessionTemplate.selectList("subMain_mapper.findPaginationList", paginationParams);
+		
+		return paginationList;
+	}
+
+
+	@Override
+	public Integer getTotalPages() {
+		
+		int totalPages = sqlSessionTemplate.selectOne("subMain_mapper.getTotalCount");
+		System.out.println("전체 데이터 개수: " + totalPages);
+		
+		return totalPages;
 	}
 
 }
