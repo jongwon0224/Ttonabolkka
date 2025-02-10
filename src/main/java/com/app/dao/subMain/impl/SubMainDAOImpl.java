@@ -62,5 +62,19 @@ public class SubMainDAOImpl implements SubMainDAO {
 		
 		return totalPlaces;
 	}
+	
+	
+	/**
+	 *  @Override
+public List<Places> findPlacesWithFilters(Map<String, Object> params) {
+    return sqlSessionTemplate.selectList("subMain_mapper.findPlacesWithFilters", params);
+}
+
+@Override
+public int getTotalPlaces(Map<String, Object> params) {
+    return sqlSessionTemplate.selectOne("subMain_mapper.getTotalPlacesWithFilters", params);
+}
+
+	 */
 
 }

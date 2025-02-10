@@ -119,6 +119,8 @@
 			<c:set var="endPage" value="${startPage+2 > totalPages ? totalPages : startPage+2}"/>
 						
 				<nav>
+<!-- <a class="page-link rounded-pill" href="?page=${item}&pageSize=5&category=${category != null ? category : ''}&rating=${rating != null ? rating : ''}"> -->
+				
 					<ul class="pagination pagination-sm justify-content-center rounded-pill">
 						<!-- 이전 페이지 -->
 						<li class="page-item ${currentPage == 1 ? 'disabled' : ''}">

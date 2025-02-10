@@ -43,8 +43,8 @@ public class SubMainController {
 
 		model.addAttribute("placesList", placesList);
 		model.addAttribute("categoriesList", categoriesList);
-		model.addAttribute("currentPage", page);
-		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("currentPage", page); // 현재 페이지
+		model.addAttribute("totalPages", totalPages); //총 페이지네이션 번호 : 2
 
 		return "/subMain/subMain";	
 	}
@@ -52,7 +52,7 @@ public class SubMainController {
 	
 	
 	@PostMapping("/subMain")
-	public String subMainAction(@RequestParam List<String> categoriesId, Model model) {
+	public String categoryFilterAction(@RequestParam List<String> categoriesId, Model model) {
 
 		if(categoriesId == null || categoriesId.isEmpty()) {
 			categoriesId = new ArrayList<>();
@@ -91,5 +91,41 @@ public class SubMainController {
 		
 		return "/subMain/subMain";	
 	}
+	
+	/*
+	 * @GetMapping("/subMain")
+public String subMain(@RequestParam(defaultValue = "1") int page,
+                      @RequestParam(defaultValue = "5") int pageSize,
+                      @RequestParam(required = false) Integer category,
+                      @RequestParam(required = false) String rating,
+                      Model model) {
+    
+    Map<String, Object> params = new HashMap<>();
+    params.put("offset", (page - 1) * pageSize);
+    params.put("limit", pageSize);
+    if (category != null) {
+        params.put("category", category);
+    }
+    if (rating != null) {
+        params.put("rating", rating);
+    }
+
+    List<Places> placesList = subMainService.findPlacesWithFilters(params);
+    int totalPlaces = subMainService.getTotalPlaces(params);
+    int totalPages = (int) Math.ceil((double) totalPlaces / pageSize);
+    
+    model.addAttribute("placesList", placesList);
+    model.addAttribute("currentPage", page);
+    model.addAttribute("totalPages", totalPages);
+    model.addAttribute("category", category);  // 필터 값도 넘겨줌
+    model.addAttribute("rating", rating);     // 필터 값도 넘겨줌
+    
+    return "/subMain/subMain";
+}
+
+	 * 
+	 * 
+	 * 
+	 * */
   
 }
