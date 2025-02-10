@@ -12,5 +12,5 @@ public interface SubMainService {
 	List<Categories> findCategoriesList();
 	List<Places> findPlacesByCategoriesId(List<String> categoriesId);
 	List<Places> findPlacesByPage(Map<String, Integer> paginationParams);
-	Integer getTotalPages(int pageSize);
+	int getTotalPlaces();
 }

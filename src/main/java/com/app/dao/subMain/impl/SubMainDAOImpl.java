@@ -1,6 +1,5 @@
 package com.app.dao.subMain.impl;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -56,12 +55,12 @@ public class SubMainDAOImpl implements SubMainDAO {
 
 
 	@Override
-	public Integer getTotalPages() {
+	public int getTotalPlaces() {
 		
-		int totalPages = sqlSessionTemplate.selectOne("subMain_mapper.getTotalCount");
-		System.out.println("전체 데이터 개수: " + totalPages);
+		int totalPlaces = sqlSessionTemplate.selectOne("subMain_mapper.getTotalPlaces");
+		System.out.println("전체 데이터 개수: " + totalPlaces);
 		
-		return totalPages;
+		return totalPlaces;
 	}
 
 }

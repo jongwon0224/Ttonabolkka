@@ -25,16 +25,10 @@
 		SELECT *
 		FROM PLACES
 		ORDER BY id
-		LIMIT #{offset}, #{limit}
+		OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY
 	</select>
 	
-	<select id="getTotalPages" resultType="int">
+	<select id="getTotalPlaces" resultType="int">
 		SELECT COUNT(*) FROM PLACES
 	</select> 
 </mapper>
-
-
-
-
-
-

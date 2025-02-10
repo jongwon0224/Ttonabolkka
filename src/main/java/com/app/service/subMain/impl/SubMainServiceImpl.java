@@ -51,12 +51,11 @@ public class SubMainServiceImpl implements SubMainService{
 	}
 
 	@Override
-	public Integer getTotalPages(int pageSize) {
+	public int getTotalPlaces() {
 		
-		int totalPages = subMainDAO.getTotalPages();
-		totalPages = (int) Math.ceil((double) totalPages / pageSize);
+		int totalPlaces = subMainDAO.getTotalPlaces();
 		
-		return totalPages;
+		return totalPlaces;
 	}
 
 }

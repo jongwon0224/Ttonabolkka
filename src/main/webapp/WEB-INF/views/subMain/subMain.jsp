@@ -11,14 +11,14 @@
 <!-- Bootstrap 5 CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-</head>
+
 
 <link href="/css/subMain.css" rel="stylesheet">
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
 	rel="stylesheet">
 
-
+</head>
 
 <body>
 
@@ -115,23 +115,26 @@
 			
 			<div class="container mt-5">
 			
+			<c:set var="startPage" value="${currentPage-2 < 1 ? 1 : currentPage-2}"/>
+			<c:set var="endPage" value="${startPage+2 > totalPages ? totalPages : startPage+2}"/>
+						
 				<nav>
 					<ul class="pagination pagination-sm justify-content-center rounded-pill">
 						<!-- 이전 페이지 -->
-						<li class="page-item ${currentPage == 1 ? "disabled" : ""}">
-							<a class="page-link rounded-pill" href="?page=${currentPage - 1}">이전</a>
+						<li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+							<a class="page-link rounded-pill" href="?page=${currentPage - 1}&pageSize=5">이전</a>
 						</li>
 			
-						<!-- 페이지 번호 -->
-						<c:forEach var="item" begin="1" end="${totalPages}">
+						<!-- 페이지 번호 -->						
+						<c:forEach var="item" begin="${startPage}" end="${endPage}">
 							<li class="page-item ${item == currentPage ? 'active' : ''}">
-								<a class="page-link rounded-pill" href="?page=${item}">${item}</a>
+								<a class="page-link rounded-pill" href="?page=${item}&pageSize=5">${item}</a>
 							</li>
 						</c:forEach>
 			
 						<!-- 다음 페이지 -->
-						<li class="page-item ${currentPage == totalPages ? "disabled" : ""}">
-							<a class="page-link rounded-pill" href="?page=${currentPage + 1}">다음</a>
+						<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+							<a class="page-link rounded-pill" href="?page=${currentPage + 1}&pageSize=5">다음</a>
 						</li>
 					</ul>
 				</nav>
@@ -147,13 +150,7 @@
 	<!-- Bootstrap 5 JavaScript (Popper 포함) -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-
-    <script>
-        function toggleHeart(icon) {
-            console.log('클릭완료 '+ icon.id);
-            icon.classList.toggle("active");
-        }
-        
-    </script>    
+    <script src="/js/subMain.js"></script>
+    
 </body>
 </html>
