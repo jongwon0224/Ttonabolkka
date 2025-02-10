@@ -1,0 +1,44 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.mainBox {
+	display: flex;
+	flex-direction: column;
+	justify-content: center; /* 세로 중앙 정렬 */
+	align-items: center; /* 가로 중앙 정렬 */
+	height: 80vh;
+	width: 100%;
+}
+
+.registerAgreeBox {
+	align-items: center; /* 가로 중앙 정렬 */
+	background: #f5f5f5;
+	border-radius: 8px;
+	display: flex;
+	height: 52px;
+	margin: 8px;
+	padding-left: 20px;
+	justify-content: left; /* 세로 왼쪽 정렬 */
+	width:40%;
+}
+
+.registerAgreeT {
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.registerAgreeTT {
+    font-size: 13px;
+    font-weight: 400;
+    color: #999;
+    margin-left: 6px;
+}
+
+.registerAgreeT1 {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+}
