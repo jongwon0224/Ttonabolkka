@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -47,9 +48,15 @@
 				<div class="section-title">이벤트</div>
 				<div class="section-body">
 					<div class="grid">
-						<div class="card"></div>
-						<div class="card"></div>
-						<div class="card"></div>
+						<div class="card event">
+							<img alt="카드사진" src="https://image.goodchoice.kr/resize_768x308/exhibition/cms/e4224_dnpqqosj_1200x480_20241215225622.png">
+						</div>
+						<div class="card event">
+							<img alt="카드사진" src="https://image.goodchoice.kr/resize_768x308/exhibition/cms/e4224_dnpqqosj_1200x480_1_20241031135312.png">
+						</div>
+						<div class="card event">
+							<img alt="카드사진" src="https://image.goodchoice.kr/resize_768x308/exhibition/cms/e4511_dnpqqosj_1200x480_2_20250122091226.png">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -63,41 +70,19 @@
 					</div>
 					<div class="slide-container">
 						<div class="slide">
-							<div class="card">
-								<div class="card-img">사진</div>
-								<div class="card-content">지역</div>
-							</div>
-							<div class="card">
-								<div class="card-img">사진</div>
-								<div class="card-content">지역</div>
-							</div>
-							<div class="card">
-								<div class="card-img">사진</div>
-								<div class="card-content">지역</div>
-							</div>
-							<div class="card">
-								<div class="card-img">사진</div>
-								<div class="card-content">지역</div>
-							</div>
-							<div class="card">
-								<div class="card-img">사진</div>
-								<div class="card-content">지역</div>
-							</div>
-							<div class="card">
-								<div class="card-img">사진</div>
-								<div class="card-content">지역</div>
-							</div>
-							<div class="card">
-								<div class="card-img">사진</div>
-								<div class="card-content">지역</div>
-							</div>
+							<c:forEach var="card" items="${cardList}">
+								<div class="card" data-id="${card.id}">
+									<div class="card-img">
+										<img alt="카드사진" src="${card.imageUrl}">
+									</div>
+									<div class="card-content">${card.name}</div>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
 					<i class="fa-solid fa-greater-than"></i>
 				</div>
 			</div>
-
-
 
 			<div class="body">
 				<div class="section-title">해외 인기 여행지</div>
@@ -107,34 +92,14 @@
 					</div>
 					<div class="slide-container">
 						<div class="slide">
-							<div class="card">
-								<div class="card-img">사진</div>
-								<div class="card-content">지역</div>
-							</div>
-							<div class="card">
-								<div class="card-img">사진</div>
-								<div class="card-content">지역</div>
-							</div>
-							<div class="card">
-								<div class="card-img">사진</div>
-								<div class="card-content">지역</div>
-							</div>
-							<div class="card">
-								<div class="card-img">사진</div>
-								<div class="card-content">지역</div>
-							</div>
-							<div class="card">
-								<div class="card-img">사진</div>
-								<div class="card-content">지역</div>
-							</div>
-							<div class="card">
-								<div class="card-img">사진</div>
-								<div class="card-content">지역</div>
-							</div>
-							<div class="card">
-								<div class="card-img">사진</div>
-								<div class="card-content">지역</div>
-							</div>
+							<c:forEach var="card" items="${cardList}">
+								<div class="card" data-id="${card.id}">
+									<div class="card-img">
+										<img alt="카드사진" src="${card.imageUrl}">
+									</div>
+									<div class="card-content">${card.name}</div>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
 					<i class="fa-solid fa-greater-than"></i>
@@ -145,8 +110,12 @@
 				<div class="section-title">핫플</div>
 				<div class="section-body">
 					<div class="grid">
-						<div class="card"></div>
-						<div class="card"></div>
+						<div class="card">
+							<img alt="카드사진" src="https://image.goodchoice.kr/resize_768x308/exhibition/cms/e4511_dnpqqosj_1200x480_2_20250122091226.png">
+						</div>
+						<div class="card">
+							<img alt="카드사진" src="https://image.goodchoice.kr/resize_768x308/exhibition/cms/e4511_dnpqqosj_1200x480_2_20250122091226.png">
+						</div>
 					</div>
 				</div>
 			</div>
