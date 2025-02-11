@@ -7,7 +7,12 @@ CREATE TABLE PLACES(
     latitude NUMBER(9,6),
     longitude NUMBER(9,6),
     category_id NUMBER NOT NULL,
-    image_url VARCHAR2(255) NOT NULL
+    image_url VARCHAR2(255) NOT NULL,
+    image_url VARCHAR2(255),
+    image_url VARCHAR2(255),
+    image_url VARCHAR2(255),
+    image_url VARCHAR2(255)
+
 );
 
 
