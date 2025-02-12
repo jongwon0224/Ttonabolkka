@@ -16,8 +16,11 @@ public class DetailServiceImpl implements DetailService {
 
     // id로 관광지 상세 정보 조회
     @Override
-    public List<Places> getPlaceDetail(int id) {
-        return detailDAO.getPlaceDetail(id);  // id로 장소 상세 정보 조회
+    public Places getPlaceDetail(int id) {
+    	
+    	Places places = detailDAO.getPlaceDetail(id);  // id로 장소 상세 정보 조회
+    	
+        return places;
     }
 
     // placeName으로 관광지 상세 정보 조회

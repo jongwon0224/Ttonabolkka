@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="detailMapper">
+<mapper namespace="detail_mapper">
 
     <!-- 관광지 상세 정보 조회 (id) -->
-    <select id="getPlaceDetail" resultType="Places">
+    <select id="getPlaceDetail" resultType="Places" parameterType="int">
         SELECT id, name, description, address
         FROM PLACES
         WHERE id = #{id}
     </select>
 
     <!-- 관광지 상세 정보 조회 (placeName) -->
-    <select id="getPlaceDetailByName" resultType="Places">
+    <select id="getPlaceDetailByName" resultType="Places" parameterType="String">
         SELECT id, name, description, address
         FROM PLACES
         WHERE name = #{placeName}

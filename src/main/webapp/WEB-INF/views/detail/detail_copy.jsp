@@ -6,7 +6,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>떠나볼까 - <c:out value="${places.name}" /></title>
+    <title>떠나볼까 - <c:out value="${detail.name}" /></title>
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/detail.css' />">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -23,15 +23,15 @@
         <article class="gallery-container">
             <div class="css-12lmpk7" style="display: flex; gap: 10px; height: 480px;">
                 <div class="big-photo">
-                    <img src="<c:url value='/resources/image/${places.categoryId}/${places.imageUrls}' />"
-                         alt="<c:out value='${places.name}' /> 대표사진" class="main-photo"
+                    <img src="<c:url value='/resources/image/${place.category}/${place.mainImage}' />"
+                         alt="<c:out value='${detail.name}' /> 대표사진" class="main-photo"
                          style="width: 100%; height: 97%; border-radius: 15px; object-fit: cover;">
                 </div>
 
                 <div class="small-photos">
                     <c:forEach items="${detail.imageUrls}" var="imageUrl" varStatus="status">
-                        <img src="<c:url value='/resources/image/${places.categoryId}/${imageUrl}' />"
-                             alt="<c:out value='${places.name}' /> 서브사진 <c:out value='${status.count}' />"
+                        <img src="<c:url value='/resources/image/${place.category}/${imageUrl}' />"
+                             alt="<c:out value='${detail.name}' /> 서브사진 <c:out value='${status.count}' />"
                              style="width: 100%; height: ${status.count <= 2 ? '98%' : '88%'}; object-fit: cover; border-radius: 15px;">
                     </c:forEach>
                 </div>
@@ -44,7 +44,7 @@
                 <div class="modal-gallery">
                     <button class="prev" onclick="changePhoto(-1)">&#10094;</button>
                     <div class="slider">
-                        <img id="modalImage" src="" alt="<c:out value='${places.name}' />">
+                        <img id="modalImage" src="" alt="<c:out value='${place.name}' />">
                     </div>
                     <button class="next" onclick="changePhoto(1)">&#10095;</button>
                 </div>
@@ -55,22 +55,22 @@
             <a href="javascript:void(0);" onclick="openModal()">더보기</a>
         </div>
 
-        <h2><c:out value="${places.name}" /></h2>
+        <h2><c:out value="${detail.name}" /></h2>
         <div class="description">
-            <c:out value="${places.description}" />
+            <c:out value="${detail.description}" />
         </div>
 
         <section class="image-list">
             <div class="photo-list">
-                <c:forEach items="${places.imageUrls}" var="imageUrl">
-                    <img src="<c:url value='/resources/image/${places.categoryId}/${imageUrls}' />" alt="<c:out value='${places.name}' />">
+                <c:forEach items="${detail.imageUrls}" var="imageUrl">
+                    <img src="<c:url value='/resources/image/${place.category}/${imageUrl}' />" alt="<c:out value='${place.name}' />">
                 </c:forEach>
             </div>
             <button id="showMoreBtn">사진 더 보기🔽</button>
         </section>
 
         <section class="community">
-            <h3><c:out value="${places.name}" />에 대한 평가</h3>
+            <h3><c:out value="${place.name}" />에 대한 평가</h3>
             <div class="comment-box">
                 <textarea id="commentInput" placeholder="악플 금지"></textarea>
                 <button onclick="addComment()">등록</button>

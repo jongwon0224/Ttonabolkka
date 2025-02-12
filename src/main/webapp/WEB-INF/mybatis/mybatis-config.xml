@@ -9,11 +9,8 @@
 	</settings>
 	
 	<typeAliases>
-<<<<<<< HEAD
 		<typeAlias type="com.app.dto.main.Card" alias="Card" />
-=======
 		<typeAlias type="com.app.dto.detail.Places" alias="Places" />
->>>>>>> ad6261fdbc1110a0de12e29a511b96648cb123e0
 	</typeAliases>
 
 </configuration>

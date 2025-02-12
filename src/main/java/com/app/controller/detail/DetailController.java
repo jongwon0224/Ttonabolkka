@@ -20,15 +20,14 @@ public class DetailController {
     // id로 관광지 상세 정보 조회
     @GetMapping("/detail/{id}")
     public String getDetailById(@PathVariable("id") int id, Model model) {
-        List<Places> placesList = detailService.getPlaceDetail(id);
-        if (!placesList.isEmpty()) {
-            Places place = placesList.get(0);
-            model.addAttribute("places", place);
-            model.addAttribute("images", detailService.getPlaceImages(id));
-        }
+    	
+        Places places = detailService.getPlaceDetail(id);
+        //Places place = placesList.get(0);
+        model.addAttribute("places", places);
+        //model.addAttribute("images", detailService.getPlaceImages(id));
         return "detail/detail";
     }
-
+    /*
     // 이름으로 관광지 상세 정보 조회
     @GetMapping("/detailByName")
     public String getDetailByName(String placeName, Model model) {
@@ -41,4 +40,5 @@ public class DetailController {
         }
         return "detail/detail";  // 'detail.jsp' 페이지로 포워딩
     }
+    */
 }
