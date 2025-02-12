@@ -8,37 +8,27 @@
 		SELECT * FROM PLACES
 	</select>
 	
+	
 	<select id="findCategoriesList" resultType="Categories">
 		SELECT * FROM CATEGORIES
 	</select>
 	
-<!-- 	<select id="findPlacesByCategoriesId" resultType="Places" parameterType="java.util.List"> -->
-<!-- 		SELECT * -->
-<!-- 		FROM PLACES P -->
-<!-- 		WHERE P.category_id IN -->
-<!-- 		<foreach collection="list" item="item" open="(" close=")" separator=","> -->
-<!-- 			#{item} -->
-<!-- 		</foreach> -->
-<!-- 	</select> -->
-	
-<!-- 	<select id="findPaginationList" resultType="Places" parameterType="java.util.Map"> -->
-<!-- 		SELECT * -->
-<!-- 		FROM PLACES -->
-<!-- 		ORDER BY id -->
-<!-- 		OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY -->
-<!-- 	</select> -->
-	
-<!-- 	<select id="getTotalPlaces" resultType="int"> -->
-<!-- 		SELECT COUNT(*) FROM PLACES -->
-<!-- 	</select>  -->
+	<select id="findAreasList" resultType="Areas">
+		SELECT * FROM Areas
+	</select>
 	
     
     <select id="findPlacesWithFilters" resultType="Places" parameterType="java.util.Map">
-        SELECT *
-        FROM PLACES
+        SELECT p.*, 
+           (SELECT pi.image_url FROM PLACES_IMG pi WHERE pi.id = p.id AND pi.no = 1) AS imageUrl
+   			FROM PLACES p
         <where>
             <if test="categoriesId != null">
-                AND categories_id = #{categoriesId}
+                AND category_id = #{categoriesId}
+            </if>
+            
+            <if test="areasId != null">
+                AND area_id = #{areasId}
             </if>
         </where>
         ORDER BY id
@@ -51,7 +41,7 @@
         FROM PLACES
         <where>
             <if test="categoriesId != null">
-                AND categories_id = #{categoriesId}
+                category_id = #{categoriesId}
             </if>
         </where>
     </select>

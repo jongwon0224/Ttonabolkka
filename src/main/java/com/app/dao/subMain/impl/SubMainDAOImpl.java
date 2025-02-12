@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.app.dao.subMain.SubMainDAO;
+import com.app.dto.subMain.Areas;
 import com.app.dto.subMain.Categories;
 import com.app.dto.subMain.Places;
 
@@ -34,46 +35,33 @@ public class SubMainDAOImpl implements SubMainDAO {
 		
 		return categoriesList;
 	}
-
 	
 	@Override
+	public List<Areas> findAreasList() {
+		
+		List<Areas> areasList = sqlSessionTemplate.selectList("subMain_mapper.findAreasList");
+		
+		return areasList;
+	}
+
+	@Override
 	public List<Places> findPlacesWithFilters(Map<String, Object> params) {
+		
 		List<Places> placesList = sqlSessionTemplate.selectList("subMain_mapper.findPlacesWithFilters", params);
+		
 		return placesList;
 	}
 
 	@Override
 	public int getTotalPlaces(Map<String, Object> params) {
+		
 		int result = sqlSessionTemplate.selectOne("subMain_mapper.getTotalPlacesWithFilters", params);
+		
 		return result;
 	}
 
 
-//	@Override
-//	public List<Places> findPlacesByCategoriesId(List<String> categoriesId) {
-//		
-//		List<Places> placesList = sqlSessionTemplate.selectList("subMain_mapper.findPlacesByCategoriesId", categoriesId);
-//			
-//		return placesList;
-//	}
-//
-//
-//	@Override
-//	public List<Places> findPlacesByPage(Map<String, Integer> paginationParams) {
-//		
-//		List<Places> paginationList = sqlSessionTemplate.selectList("subMain_mapper.findPaginationList", paginationParams);
-//		
-//		return paginationList;
-//	}
-//
-//
-//	@Override
-//	public int getTotalPlaces() {
-//		
-//		int totalPlaces = sqlSessionTemplate.selectOne("subMain_mapper.getTotalPlaces");
-//		System.out.println("전체 데이터 개수: " + totalPlaces);
-//		
-//		return totalPlaces;
-//	}
+	
+
 
 }

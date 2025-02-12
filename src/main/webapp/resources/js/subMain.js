@@ -4,20 +4,37 @@ function toggleHeart(icon) {
     icon.classList.toggle("active");
 }
 
-function filterAction(button, categoryId) {
+function filterAction(button, id, type) {
 
-    let currentPage = document.getElementById('currentPage').value || 1;
+//    let currentPage = document.getElementById('currentPage').value || 1;
     let pageSize = document.getElementById('pageSize').value;
 
-    let categoryBtn = document.getElementsByClassName('category-filter');
+    let filterBtn = document.getElementsByClassName('filter-btn');
 
-    for(let i=0; i<categoryBtn.length; i++) {
-        categoryBtn[i].classList.remove('selected');
+    for(let i=0; i<filterBtn.length; i++) {
+        filterBtn[i].classList.remove('selected');
     }
 
     button.classList.add('selected');
 
-    console.log(`필터액션: 카테고리 ID - ${categoryId}, 페이지 - ${currentPage}, 페이지 사이즈 - ${pageSize}`);
+//    location.href = `/subMain?page=1&pageSize=${pageSize}${categoryId?'&categoriesId='+ categoryId:''}`;
+	
+    let url = `/subMain?page=1&pageSize=${pageSize}`;
 
-    location.href = `/subMain?page=${currentPage}&pageSize=${pageSize}&categoriesId=${categoryId}`;
+    if (type == 'categories') {
+        url += `&categoriesId=${id}`;
+    }
+
+    if (type == 'areas') {
+        url += `&areasId=${id}`;
+    }
+
+    location.href = url;
+//	console.log(`/subMain?page=1&pageSize=${pageSize}${categoryId?'&categoriesId='+ categoryId:''}`);
 }
+
+function resetBtnAction() {
+    location.href = '/subMain';
+}
+
+
