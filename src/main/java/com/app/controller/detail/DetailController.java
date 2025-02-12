@@ -1,7 +1,6 @@
 package com.app.controller.detail;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,15 +19,15 @@ public class DetailController {
     // id로 관광지 상세 정보 조회
     @GetMapping("/detail/{id}")
     public String getDetailById(@PathVariable("id") int id, Model model) {
-    	
         Places places = detailService.getPlaceDetail(id);
         model.addAttribute("places", places);
-        
-        List<String> images = detailService.getPlaceImages(id);
-        model.addAttribute("images", images);
-        
+
+        String mainImageUrl = detailService.getMainImageUrl(id);
+        model.addAttribute("mainImageUrl", mainImageUrl);
+
+        List<String> subImageUrls = detailService.getSubImageUrls(id);
+        model.addAttribute("subImageUrls", subImageUrls);
+
         return "detail/detail";
     }
-   
-   
 }

@@ -23,55 +23,62 @@
 
 
 		//Detail js 시작 의선
-//✨ 메인에 있는 사진 클릭 시 모달 열기
-	document.querySelectorAll('.main-photo, .small-photos img').forEach((img, index) => {
-	    img.addEventListener('click', () => {
-	        currentIndex = index;
-	        openModal();
-	        document.getElementById("modalImage").src = photos[currentIndex];
-	    });
-	});
-	
+		
+		let currentIndex = 0;  // 현재 이미지 인덱스
+
+		//✨ 메인에 있는 사진 클릭 시 모달 열기
+		document.querySelectorAll('.main-photo, .small-photos img').forEach((img, index) => {
+		    img.addEventListener('click', () => {
+		        currentIndex = index;  // 클릭한 사진의 인덱스를 기록
+		        openModal();
+		        document.getElementById("modalImage").src = photos[currentIndex];  // 해당 인덱스의 이미지를 모달에 표시
+		    });
+		});
+
+		// mainImageUrl을 JSP에서 받아서 JavaScript로 전달
+		   const mainImageUrl = "<c:url value='/resources${mainImageUrl}' />";
+		   
+		   // subImageUrls를 JSON 형식으로 전달하여 JavaScript에서 배열로 변환
+		   const subImageUrls = JSON.parse('<c:out value="${subImageUrls}" />'); // 서버에서 받은 subImageUrls를 JSON 파싱
+
+		   // photos 배열 생성: 첫 번째 사진은 mainImageUrl, 나머지는 subImageUrls
+		   const photos = [mainImageUrl, ...subImageUrls.map(url => "<c:url value='/resources/" + url + "' />")];
 
 		// 모달 열기 함수
-function openModal() {
-    const modal = document.getElementById("photoModal");
-    modal.style.display = "block";
-    document.body.style.overflow = "hidden"; // 배경 스크롤 방지
-}
+		function openModal() {
+		    const modal = document.getElementById("photoModal");
+		    modal.style.display = "block";
+		    document.body.style.overflow = "hidden"; // 배경 스크롤 방지
+		    updateModalImage();  // 모달 이미지 업데이트
+		}
 
 		// 모달 닫기 함수
-function closeModal() {
-    const modal = document.getElementById("photoModal");
-    modal.style.display = "none";
-    document.body.style.overflow = "auto"; // 배경 스크롤 복원
-}
-		
-		//더보기 버튼 누르면 뜨는 사진 순서 
-let currentIndex = 0;
-const photos = [
-    "/image/bulguksaMain.jpg",
-    "/image/bulguksaSub1.jpg",
-    "/image/bulguksaSub2.JPG",
-    "/image/bulguksaSub3.jpg",
-    "/image/bulguksaSub4.jpg"
-];
+		function closeModal() {
+		    const modal = document.getElementById("photoModal");
+		    modal.style.display = "none";
+		    document.body.style.overflow = "auto"; // 배경 스크롤 복원
+		}
 
-function changePhoto(direction) {
-    const modalImage = document.getElementById("modalImage");
-    modalImage.style.opacity = "0"; // 페이드아웃
+		// 이미지 업데이트 함수
+		function updateModalImage() {
+		    const modalImage = document.getElementById("modalImage");
+		    modalImage.src = photos[currentIndex]; // 현재 인덱스에 해당하는 이미지로 변경
+		}
 
-    setTimeout(() => {
-        currentIndex = (currentIndex + direction + photos.length) % photos.length;
-        modalImage.src = photos[currentIndex];
-        modalImage.style.opacity = "1"; // 페이드인
-    }, 300); // 애니메이션 시간 (0.3초)
-}
-document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-        closeModal();
-    }
-});
+		// 사진을 넘기는 함수 (좌우 버튼)
+		function changePhoto(direction) {
+		    currentIndex = (currentIndex + direction + photos.length) % photos.length; // 인덱스를 변경하고 순환하게 처리
+		    updateModalImage();  // 이미지 업데이트
+		}
+
+		// '더보기' 버튼 클릭 시, 첫 번째 이미지로 모달 열기
+		document.querySelectorAll('.main-photo, .small-photos img').forEach((img, index) => {
+		    img.addEventListener('click', () => {
+		        currentIndex = index;
+		        openModal(); // 모달 열기
+		    });
+		});
+
 
 
 						//중앙 사진 더보기 버튼 js 

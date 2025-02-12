@@ -1,7 +1,6 @@
 package com.app.dao.detail.impl;
 
 import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,24 +11,25 @@ import com.app.dto.detail.Places;
 
 @Repository
 public class DetailDAOImpl implements DetailDAO {
-	
-	@Autowired
-	SqlSessionTemplate sqlSessionTemplate;
+
+    @Autowired
+    SqlSessionTemplate sqlSessionTemplate;
 
     // id로 관광지 상세 정보 조회
     @Override
     public Places getPlaceDetail(int id) {
-        // 여러 개의 정보가 아닌 하나의 상세 정보를 조회할 때는 selectOne을 사용
-    	Places places = sqlSessionTemplate.selectOne("detail_mapper.getPlaceDetail", id);
-        return places;
+        return sqlSessionTemplate.selectOne("detail_mapper.getPlaceDetail", id);
     }
 
-    // 관광지 이미지 목록 조회
+    // 관광지 대표 이미지 조회 (no = 2)
     @Override
-    public List<String> getPlaceImages(int id) {
-    	
-    	List<String> imgList = sqlSessionTemplate.selectList("detail_mapper.getPlaceImages", id);
-    	
-        return imgList;
+    public String getMainImageUrl(int id) {
+        return sqlSessionTemplate.selectOne("detail_mapper.getMainImageUrl", id);
+    }
+
+    // 관광지 서브 이미지 목록 조회 (no >= 3)
+    @Override
+    public List<String> getSubImageUrls(int id) {
+        return sqlSessionTemplate.selectList("detail_mapper.getSubImageUrls", id);
     }
 }

@@ -283,6 +283,10 @@
 	background-color: #0056b3;
 }
 
+.hidden {
+    display: none;
+}
+
 /* 🔹 평가 (댓글) 섹션 */
 .community {
 	margin-top: 40px;
