@@ -35,46 +35,45 @@ public class SubMainDAOImpl implements SubMainDAO {
 		return categoriesList;
 	}
 
-
+	
 	@Override
-	public List<Places> findPlacesByCategoriesId(List<String> categoriesId) {
-		
-		List<Places> placesList = sqlSessionTemplate.selectList("subMain_mapper.findPlacesByCategoriesId", categoriesId);
-			
+	public List<Places> findPlacesWithFilters(Map<String, Object> params) {
+		List<Places> placesList = sqlSessionTemplate.selectList("subMain_mapper.findPlacesWithFilters", params);
 		return placesList;
 	}
 
-
 	@Override
-	public List<Places> findPlacesByPage(Map<String, Integer> paginationParams) {
-		
-		List<Places> paginationList = sqlSessionTemplate.selectList("subMain_mapper.findPaginationList", paginationParams);
-		
-		return paginationList;
+	public int getTotalPlaces(Map<String, Object> params) {
+		int result = sqlSessionTemplate.selectOne("subMain_mapper.getTotalPlacesWithFilters", params);
+		return result;
 	}
 
 
-	@Override
-	public int getTotalPlaces() {
-		
-		int totalPlaces = sqlSessionTemplate.selectOne("subMain_mapper.getTotalPlaces");
-		System.out.println("전체 데이터 개수: " + totalPlaces);
-		
-		return totalPlaces;
-	}
-	
-	
-	/**
-	 *  @Override
-public List<Places> findPlacesWithFilters(Map<String, Object> params) {
-    return sqlSessionTemplate.selectList("subMain_mapper.findPlacesWithFilters", params);
-}
-
-@Override
-public int getTotalPlaces(Map<String, Object> params) {
-    return sqlSessionTemplate.selectOne("subMain_mapper.getTotalPlacesWithFilters", params);
-}
-
-	 */
+//	@Override
+//	public List<Places> findPlacesByCategoriesId(List<String> categoriesId) {
+//		
+//		List<Places> placesList = sqlSessionTemplate.selectList("subMain_mapper.findPlacesByCategoriesId", categoriesId);
+//			
+//		return placesList;
+//	}
+//
+//
+//	@Override
+//	public List<Places> findPlacesByPage(Map<String, Integer> paginationParams) {
+//		
+//		List<Places> paginationList = sqlSessionTemplate.selectList("subMain_mapper.findPaginationList", paginationParams);
+//		
+//		return paginationList;
+//	}
+//
+//
+//	@Override
+//	public int getTotalPlaces() {
+//		
+//		int totalPlaces = sqlSessionTemplate.selectOne("subMain_mapper.getTotalPlaces");
+//		System.out.println("전체 데이터 개수: " + totalPlaces);
+//		
+//		return totalPlaces;
+//	}
 
 }

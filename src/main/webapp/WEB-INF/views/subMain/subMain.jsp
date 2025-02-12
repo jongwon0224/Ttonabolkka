@@ -30,70 +30,29 @@
 			<div class="left_aside_map">지도</div>
 
 			<div class="left_aside_filter">
-				<h3>지역</h3>
-				<br>
-				<div>
-					<form>
-						<div class="left_aside_chkBox">
-							<label><input type="checkbox" id="gyeongju"
-								name="gyeongju"> 경주</label> <label><input
-								type="checkbox" id="busan" name="busan"> 부산</label> <label><input
-								type="checkbox" id="daegu" name="daegu"> 대구</label>
+				<form action="/subMain" method="GET">
+					
+					<h3>카테고리</h3>
+					<br>
+					<c:forEach var="categories" items="${categoriesList}">
+					<div class="category-item">
+						<div>
+							<button class="category-filter ${categories.id == param.categoriesId ? 'selected' : ''}"
+							type="button" onclick="filterAction(this, ${categories.id})"></button>
+							
 						</div>
-						<div class="left_aside_chkBox">
-							<label><input type="checkbox" id="seoul" name="seoul">
-								서울</label> <label><input type="checkbox" id="incheon"
-								name="incheon"> 인천</label> <label><input type="checkbox"
-								id="suwon" name="suwon"> 수원</label>
-						</div>
-						<div class="left_aside_chkBox">
-							<label><input type="checkbox" id="cheonan" name="cheonan">
-								천안</label> <label><input type="checkbox" id="asan" name="asan">
-								아산</label> <label><input type="checkbox" id="daecheon"
-								name="daecheon"> 대천</label>
-						</div>
-						<button class="left_aside_btn">검색</button>
-					</form>
-				</div>
-			</div>
+						
+						<div>${categories.name}</div>
+					</div>
+					</c:forEach>						
 
-			<div class="left_aside_filter">
-				<h3>카테고리</h3>
-				<br>
-				<div>
-					<form action="/subMain" method="post" >
-						<div class="left_aside_chkBox">
-							<c:forEach var="categories" items="${categoriesList}">
-								<label>
-									<input type="checkbox" name="categoriesId" value="${categories.id}">
-									${categories.name}
-								</label>
-							</c:forEach>
-						</div>                
-						<button class="left_aside_btn" type="submit">검색</button>
-					</form>
-				</div>
+					<input type="hidden" id="currentPage" name="page" value="${currentPage}">
+					<input type="hidden" id="pageSize" name="pageSize" value="5">	
+		
+				</form>								
 			</div>
-			
-
-			<div class="left_aside_filter">
-				<h3>평점</h3>
-				<br>
-				<div>
-					<form>
-						<div class="left_aside_chkBox">
-							<label><input type="checkbox" id="rating_high"
-								name="rating_high"> 평점 높은 순</label> <label><input
-								type="checkbox" id="rating_low" name="rating_low"> 평점 낮은
-								순</label>
-						</div>
-						<button class="left_aside_btn">검색</button>
-					</form>
-				</div>
-			</div>
-
 		</div>
-
+		
 		<div class="places_container">
 			<c:forEach var="places" items="${placesList}">
 				<div class="places_box">
@@ -119,34 +78,29 @@
 			<c:set var="endPage" value="${startPage+2 > totalPages ? totalPages : startPage+2}"/>
 						
 				<nav>
-<!-- <a class="page-link rounded-pill" href="?page=${item}&pageSize=5&category=${category != null ? category : ''}&rating=${rating != null ? rating : ''}"> -->
 				
 					<ul class="pagination pagination-sm justify-content-center rounded-pill">
 						<!-- 이전 페이지 -->
 						<li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
-							<a class="page-link rounded-pill" href="?page=${currentPage - 1}&pageSize=5">이전</a>
+						 	<a class="page-link rounded-pill" href="?page=${currentPage - 1}&pageSize=5&categoriesId=${categoriesId != null ? categoriesId : ''}">이전</a>
 						</li>
 			
 						<!-- 페이지 번호 -->						
 						<c:forEach var="item" begin="${startPage}" end="${endPage}">
 							<li class="page-item ${item == currentPage ? 'active' : ''}">
-								<a class="page-link rounded-pill" href="?page=${item}&pageSize=5">${item}</a>
+								<a class="page-link rounded-pill" href="?page=${item}&pageSize=5&categoriesId=${categoriesId != null ? categoriesId : ''}">${item}</a>       
 							</li>
 						</c:forEach>
 			
 						<!-- 다음 페이지 -->
 						<li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
-							<a class="page-link rounded-pill" href="?page=${currentPage + 1}&pageSize=5">다음</a>
+							<a class="page-link rounded-pill" href="?page=${currentPage + 1}&pageSize=5&categoriesId=${categoriesId != null ? categoriesId : ''}">다음</a>        
 						</li>
 					</ul>
 				</nav>
 			</div>
 	
-		</div>
-
-        
-            
-        
+		</div>  
 	</div>
 
 	<!-- Bootstrap 5 JavaScript (Popper 포함) -->

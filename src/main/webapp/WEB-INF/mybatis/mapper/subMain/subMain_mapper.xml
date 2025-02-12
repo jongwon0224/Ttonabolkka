@@ -12,40 +12,33 @@
 		SELECT * FROM CATEGORIES
 	</select>
 	
-	<select id="findPlacesByCategoriesId" resultType="Places" parameterType="java.util.List">
-		SELECT *
-		FROM PLACES P
-		WHERE P.category_id IN
-		<foreach collection="list" item="item" open="(" close=")" separator=",">
-			#{item}
-		</foreach>
-	</select>
+<!-- 	<select id="findPlacesByCategoriesId" resultType="Places" parameterType="java.util.List"> -->
+<!-- 		SELECT * -->
+<!-- 		FROM PLACES P -->
+<!-- 		WHERE P.category_id IN -->
+<!-- 		<foreach collection="list" item="item" open="(" close=")" separator=","> -->
+<!-- 			#{item} -->
+<!-- 		</foreach> -->
+<!-- 	</select> -->
 	
-	<select id="findPaginationList" resultType="Places" parameterType="java.util.Map">
-		SELECT *
-		FROM PLACES
-		ORDER BY id
-		OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY
-	</select>
+<!-- 	<select id="findPaginationList" resultType="Places" parameterType="java.util.Map"> -->
+<!-- 		SELECT * -->
+<!-- 		FROM PLACES -->
+<!-- 		ORDER BY id -->
+<!-- 		OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY -->
+<!-- 	</select> -->
 	
-	<select id="getTotalPlaces" resultType="int">
-		SELECT COUNT(*) FROM PLACES
-	</select> 
+<!-- 	<select id="getTotalPlaces" resultType="int"> -->
+<!-- 		SELECT COUNT(*) FROM PLACES -->
+<!-- 	</select>  -->
 	
     
-    <!-- 기존의 다른 쿼리들... -->
-    <!-- 필터와 페이지네이션을 적용한 장소 리스트 조회 -->
-
-<!-- 
     <select id="findPlacesWithFilters" resultType="Places" parameterType="java.util.Map">
         SELECT *
         FROM PLACES
         <where>
-            <if test="category != null">
-                AND category_id = #{category}
-            </if>
-            <if test="rating != null">
-                AND rating = #{rating}  
+            <if test="categoriesId != null">
+                AND categories_id = #{categoriesId}
             </if>
         </where>
         ORDER BY id
@@ -57,15 +50,9 @@
         SELECT COUNT(*)
         FROM PLACES
         <where>
-            <if test="category != null">
-                AND category_id = #{category}
-            </if>
-            <if test="rating != null">
-                AND rating = #{rating}
+            <if test="categoriesId != null">
+                AND categories_id = #{categoriesId}
             </if>
         </where>
     </select>
-</mapper>
- -->
-	
 </mapper>

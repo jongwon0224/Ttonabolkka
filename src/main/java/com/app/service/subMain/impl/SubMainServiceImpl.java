@@ -34,28 +34,42 @@ public class SubMainServiceImpl implements SubMainService{
 		return categoriesList;
 	}
 
+	
+	
 	@Override
-	public List<Places> findPlacesByCategoriesId(List<String> categoriesId) {
-		
-		List<Places> placesList = subMainDAO.findPlacesByCategoriesId(categoriesId);
-		
+	public List<Places> findPlacesWithFilters(Map<String, Object> params) {
+		List<Places> placesList = subMainDAO.findPlacesWithFilters(params);
 		return placesList;
 	}
 
 	@Override
-	public List<Places> findPlacesByPage(Map<String, Integer> paginationParams) {
-		
-		List<Places> paginationList = subMainDAO.findPlacesByPage(paginationParams);
-		
-		return paginationList;
+	public int getTotalPlaces(Map<String, Object> params) {
+		int result = subMainDAO.getTotalPlaces(params);
+		return result;
 	}
 
-	@Override
-	public int getTotalPlaces() {
-		
-		int totalPlaces = subMainDAO.getTotalPlaces();
-		
-		return totalPlaces;
-	}
+//	@Override
+//	public List<Places> findPlacesByCategoriesId(List<String> categoriesId) {
+//		
+//		List<Places> placesList = subMainDAO.findPlacesByCategoriesId(categoriesId);
+//		
+//		return placesList;
+//	}
+//
+//	@Override
+//	public List<Places> findPlacesByPage(Map<String, Integer> paginationParams) {
+//		
+//		List<Places> paginationList = subMainDAO.findPlacesByPage(paginationParams);
+//		
+//		return paginationList;
+//	}
+//
+//	@Override
+//	public int getTotalPlaces() {
+//		
+//		int totalPlaces = subMainDAO.getTotalPlaces();
+//		
+//		return totalPlaces;
+//	}
 
 }
