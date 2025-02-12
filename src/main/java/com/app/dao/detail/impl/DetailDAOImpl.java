@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.app.dao.detail.DetailDAO;
 import com.app.dto.detail.Places;
+import com.app.dto.detail.TravelLog;
 
 @Repository
 public class DetailDAOImpl implements DetailDAO {
@@ -32,4 +33,20 @@ public class DetailDAOImpl implements DetailDAO {
     	
         return imgList;
     }
+    
+    // id로 TravelLog 불러오기
+    @Override
+    public List<TravelLog> findTravelLogListById(int placeId){
+    	
+    	List<TravelLog> tlList = sqlSessionTemplate.selectList("detail_mapper.findTravelLogListById", placeId);
+    	
+		return tlList;
+	}
+    
+    //saveTravelLog 
+	@Override
+	public int saveTravelLog(TravelLog travelLog) {
+		int result = sqlSessionTemplate.insert("detail_mapper.saveTravelLog", travelLog);
+		return result;
+	}
 }

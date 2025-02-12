@@ -2,6 +2,7 @@ package com.app.service.detail.impl;
 
 import com.app.dao.detail.DetailDAO;
 import com.app.dto.detail.Places;
+import com.app.dto.detail.TravelLog;
 import com.app.service.detail.DetailService;
 import java.util.List;
 
@@ -31,4 +32,21 @@ public class DetailServiceImpl implements DetailService {
     	
         return imgList;
     }
+    
+    // id로 TravelLog 불러오기
+    @Override
+	public List<TravelLog> findTravelLogListById(int placeId) {
+    	List<TravelLog> tlList =  detailDAO.findTravelLogListById(placeId);
+		return tlList;
+	}
+    
+    //saveTravelLog 
+	@Override
+	public int saveTravelLog(TravelLog travelLog) {
+		
+		int result = detailDAO.saveTravelLog(travelLog);
+		
+		return result;
+	}
+
 }

@@ -15,5 +15,19 @@
         FROM PLACES_IMG
         WHERE id = #{id}
     </select>
+    
+	<!-- id로 TravelLog 불러오기 -->
+	<select id="findTravelLogListById" resultType="TravelLog">
+        SELECT *
+        FROM TRAVEL_LOGS
+        WHERE place_id = #{id}
+    </select>
+        
+	<!-- saveTravelLog  -->
+	<insert id="saveTravelLog" parameterType="TravelLog">
+	    INSERT INTO TRAVEL_LOGS (id, user_id, place_id, title, content, created_at)
+	    VALUES (SEQ_TRAVEL_LOGS_PK.NEXTVAL, #{userId}, #{placeId}, #{title}, #{content}, SYSDATE)
+	</insert>
+
 
 </mapper>
