@@ -6,7 +6,17 @@ CREATE TABLE PLACES(
     address VARCHAR2(255) NOT NULL,
     latitude NUMBER(9,6),
     longitude NUMBER(9,6),
+<<<<<<< HEAD
     category_id NUMBER NOT NULL
+=======
+    category_id NUMBER NOT NULL,
+    image_url VARCHAR2(255) NOT NULL,
+    image_url VARCHAR2(255),
+    image_url VARCHAR2(255),
+    image_url VARCHAR2(255),
+    image_url VARCHAR2(255)
+
+>>>>>>> ad6261fdbc1110a0de12e29a511b96648cb123e0
 );
 
 
