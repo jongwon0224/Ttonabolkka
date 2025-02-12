@@ -11,5 +11,4 @@ public class Places {
     String address;
     String imageUrls;  // 여러 이미지 URL을 저장할 리스트 필드
     String categoryId;
-    
 }

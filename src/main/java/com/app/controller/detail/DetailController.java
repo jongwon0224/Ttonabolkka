@@ -15,30 +15,20 @@ import com.app.service.detail.DetailService;
 public class DetailController {
 
     @Autowired
-    private DetailService detailService;
+    DetailService detailService;
 
     // id로 관광지 상세 정보 조회
     @GetMapping("/detail/{id}")
     public String getDetailById(@PathVariable("id") int id, Model model) {
     	
         Places places = detailService.getPlaceDetail(id);
-        //Places place = placesList.get(0);
         model.addAttribute("places", places);
-        //model.addAttribute("images", detailService.getPlaceImages(id));
+        
+        List<String> images = detailService.getPlaceImages(id);
+        model.addAttribute("images", images);
+        
         return "detail/detail";
     }
-    /*
-    // 이름으로 관광지 상세 정보 조회
-    @GetMapping("/detailByName")
-    public String getDetailByName(String placeName, Model model) {
-        // 이름으로 관광지 상세 정보 조회
-        List<Places> placesList = detailService.getPlaceDetailByName(placeName);
-        if (!placesList.isEmpty()) {
-            Places place = placesList.get(0);  // 첫 번째 장소만 사용
-            model.addAttribute("places", place);
-            model.addAttribute("images", detailService.getPlaceImages(place.getId()));  // 이미지 리스트 추가
-        }
-        return "detail/detail";  // 'detail.jsp' 페이지로 포워딩
-    }
-    */
+   
+   
 }

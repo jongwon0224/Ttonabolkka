@@ -20,19 +20,16 @@ public class DetailDAOImpl implements DetailDAO {
     @Override
     public Places getPlaceDetail(int id) {
         // 여러 개의 정보가 아닌 하나의 상세 정보를 조회할 때는 selectOne을 사용
-        return sqlSessionTemplate.selectOne("detail_mapper.getPlaceDetail", id);
-    }
-
-    // placeName으로 관광지 상세 정보 조회
-    @Override
-    public List<Places> getPlaceDetailByName(String placeName) {
-        // 여러 개의 정보가 아닌 하나의 상세 정보를 조회할 때는 selectOne을 사용
-        return sqlSessionTemplate.selectOne("detail_mapper.getPlaceDetailByName", placeName);
+    	Places places = sqlSessionTemplate.selectOne("detail_mapper.getPlaceDetail", id);
+        return places;
     }
 
     // 관광지 이미지 목록 조회
     @Override
     public List<String> getPlaceImages(int id) {
-        return sqlSessionTemplate.selectList("detail_mapper.getPlaceImages", id);
+    	
+    	List<String> imgList = sqlSessionTemplate.selectList("detail_mapper.getPlaceImages", id);
+    	
+        return imgList;
     }
 }

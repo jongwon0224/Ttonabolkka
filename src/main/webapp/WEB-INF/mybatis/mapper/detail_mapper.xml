@@ -9,15 +9,8 @@
         WHERE id = #{id}
     </select>
 
-    <!-- 관광지 상세 정보 조회 (placeName) -->
-    <select id="getPlaceDetailByName" resultType="Places" parameterType="String">
-        SELECT id, name, description, address
-        FROM PLACES
-        WHERE name = #{placeName}
-    </select>
-
     <!-- 관광지 이미지 목록 조회 -->
-    <select id="getPlaceImages" resultType="string">
+    <select id="getPlaceImages" resultType="string" parameterType="int">
         SELECT image_url
         FROM PLACES_IMG
         WHERE id = #{id}
