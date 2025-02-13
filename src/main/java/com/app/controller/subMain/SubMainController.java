@@ -15,22 +15,36 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.app.dto.subMain.Areas;
 import com.app.dto.subMain.Categories;
 import com.app.dto.subMain.Places;
+import com.app.repository.dao.EatHtpDAO;
+import com.app.repository.dao.impl.EatHtpDAOImpl;
 import com.app.service.subMain.SubMainService;
+import com.app.service.subMain.api.EatHtpService;
 
 @Controller
 public class SubMainController {
 
 	@Autowired
 	SubMainService subMainService;
-
-
+	
+	@Autowired
+	EatHtpService eatHtpService;
+	
+	@Autowired
+	EatHtpDAO eatHtpDAO;
+	
 	@GetMapping("/subMain")
 	public String subMain(@RequestParam(defaultValue = "1") int page,
 						@RequestParam(defaultValue = "5") int pageSize,
 						@RequestParam(required = false) Integer categoriesId,
 						@RequestParam(required = false) Integer areasId,
 						Model model) {
-
+		
+		eatHtpService.eatHtpService();
+		eatHtpDAO.eatHtpDAO();
+		
+		
+		
+		
 		Map<String, Object> params = new HashMap<>();
 		params.put("offset", (page - 1) * pageSize);
 		params.put("limit", pageSize);

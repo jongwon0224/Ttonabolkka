@@ -6,9 +6,7 @@ function toggleHeart(icon) {
 
 function filterAction(button, id, type) {
 
-//    let currentPage = document.getElementById('currentPage').value || 1;
     let pageSize = document.getElementById('pageSize').value;
-
     let filterBtn = document.getElementsByClassName('filter-btn');
 
     for(let i=0; i<filterBtn.length; i++) {
@@ -16,8 +14,6 @@ function filterAction(button, id, type) {
     }
 
     button.classList.add('selected');
-
-//    location.href = `/subMain?page=1&pageSize=${pageSize}${categoryId?'&categoriesId='+ categoryId:''}`;
 	
     let url = `/subMain?page=1&pageSize=${pageSize}`;
 
@@ -30,11 +26,8 @@ function filterAction(button, id, type) {
     }
 
     location.href = url;
-//	console.log(`/subMain?page=1&pageSize=${pageSize}${categoryId?'&categoriesId='+ categoryId:''}`);
 }
 
 function resetBtnAction() {
     location.href = '/subMain';
 }
-
-
