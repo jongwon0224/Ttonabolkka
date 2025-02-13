@@ -6,4 +6,8 @@ public interface UserService {
 	
 	int saveUser(User user);
 
+	User checkUserLogin(User user);
+	
+	User findUserById(String id);
+
 }

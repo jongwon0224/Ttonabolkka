@@ -7,18 +7,17 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="/css/login.css" rel="stylesheet">
 </head>
 
-<link href="/css/login.css" rel="stylesheet">
-
 <body>
-	<div class=mainBox>
+	<form action="" method="post" class=mainBox>
 		<div class="logo">로고</div>
 		<h2 class=h2T>로그인</h2>
 		<div class=labelT>아이디</div>
-		<input type="email" class=input-group>
+		<input type="text" name="nickname" id="nickname" class=input-group>
 		<div class=labelT>비밀번호</div>
-		<input type="password" class=input-group><br>
+		<input type="password" name="password" id="password" class=input-group><br>
 		<div class=subBox>
 			<div>
 				<input type="checkbox" checked>로그인 유지
@@ -26,7 +25,9 @@
 			<span class="resetT">비밀번호 재설정</span>
 		</div>
 		<br>
-		<button class="input-login">로그인</button>
+		<button type="submit" class="input-login">로그인</button>
+	</form>
+	<div class=mainBox>
 		<br>
 		<div class="registerT1">계정이 없으신가요?</div>
 		<button class="emailbtn btn">
@@ -61,4 +62,5 @@
 		</button>
 	</div>
 </body>
+
 </html>

@@ -1,10 +1,22 @@
 package com.app.dto.user;
 
-public class User {
-	
-	String id;
-	String pw;
-	String name;
-	String tel;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
+import lombok.Data;
+
+@Data
+public class User {
+	String id;
+
+	@NotBlank
+	@Size(min = 8, max=12)
+	String password;
+	
+	
+	String username;
+	String tel;
+	
+	@NotBlank
+	String nickname;
 }
