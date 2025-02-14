@@ -27,7 +27,7 @@
 // 더보기 모달창 // 
 
 // 현재 이미지 인덱스 변수
-let currentIndex = 0;  
+let currentIndex = 0;
 
 // 메인 이미지와 서브 이미지 클릭 시 모달 열기 및 해당 이미지 표시
 document.querySelectorAll('.main-photo, .small-photos img').forEach((img, index) => {
@@ -38,7 +38,6 @@ document.querySelectorAll('.main-photo, .small-photos img').forEach((img, index)
 });
 
 // 모달 열기 함수 (선택적 인자로 인덱스를 받을 수 있음)
-// 인자가 없으면 기본적으로 0번 인덱스부터 시작
 function openModal(index) {
     if (typeof index !== "undefined") {
         currentIndex = index;
@@ -67,6 +66,12 @@ function updateModalImage() {
 // 좌우 버튼을 통한 이미지 변경 함수
 function changePhoto(direction) {
     currentIndex = (currentIndex + direction + photos.length) % photos.length;
+    updateModalImage();
+}
+
+// 썸네일 클릭 시 해당 이미지로 업데이트
+function setImage(index) {
+    currentIndex = index;
     updateModalImage();
 }
 

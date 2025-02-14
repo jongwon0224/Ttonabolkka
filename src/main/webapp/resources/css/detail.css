@@ -107,15 +107,15 @@
 	border-radius: 15px; 
 }
 
-.big-photo { 	/*큰 사진 크기 조절*/
-    width: 750px; /* 원하는 크기로 고정 */
-    height: 465px; /* 고정 크기 설정 */
-}
-
 .main-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.big-photo { 	/*큰 사진 크기 조절*/
+    width: 750px; /* 원하는 크기로 고정 */
+    height: 465px; /* 고정 크기 설정 */
 }
 
 /* 작은 사진들을 포함하는 그리드 */
@@ -190,7 +190,7 @@
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
 }
-
+/* 모달 내용 컨테이너 */
 .modal-content {
 	background-color: #fff;
 	margin: 5% auto;
@@ -198,10 +198,13 @@
 	border-radius: 8px;
 	max-width: 80%;
 	overflow-y: auto;
-}
-
-.modal-gallery {
+	position: relative;
+	width: 80%;
+	height: 80vh;
+	margin: 5vh auto;
 	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .modal-gallery img {
@@ -221,26 +224,13 @@
 	top: 10px;
 	right: 20px;
 	cursor: pointer;
+	z-index: 3;
 }
 
 .close:hover, .close:focus {
 	color: black;
 	text-decoration: none;
 	cursor: pointer;
-}
-
-/* 모달 내용 컨테이너 */
-.modal-content {
-	position: relative;
-	width: 80%;
-	height: 80vh;
-	background: white;
-	margin: 5vh auto;
-	padding: 20px;
-	border-radius: 8px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 /* 갤러리 컨테이너 */
@@ -265,13 +255,23 @@
 
 /* 이미지 스타일 */
 .slider img {
-	width: 800px; /* 고정 너비 설정 */
-	height: 600px; /* 고정 높이 설정 */
+	width: 500px; /* 고정 너비 설정 */
+	height: 500px; /* 고정 높이 설정 */
 	object-fit: cover; /* 이미지 비율 유지하면서 영역 채우기 */
 	border-radius: 8px;
-	transition: opacity 0.3s ease-in-out;
+	transition: opacity 0.5s ease-in-out;
 	display: block;
 	margin: 0 auto;
+	
+}
+
+/* 이미지 전환을 위한 스타일 */
+.slider img.active {
+    transform: translateX(0); /* 기본 위치 */
+}
+
+.slider img.inactive {
+    transform: translateX(100%); /* 오른쪽으로 슬라이드 */
 }
 
 /* 이전/다음 버튼 */
@@ -300,22 +300,6 @@
 
 .prev:hover, .next:hover {
 	background: rgba(0, 0, 0, 0.8);
-}
-
-/* 닫기 버튼 */
-.close {
-	position: absolute;
-	top: 10px;
-	right: 20px;
-	color: #333;
-	font-size: 30px;
-	font-weight: bold;
-	cursor: pointer;
-	z-index: 3;
-}
-
-.close:hover {
-	color: #000;
 }
 
 
@@ -460,6 +444,33 @@
 .comment-list div {
 	padding: 10px;
 	border-bottom: 1px solid #ddd;
+}
+
+/* 썸네일 갤러리 (하단 위치) */
+.thumbnail-gallery {
+    display: flex;
+    flex-direction: row; /* 썸네일을 가로로 배치 */
+    justify-content: center; /* 썸네일을 가운데로 정렬 */
+    overflow-x: auto; /* 가로로 넘칠 경우 스크롤 */
+    margin-top: 20px;
+    position: absolute;
+    bottom: 10px; /* 모달창 하단에 위치 */
+    left: 50%;
+    transform: translateX(-50%); /* 가로 중앙 정렬 */
+}
+
+.thumbnail-gallery img {
+    width: 80px;
+    height: 60px;
+    margin: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.thumbnail-gallery img:hover {
+    border-color: white;
+    transform: scale(1.1);
 }
 
 

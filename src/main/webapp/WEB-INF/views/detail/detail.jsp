@@ -51,10 +51,22 @@
             <button class="next" onclick="changePhoto(1)">&#10095;</button>
         </div>
         
-        <!-- 작은 썸네일들 -->
-        <div class="thumbnail-gallery" id="thumbnailGallery"></div>
-    </div>
-</section>
+<!-- 작은 썸네일들 -->
+<div class="thumbnail-gallery" id="thumbnailGallery">
+    <!-- mainImageUrl을 첫 번째로 추가 -->
+    <img src="<c:url value='/resources/${mainImageUrl}' />" 
+         alt="<c:out value='${places.name}' /> 대표사진" 
+         class="thumbnail" onclick="setImage(0)">
+    
+    <!-- subImageUrls를 반복문으로 추가 -->
+    <c:forEach items="${subImageUrls}" var="imageUrl" varStatus="status">
+        <img src="<c:url value='/resources/${imageUrl}' />" 
+             alt="<c:out value='${places.name}' /> 서브사진 <c:out value='${status.index}' />" 
+             class="thumbnail" onclick="setImage(${status.index + 1})">
+    </c:forEach>
+</div>
+        </div>
+    </section>
 
 <!-- 더보기 버튼 -->
 <div class="more-photos">
