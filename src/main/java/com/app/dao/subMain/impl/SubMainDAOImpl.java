@@ -11,6 +11,7 @@ import com.app.dao.subMain.SubMainDAO;
 import com.app.dto.subMain.Areas;
 import com.app.dto.subMain.Categories;
 import com.app.dto.subMain.Places;
+import com.app.dto.subMain.PlacesImg;
 
 @Repository
 public class SubMainDAOImpl implements SubMainDAO {
@@ -56,6 +57,24 @@ public class SubMainDAOImpl implements SubMainDAO {
 	public int getTotalPlaces(Map<String, Object> params) {
 		
 		int result = sqlSessionTemplate.selectOne("subMain_mapper.getTotalPlacesWithFilters", params);
+		
+		return result;
+	}
+
+
+	@Override
+	public int saveEatHtpPlaces(Places places) {
+		
+		int result = sqlSessionTemplate.insert("subMain_mapper.savePlaces", places);
+		
+		return result;	
+	}
+
+
+	@Override
+	public int saveEatHtpPlacesImg(PlacesImg placesImg) {
+		
+		int result = sqlSessionTemplate.insert("subMain_mapper.savePlacesImg", placesImg);
 		
 		return result;
 	}

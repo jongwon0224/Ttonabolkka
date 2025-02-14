@@ -45,4 +45,34 @@
             </if>
         </where>
     </select>
+    
+    
+    <insert id="savePlaces" parameterType="Places">
+    	<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    		SELECT SEQ_PLACES_PK.NEXTVAL FROM DUAL
+    	</selectKey>
+    
+    	INSERT INTO PLACES
+    	VALUES (
+		    	#{id},
+    			#{name},
+    			#{description},
+    			#{areaId},
+    			#{address},
+    			#{latitude},
+    			#{longitude},
+    			#{categoryId}
+    	)
+    </insert>
+    
+    
+    <insert id="savePlacesImg" parameterType="PlacesImg">
+    	INSERT INTO PLACES_IMG
+    	VALUES (
+    			#{id},
+    			NVL((SELECT MAX(no) FROM PLACES_IMG WHERE id = #{id}), 0) + 1,
+    			#{imageUrl}
+    	)
+    </insert>
+    
 </mapper>

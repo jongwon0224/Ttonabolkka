@@ -1,4 +1,4 @@
-package com.app.repository.dao;
+package com.app.dao.api;
 
 public interface EatHtpDAO {
 

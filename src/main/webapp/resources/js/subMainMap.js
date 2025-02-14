@@ -1,8 +1,10 @@
 var map, geocoder, marker, infowindow;
 
-function openModal() {
+function openModal(placesList) {
 	document.getElementById("mapModal").style.display = "flex";
 
+	var placesList = JSON.parse(placesList);
+	
 	setTimeout(function() {
 		var container = document.getElementById('modalMap');
 		var options = {
@@ -16,27 +18,15 @@ function openModal() {
 			geocoder = new kakao.maps.services.Geocoder();
 			marker = new kakao.maps.Marker();
 			infowindow = new kakao.maps.InfoWindow({ zindex: 1 });
+		
 
-
-//			동적 수정 -> 삭제해야됨
-			var positions = [
-				{
-					title: '불국사',
-					latlng: new kakao.maps.LatLng(35.790329, 129.332092)
-				},
-				{
-					title: '석굴암',
-					latlng: new kakao.maps.LatLng(35.795093, 129.349229)
-				},
-				{
-					title: '첨성대',
-					latlng: new kakao.maps.LatLng(35.834706, 129.219075)
-				},
-				{
-					title: '첨성대 핑크뮬리',
-					latlng: new kakao.maps.LatLng(35.835561, 129.219389)
-				}
-			];
+//			매개변수 받아서 동적으로 입력 
+			var positions = placesList.map( (item) => {
+				return {
+					title : item.title,
+					latlng : new kakao.maps.LatLng(item.latitude, item.longitude)
+				};
+			});
 			
 
 			// 마커 이미지의 이미지 주소
@@ -53,13 +43,8 @@ function openModal() {
 				// 마커를 생성
 				var marker = new kakao.maps.Marker({
 					map: map, // 마커를 표시할 지도
-					
 					position: positions[i].latlng, // 마커를 표시할 위치
 					title: positions[i].title, // 마커의 타이틀
-					
-//					position: latlngs[i], // 마커를 표시할 위치
-//					title: titles[i], // 마커의 타이틀
-
 					image: markerImage // 마커 이미지 
 				});
 
@@ -108,7 +93,7 @@ function openModal() {
 			});
 		} else {
 			// 기존 지도 다시 중심으로 이동
-			map.relayout();
+//			map.relayout();
 			map.setCenter(new kakao.maps.LatLng(35.790329, 129.332092));
 		}
 	}, 100);

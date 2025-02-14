@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>떠나볼까 여행페이지</title>
 <!-- Bootstrap 5 CSS -->
-<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=480ae76903e53687e5cad91c46fb2808&libraries=services"></script>
+<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
 
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -61,7 +61,7 @@
 		<!-- 좌측 필터구간 -->
 		<div class="left_aside">
 			<div id="map" class="left_aside_map">
-				<button class="btn btn-primary" onclick="openModal()">지도 보기</button>
+				<button class="btn btn-primary" onclick="openModal(${placesList})">지도 보기</button>
 			</div>
 			
 			<input class="reset-btn" type="button" onclick="resetBtnAction()" value="필터 초기화">
@@ -110,8 +110,15 @@
 						<img src="${places.imageUrl}" alt="${places.name}이미지">
 					</div>
                     <div class="places_txt">
-                        <div style="font-size: 18px; font-weight: bold;">${places.name}</div><br>
-                        <div style="font-size: 15px">${places.description}</div>
+                        <div style="font-size: 18px; font-weight: bold;">${places.name}</div>
+                        <ul>
+                        	<li>
+                        		<div style="font-size: 14px">${places.address}</div>
+                        	</li>
+                        </ul>
+                            
+                        
+                        <div style="font-size: 11px">${places.description}</div>
                     </div>
                     <div>
                         <i class="fa-solid fa-heart heart-icon" id="${places.name}"
@@ -123,9 +130,14 @@
 			<!-- 하단 페이지네이션 구간 -->
 			<div class="container mt-5">
 			
-			<c:set var="startPage" value="${currentPage-2 < 1 ? 1 : currentPage-2}"/>
-			<c:set var="endPage" value="${startPage+2 > totalPages ? totalPages : startPage+2}"/>
+			<c:set var="startPage" value="${(currentPage-1) / 5 * 5 +1}"/>
+			<c:set var="endPage" value="${startPage+4 > totalPages ? totalPages : startPage+4}"/>
 						
+			<c:if test="${currentPage <= 5}">
+  				<c:set var="startPage" value="1"/>
+  				<c:set var="endPage" value="${totalPages > 5 ? 5 : totalPages}"/>
+			</c:if>
+			
 				<nav>
 					<ul class="pagination pagination-sm justify-content-center rounded-pill">
 						<!-- 이전 페이지 -->

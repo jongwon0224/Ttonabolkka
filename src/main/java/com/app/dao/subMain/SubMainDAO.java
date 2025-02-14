@@ -6,6 +6,7 @@ import java.util.Map;
 import com.app.dto.subMain.Areas;
 import com.app.dto.subMain.Categories;
 import com.app.dto.subMain.Places;
+import com.app.dto.subMain.PlacesImg;
 
 public interface SubMainDAO {
 
@@ -16,4 +17,7 @@ public interface SubMainDAO {
 	
 	List<Places> findPlacesWithFilters(Map<String, Object> params);
 	int getTotalPlaces(Map<String, Object> params);
+	
+	int saveEatHtpPlaces(Places places);
+	int saveEatHtpPlacesImg(PlacesImg placesImg);
 }
