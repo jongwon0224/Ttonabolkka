@@ -102,33 +102,45 @@
 	object-fit: cover;
 	border-radius: 8px;
 	display: block;
+	width: 100%; 
+	height: 100%; 
+	border-radius: 15px; 
+}
+
+.big-photo { 	/*큰 사진 크기 조절*/
+    width: 750px; /* 원하는 크기로 고정 */
+    height: 465px; /* 고정 크기 설정 */
+}
+
+.main-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* 작은 사진들을 포함하는 그리드 */
 .small-photos {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2열로 설정 */
-    gap: 10px; /* 사진들 간격 */
-    list-style: none;
-    width: 100%;
-    grid-template-rows: repeat(2, 250px); /* 두 행의 높이를 모두 200px로 설정 */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 480px; /* 원하는 고정된 너비 설정 */
+    height: 464px; /* 메인 사진과 같은 높이로 설정 */
 }
 
-/* 각 서브사진의 스타일 */
 .small-photo {
-    width: 100%; /* 너비를 100%로 맞추기 */
-    height: 200px; /* 모든 사진의 높이를 동일하게 설정 */
-    border-radius: 8px; /* 둥근 테두리 */
-    overflow: hidden; /* 넘치는 부분은 잘라냄 */
-    position: relative; /* 위치 지정 */
+    width: calc(50% - 5px); /* 두 개씩 배치되도록 설정 */
+    height: calc(50% - 5px); /* 동일한 높이 유지 */
+    border-radius: 8px; /* 둥근 모서리 적용 */
+    overflow: hidden; /* 넘치는 부분 잘라내기 */
+    position: relative;
 }
-
 /* 서브사진의 이미지 스타일 */
 .small-photo img {
-    width: 100%; /* 이미지의 너비를 100%로 설정 */
-    height: 100%; /* 이미지의 높이를 100%로 설정 */
-    object-fit: cover; /* 비율을 맞추면서 이미지 크기 유지 */
-    display: block; /* 이미지가 블록 요소로 표시되도록 설정 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px; /* 여기서도 한 번 더 적용 */
 }
 
 /* 첫 번째 사진을 왼쪽 위에 배치 */
@@ -154,6 +166,19 @@
     grid-column: 2; /* 두 번째 열 */
     grid-row: 2; /* 두 번째 행 */
 }
+
+/* ✨ 마우스오버 효과 추가 */
+.main-photo, .small-photos img {
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.main-photo:hover, .small-photos img:hover {
+	transform: scale(1.02);
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+
 /* 모달 스타일 */
 .modal {
 	display: none; /* 모달은 기본적으로 숨겨놓기 */
@@ -202,148 +227,6 @@
 	color: black;
 	text-decoration: none;
 	cursor: pointer;
-}
-
-.small-photos li:last-child .more-photos {
-	position: absolute;
-	bottom: 5px;
-	right: 5px;
-	background: rgba(0, 0, 0, 0.5);
-	color: #fff;
-	padding: 5px 10px;
-	border-radius: 5px;
-	font-size: 12px;
-}
-
-.more-photos {
-	position: absolute;
-	right: 5px;
-	margin-right: 15px;
-	background: rgba(0, 0, 0, 0.5);
-	color: #fff;
-	padding: 5px 10px;
-	border-radius: 5px;
-	font-size: 12px;
-}
-
-.more-photos a {
-	color: #fff;
-	text-decoration: none;
-	font-weight: bold;
-}
-
-/* 설명 텍스트 */
-.description {
-	font-size: 17px;
-}
-
-/* 🔹 상세 사진 리스트 */
-.image-list {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 10px;
-	margin-top: 30px;
-}
-/*중앙 사진 css*/
-.image-list img {
-	width: 80%;
-	max-width: 500px;
-	height: auto;
-	display: block;
-	border-radius: 8px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.photo-list {
-	display: flex;
-	flex-direction: column; /* 세로로 배치 */
-	gap: 10px; /* 사진 간격 */
-	align-items: center; /* 중앙 정렬 */
-}
-
-.photo-list img {
-	width: 100%; /* 가로 폭 전체 차지 */
-	max-width: 500px; /* 최대 크기 */
-	height: auto;
-	display: block; /* 한 줄에 하나씩 배치 */
-}
-
-#showMoreBtn {
-	margin-top: 10px;
-	padding: 8px 15px;
-	cursor: pointer;
-	background-color: #007BFF;
-	color: white;
-	border: none;
-	border-radius: 5px;
-}
-
-#showMoreBtn:hover {
-	background-color: #0056b3;
-}
-
-.hidden {
-    display: none;
-}
-
-/* 🔹 평가 (댓글) 섹션 */
-.community {
-	margin-top: 40px;
-	padding: 20px;
-	background-color: #f8f8f8;
-	border-top: 1px solid #ddd;
-}
-
-.comment-box {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	max-width: 500px;
-	margin: 0 auto;
-}
-
-.comment-box textarea {
-	width: 100%;
-	height: 100px;
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	resize: none;
-}
-
-.comment-box button {
-	padding: 10px;
-	background-color: #007bff;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-}
-
-.comment-box button:hover {
-	background-color: #0056b3;
-}
-
-.comment-list {
-	max-width: 500px;
-	margin: 20px auto;
-}
-
-.comment-list div {
-	padding: 10px;
-	border-bottom: 1px solid #ddd;
-}
-
-.modal {
-	display: none;
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.8);
-	z-index: 1000;
 }
 
 /* 모달 내용 컨테이너 */
@@ -435,16 +318,151 @@
 	color: #000;
 }
 
-/* ✨ 마우스오버 효과 추가 */
-.main-photo, .small-photos img {
-	transition: transform 0.3s ease, opacity 0.3s ease;
+
+
+/* 중앙 사진 더 보기 css */
+.small-photos li:last-child .more-photos {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 12px;
 }
 
-.main-photo:hover, .small-photos img:hover {
-	transform: scale(1.02);
-	opacity: 0.8;
+.more-photos {
+	position: absolute;
+	right: 5px;
+	margin-right: 15px;
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	padding: 5px 10px;
+	border-radius: 5px;
+	font-size: 12px;
+}
+
+.more-photos a {
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/* 설명 텍스트 */
+.description {
+	font-size: 17px;
+}
+
+/* 🔹 상세 사진 리스트 */
+.image-list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	margin-top: 30px;
+}
+
+
+/*중앙 사진 css*/
+.image-list img {
+	width: 80%;
+	max-width: 500px;
+	height: auto;
+	display: block;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.photo-list {
+	display: flex;
+	flex-direction: column; /* 세로로 배치 */
+	gap: 10px; /* 사진 간격 */
+	align-items: center; /* 중앙 정렬 */
+}
+
+.photo-list img {
+	width: 600px; /* 가로 폭 전체 차지 */
+	max-width: 600px; /* 최대 크기 */
+	height: 400px;
+	max-height: 400px;
+	display: block; /* 한 줄에 하나씩 배치 */
+}
+
+.photo-item {
+    width: 200px; /* 각 이미지 너비 */
+    height: 150px; /* 각 이미지 높이 */
+    object-fit: cover; /* 이미지 비율 유지하면서 채우기 */
+    border-radius: 10px; /* 모서리 둥글게 */
+}
+
+#showMoreBtn {
+	margin-top: 10px;
+	padding: 8px 15px;
+	cursor: pointer;
+	background-color: #007BFF;
+	color: white;
+	border: none;
+	border-radius: 5px;
+}
+
+#showMoreBtn:hover {
+	background-color: #0056b3;
+}
+
+.photo-item.hidden {
+    display: none; /* 기본적으로 숨김 */
+}
+
+/* 🔹 평가 (댓글) 섹션 */
+.community {
+	margin-top: 40px;
+	padding: 20px;
+	background-color: #f8f8f8;
+	border-top: 1px solid #ddd;
+}
+
+.comment-box {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.comment-box textarea {
+	width: 100%;
+	height: 100px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	resize: none;
+}
+
+.comment-box button {
+	padding: 10px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
 	cursor: pointer;
 }
+
+.comment-box button:hover {
+	background-color: #0056b3;
+}
+
+.comment-list {
+	max-width: 500px;
+	margin: 20px auto;
+}
+
+.comment-list div {
+	padding: 10px;
+	border-bottom: 1px solid #ddd;
+}
+
+
 
  /* 정민님 footer */
     .footer {
