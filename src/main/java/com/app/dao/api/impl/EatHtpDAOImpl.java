@@ -24,7 +24,7 @@ public class EatHtpDAOImpl implements EatHtpDAO{
             StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/5050000/eatHtpService/getEatHtp");
             urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=y%2B3b3vFxMiFKCFmlBUDDG2wLWEnAmHnq76K34oWEUyKrUs%2BRkuwO6cTEB180EFdUedxpCjUEsURMCZjPeO4Abg%3D%3D"); // 서비스 키 설정
             urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=1");  // 첫 번째 페이지
-            urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=10");  // 한 페이지당 10개의 데이터
+            urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=20");  // 한 페이지당 10개의 데이터
 
             // URL 객체 생성
             URI uri = new URI(urlBuilder.toString());

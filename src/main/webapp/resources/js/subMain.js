@@ -31,3 +31,12 @@ function filterAction(button, id, type) {
 function resetBtnAction() {
     location.href = '/subMain';
 }
+
+function goToDetailPage(item) {
+	
+	const keyword = item.getAttribute("data-keyword");
+	const encodedKeyword = encodeURIComponent(keyword);
+	location.href = "/subMain/" + encodedKeyword;
+}
+
+

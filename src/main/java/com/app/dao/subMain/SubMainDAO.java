@@ -18,6 +18,7 @@ public interface SubMainDAO {
 	List<Places> findPlacesWithFilters(Map<String, Object> params);
 	int getTotalPlaces(Map<String, Object> params);
 	
+	// api 데이터 호출
 	int saveEatHtpPlaces(Places places);
 	int saveEatHtpPlacesImg(PlacesImg placesImg);
 }

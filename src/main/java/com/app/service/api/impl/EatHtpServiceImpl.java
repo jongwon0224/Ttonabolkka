@@ -27,10 +27,11 @@ public class EatHtpServiceImpl implements EatHtpService {
 
 	// 장소 저장
 	public List<Places> saveEatHtpPlaces() throws IOException {
-		// api데이터받아오기
 
+		// api데이터받아오기
 		String jsonText = eatHtpDAO.eatHtpDAO();
-		System.out.println(jsonText);
+//		System.out.println(jsonText);
+		
 
 		List<Places> placesList = new ArrayList<>();
 
@@ -42,51 +43,49 @@ public class EatHtpServiceImpl implements EatHtpService {
 
 			// 헤더 파싱
 			JSONObject header = (JSONObject) response.get("header");
-//			System.out.println(header.get("resultCode"));
-//			System.out.println(header.get("resultMsg"));
 
 			// 바디 파싱
 			JSONObject body = (JSONObject) response.get("body");
-//			System.out.println(body.get("totalCount"));
 
 			// 아이템 파싱
 			JSONObject items = (JSONObject) body.get("items");
 			JSONArray itemArr = (JSONArray) items.get("item");
 
+			PlacesImg p1 = new PlacesImg();
+			
 			// 아이템 배열
 			for (Object obj : itemArr) {
 				JSONObject item = (JSONObject) obj;
 
+				//places에 저장
 				Places places = new Places();
 
 				places.setName(convertValueToString(item.get("CON_TITLE")));
 				places.setDescription(convertValueToString(item.get("CON_CONTENT")));
 				places.setAddress(convertValueToString(item.get("CON_DESC1")));
 				places.setLatitude(convertValueToDouble(item.get("CON_LATITUDE")));
-				places.setLatitude(convertValueToDouble(item.get("CON_LONGITUDE")));
-				places.setCategoryId(3);
-				places.setAreaId(1);
+				places.setLongitude(convertValueToDouble(item.get("CON_LONGITUDE")));
+				places.setCategoryId(3); //핫플지정 하드코딩
+				places.setAreaId(1); //지역번호 경주로 하드코딩
 
-				subMainDAO.saveEatHtpPlaces(places);
-
-
+				subMainDAO.saveEatHtpPlaces(places);		
+				
+				placesList.add(places);
+				
+				//placesImg에 저장	
 				PlacesImg placesImg = new PlacesImg();
+				
 				placesImg.setId(places.getId());
 				placesImg.setImageUrl("https://" + convertValueToString(item.get("CON_IMGFILENAME")));
-
 				subMainDAO.saveEatHtpPlacesImg(placesImg);
-
-//				placesList.add(placesImg);
-
-//				System.out.println(placesList);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+			
+		} catch(Exception e)	{
+			e.printStackTrace();			
 		}
+		
 		return placesList;
 	}
-	
-	
 
 	// double값 변환 메서드
 	private double convertValueToDouble(Object value) {

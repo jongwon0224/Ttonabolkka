@@ -13,12 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.app.dao.api.EatHtpDAO;
 import com.app.dao.subMain.SubMainDAO;
 import com.app.dto.subMain.Areas;
 import com.app.dto.subMain.Categories;
 import com.app.dto.subMain.Places;
-import com.app.dto.subMain.PlacesImg;
 import com.app.service.subMain.SubMainService;
 import com.app.service.api.EatHtpService;
 
@@ -57,8 +55,9 @@ public class SubMainController {
 			params.put("areasId", areasId);
 		}
 
-		System.out.println(params);
-
+//		System.out.println(params);
+		
+		// 필터 + 페이지네이션 기능 서비스에 매개변수 전달
 		List<Places> placesList = subMainService.findPlacesWithFilters(params);
 		
 		// api사진 해당 업체에서 업로드가 안되어있어서 임의로 변경. => 정규식뭔데?
@@ -71,19 +70,20 @@ public class SubMainController {
 			description = matcher.replaceAll("");
 			p.setDescription(description);
 		}
+
 		
 		// 카테고리 리스트 가져옴
 		List<Categories> categoriesList = subMainService.findCategoriesList();
 		// 지역 리스트 가져옴
 		List<Areas> areasList = subMainService.findAreasList();
 
+		// totalPage -> 페이지네이션 구현용
 		int totalPlaces = subMainService.getTotalPlaces(params);
 		int totalPages = (int) Math.ceil((double) totalPlaces / pageSize);
 
 		System.out.println(placesList);
-		System.out.println(categoriesList);
-
-		model.addAttribute("placesList", placesList);
+		
+		model.addAttribute("placesList", placesList); // 필터 + 페이지네이션 적용된 리스트 넘어감
 		model.addAttribute("categoriesList", categoriesList); // 카테고리 리스트 (관광지, 테마파크, 핫플레이스)
 		model.addAttribute("areasList", areasList); // 지역 리스트
 		model.addAttribute("currentPage", page); // 현재 페이지
