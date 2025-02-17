@@ -27,9 +27,9 @@
 				<div class="menu-list">
 					<ul>
 						<li><a href="/main/subMain">국내여행</a></li>
-						<li><a href="/main/subMain">해외여행</a></li>
-						<li><a href="/main/subMain">이벤트</a></li>
-						<li><a href="/main/subMain">고객센터</a></li>
+						<li><a href="">해외여행</a></li>
+						<li><a href="">이벤트</a></li>
+						<li><a href="">고객센터</a></li>
 					</ul>
 				</div>
 			</div>
@@ -73,7 +73,7 @@
 							<c:forEach var="card" items="${cardList}">
 								<div class="card" data-id="${card.id}">
 									<div class="card-img">
-										<img alt="카드사진" src="${card.imageUrl}">
+										<img alt="카드사진" src="${card.image}">
 									</div>
 									<div class="card-content">${card.name}</div>
 								</div>
@@ -95,7 +95,7 @@
 							<c:forEach var="card" items="${cardList}">
 								<div class="card" data-id="${card.id}">
 									<div class="card-img">
-										<img alt="카드사진" src="${card.imageUrl}">
+										<img alt="카드사진" src="${card.image}">
 									</div>
 									<div class="card-content">${card.name}</div>
 								</div>
@@ -110,12 +110,24 @@
 				<div class="section-title">핫플</div>
 				<div class="section-body">
 					<div class="grid">
-						<div class="card">
-							<img alt="카드사진" src="https://image.goodchoice.kr/resize_768x308/exhibition/cms/e4511_dnpqqosj_1200x480_2_20250122091226.png">
-						</div>
-						<div class="card">
-							<img alt="카드사진" src="https://image.goodchoice.kr/resize_768x308/exhibition/cms/e4511_dnpqqosj_1200x480_2_20250122091226.png">
-						</div>
+					    <div class="card hot" onclick="location.href='/main/subMain/detail/8'">
+					        <div class="hot_l">
+					        	<p class="hashtags">#경주 핫플레이스 #핑크뮬리</p>
+					            <p>첨성대 핑크뮬리</p>
+					        </div>
+					        <div class="hot_r">
+					            <img alt="카드사진" src="/img/pinkflower.jpg">
+					        </div>
+					    </div>
+					    <div class="card hot" onclick="location.href='/main/subMain/detail/7'">
+					        <div class="hot_l">
+					        	<p class="hashtags">#경주 핫플레이스 #데이트 코스</p>
+					            <p>경주 황리단길</p>
+					        </div>
+					        <div class="hot_r">
+					            <img alt="카드사진" src="/img/hwangroad.jpg">
+					        </div>
+					    </div>
 					</div>
 				</div>
 			</div>

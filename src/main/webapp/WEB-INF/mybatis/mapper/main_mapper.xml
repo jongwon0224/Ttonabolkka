@@ -5,9 +5,8 @@
 	
 	<!-- 	메인페이지에서 지역별로 카드 하나씩 생성 -->
 	<select id="findPlaceByRegion" resultType="Card">
-			SELECT p.id, p.name, pi.image_url AS image_url
-			FROM PLACES p, PLACES_IMG pi
-			WHERE P.id = pi.id AND pi.no = 1
+			SELECT id, name, image
+			FROM AREAS
 	</select>
 	
 </mapper>

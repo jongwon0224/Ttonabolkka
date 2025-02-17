@@ -1,5 +1,5 @@
 CREATE TABLE USERS(
-   	userno NUMBER Primary key,
+    userno NUMBER Primary key,
     id VARCHAR2(50) UNIQUE,
     username VARCHAR2(50) NOT NULL,
     password VARCHAR2(255) NOT NULL,
