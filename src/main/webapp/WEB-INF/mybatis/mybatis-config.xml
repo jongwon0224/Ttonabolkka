@@ -7,7 +7,7 @@
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 		<setting name="jdbcTypeForNull" value="NULL" />
 	</settings>
-	
+
 	<typeAliases>
 		<typeAlias type="com.app.dto.main.Card" alias="Card" />
 		<typeAlias type="com.app.dto.detail.Places" alias="Places" />
