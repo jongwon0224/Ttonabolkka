@@ -18,7 +18,7 @@
 		<div class="logo">로고</div>
 		<h2 class=h2T>로그인</h2>
 		<div class=labelT>아이디</div>
-		<input type="text" name="nickname" id="nickname" class=input-group>
+		<input type="text" name="id" id="nickname" class=input-group>
 		<div class=labelT>비밀번호</div>
 		<input type="password" name="password" id="password" class=input-group>
 		<p id="errorMessage" class="error-msg">
