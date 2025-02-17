@@ -15,7 +15,6 @@
 		<typeAlias type="com.app.dto.detail.TravelLog" alias="TravelLog" />
 		<typeAlias type="com.app.dto.detail.TravelLogImg" alias="TravelLogImg" />
 		<typeAlias type="com.app.dto.file.FileInfo" alias="FileInfo" />
-		<typeAlias type="com.app.dto.user.User" alias="User" />
 		<typeAlias type="com.app.dto.subMain.Places" alias="Places" />
 		<typeAlias type="com.app.dto.subMain.PlacesImg" alias="PlacesImg" />
 		<typeAlias type="com.app.dto.subMain.Categories" alias="Categories" />
