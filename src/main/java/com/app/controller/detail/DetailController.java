@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.app.dto.detail.Places;
+
 import com.app.dto.detail.TravelLog;
+import com.app.dto.subMain.Places;
 import com.app.service.detail.DetailService;
 import com.app.service.file.FileService;
 import com.fasterxml.jackson.core.JsonProcessingException;

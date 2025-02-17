@@ -9,16 +9,16 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias type="com.app.dto.user.User" alias="User" />
-		<typeAlias type="com.app.dto.main.Card" alias="Card" />
-		<typeAlias type="com.app.dto.detail.Places" alias="Places" />
-		<typeAlias type="com.app.dto.detail.TravelLog" alias="TravelLog" />
-		<typeAlias type="com.app.dto.detail.TravelLogImg" alias="TravelLogImg" />
-		<typeAlias type="com.app.dto.file.FileInfo" alias="FileInfo" />
 		<typeAlias type="com.app.dto.subMain.Places" alias="Places" />
 		<typeAlias type="com.app.dto.subMain.PlacesImg" alias="PlacesImg" />
 		<typeAlias type="com.app.dto.subMain.Categories" alias="Categories" />
 		<typeAlias type="com.app.dto.subMain.Areas" alias="Areas" />
+		<typeAlias type="com.app.dto.main.Card" alias="Card" />
+<!-- 		<typeAlias type="com.app.dto.detail.Places" alias="Places" /> -->
+		<typeAlias type="com.app.dto.detail.TravelLog" alias="TravelLog" />
+		<typeAlias type="com.app.dto.detail.TravelLogImg" alias="TravelLogImg" />
+		<typeAlias type="com.app.dto.file.FileInfo" alias="FileInfo" />
+		<typeAlias type="com.app.dto.user.User" alias="User" />
 	</typeAliases>
 
 </configuration>
