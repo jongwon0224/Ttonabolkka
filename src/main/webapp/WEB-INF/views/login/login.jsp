@@ -5,9 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <link href="/css/login.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -17,7 +20,12 @@
 		<div class=labelT>아이디</div>
 		<input type="text" name="nickname" id="nickname" class=input-group>
 		<div class=labelT>비밀번호</div>
-		<input type="password" name="password" id="password" class=input-group><br>
+		<input type="password" name="password" id="password" class=input-group>
+		<p id="errorMessage" class="error-msg">
+			${loginError}
+			<!-- Spring Model에서 전달된 오류 메시지 출력 -->
+		</p>
+		<br>
 		<div class=subBox>
 			<div>
 				<input type="checkbox" checked>로그인 유지
@@ -62,5 +70,4 @@
 		</button>
 	</div>
 </body>
-
 </html>

@@ -204,3 +204,12 @@
 	font-weight: 500;
 	line-height: 19.09px;
 }
+
+/* 오류 메시지 스타일 */
+.error-msg {
+	color: red;
+	font-size: 12px;
+	margin-top: 5px;
+	display: block;
+}
+

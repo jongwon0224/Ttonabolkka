@@ -33,8 +33,6 @@ public class UserServiceImpl implements UserService {
 	public User checkUserLogin(User user) {
 		
 		// 1) 서비스 자체에서 로직을 수행
-
-		System.out.println(user);
 		
 		User loginUser = userDAO.findUserById(user.getNickname());
 
@@ -42,6 +40,7 @@ public class UserServiceImpl implements UserService {
 			
 			return loginUser;
 		}
+		
 		return null;
 		
 	}

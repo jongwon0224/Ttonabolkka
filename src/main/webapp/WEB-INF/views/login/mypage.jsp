@@ -9,8 +9,7 @@
 <body>
 	<h1>사용자 마이페이지</h1>
 
-	<p>아이디 : ${user.nickname}</p>
-	<p>이름 : ${user.username}</p>
+	<p>아이디 : ${loginUserId.nickname}</p>
 	<p>
 		<a href="/main">메인화면으로</a>
 	</p>

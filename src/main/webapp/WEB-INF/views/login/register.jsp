@@ -6,18 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<style>
-.error-msg {
-	color: red;
-	font-size: 10px;
-}
-
-.error-msg1 {
-	color: red;
-	font-size: 10px;
-}
-</style>
-
 <link href="/css/register.css" rel="stylesheet">
 <link href="/css/login.css" rel="stylesheet">
 </head>
@@ -85,7 +73,8 @@
 				<div class="registerAgreeT1">(필수)개인정보 수집 및 이용 동의</div>
 			</div>
 
-			<button type="submit" class="input-login">회원가입 완료</button>
+			<button type="submit" class="input-login" id="submitBtn" disabled>회원가입
+				완료</button>
 		</div>
 	</form>
 
@@ -100,7 +89,7 @@
 	<script>
 	
 	//발리드 메세지 숨기는 기능
-		document.addEventListener("DOMContentLoaded", function() {
+			document.addEventListener("DOMContentLoaded", function() {
 		    var nicknameInput = document.getElementsByName("nickname")[0];
 		    var errorMsg = document.getElementById("nicknameError"); // 아이디 필수 입력 메시지 선택
 	
@@ -130,74 +119,84 @@
 		    });
 		});
 	
-	function checkPasswordMatch() {
-	    var password = document.getElementsByName("password")[0].value;
-	    var passwordConfirm = document.getElementsByName("passwordConfirm")[0].value;
-	    var passwordError = document.getElementById("passwordError");
-
-	    if (passwordConfirm.length > 0) { // 비밀번호 확인란이 입력될 때만 체크
-	        if (password !== passwordConfirm) {
-	            passwordError.textContent = "비밀번호가 일치하지 않습니다.";
-	            passwordError.style.display = "block";
-	        } else {
-	            passwordError.style.display = "none";
-	        }
-	    } else {
-	        passwordError.style.display = "none";
-	    }
-	}
-
-	function validateForm() {
-	    var password = document.getElementsByName("password")[0].value;
-	    var passwordConfirm = document.getElementsByName("passwordConfirm")[0].value;
-	    var passwordError = document.getElementById("passwordError");
-
-	    if (password !== passwordConfirm) {
-	        passwordError.textContent = "비밀번호가 일치하지 않습니다.";
-	        passwordError.style.display = "block"; // 오류 메시지 표시
-	        return false; // 폼 제출 방지
-	    } else {
-	        passwordError.style.display = "none"; // 오류 메시지 숨김
-	    }
-	    return true;
-	}
+		function checkPasswordMatch() {
+		    var password = document.getElementsByName("password")[0].value;
+		    var passwordConfirm = document.getElementsByName("passwordConfirm")[0].value;
+		    var passwordError = document.getElementById("passwordError");
 	
-    // 🟢 모달 기능
-    var modal = document.getElementById("modal");
-    var openModalBtn = document.getElementById("openModal");
-    var closeModalBtn = document.getElementsByClassName("close")[0];
-
-    openModalBtn.onclick = function() {
-        modal.style.display = "block";
-    }
-    closeModalBtn.onclick = function() {
-        modal.style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
- // 🟢 전체 동의 체크 기능
-    document.getElementById("agreeAll").addEventListener("change", function() {
-        var checkboxes = document.querySelectorAll(".agreeCheck"); // 개별 체크박스들
-        checkboxes.forEach(checkbox => {
-            checkbox.checked = this.checked; // 전체 동의 체크 상태에 맞춰 변경
-        });
-
-        toggleSubmitButton(); // 체크박스 변경 시 버튼 상태 갱신
-    });
-
-    // 🟢 개별 체크박스 변경 시 전체 동의 체크 여부 확인
-    document.querySelectorAll(".agreeCheck").forEach(checkbox => {
-        checkbox.addEventListener("change", function() {
-            var allChecked = document.querySelectorAll(".agreeCheck").length === document.querySelectorAll(".agreeCheck:checked").length;
-            document.getElementById("agreeAll").checked = allChecked; // 모두 체크되었으면 전체동의 체크
-
-            toggleSubmitButton(); // 체크박스 변경 시 버튼 상태 갱신
-        });
-    });
+		    if (passwordConfirm.length > 0) { // 비밀번호 확인란이 입력될 때만 체크
+		        if (password !== passwordConfirm) {
+		            passwordError.textContent = "비밀번호가 일치하지 않습니다.";
+		            passwordError.style.display = "block";
+		        } else {
+		            passwordError.style.display = "none";
+		        }
+		    } else {
+		        passwordError.style.display = "none";
+		    }
+		}
+	
+		function validateForm() {
+		    var password = document.getElementsByName("password")[0].value;
+		    var passwordConfirm = document.getElementsByName("passwordConfirm")[0].value;
+		    var passwordError = document.getElementById("passwordError");
+	
+		    if (password !== passwordConfirm) {
+		        passwordError.textContent = "비밀번호가 일치하지 않습니다.";
+		        passwordError.style.display = "block"; // 오류 메시지 표시
+		        return false; // 폼 제출 방지
+		    } else {
+		        passwordError.style.display = "none"; // 오류 메시지 숨김
+		    }
+		    return true;
+		}
+		
+	    // 🟢 모달 기능
+	    var modal = document.getElementById("modal");
+	    var openModalBtn = document.getElementById("openModal");
+	    var closeModalBtn = document.getElementsByClassName("close")[0];
+	
+	    openModalBtn.onclick = function() {
+	        modal.style.display = "block";
+	    }
+	    closeModalBtn.onclick = function() {
+	        modal.style.display = "none";
+	    }
+	    window.onclick = function(event) {
+	        if (event.target == modal) {
+	            modal.style.display = "none";
+	        }
+	    }
+	
+	 // 🟢 버튼 활성화/비활성화 함수
+	    function toggleSubmitButton() {
+	        var checkboxes = document.querySelectorAll(".agreeCheck");
+	        var allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+	        document.getElementById("submitBtn").disabled = !allChecked; // 모든 체크박스가 체크되었을 때만 버튼 활성화
+	    }
+	
+	    // 🟢 전체 동의 체크 기능
+	    document.getElementById("agreeAll").addEventListener("change", function() {
+	        var checkboxes = document.querySelectorAll(".agreeCheck");
+	        checkboxes.forEach(checkbox => {
+	            checkbox.checked = this.checked;
+	        });
+	
+	        toggleSubmitButton(); // 체크박스 변경 시 버튼 상태 갱신
+	    });
+	
+	    // 🟢 개별 체크박스 변경 시 전체 동의 체크 여부 확인 & 버튼 상태 갱신
+	    document.querySelectorAll(".agreeCheck").forEach(checkbox => {
+	        checkbox.addEventListener("change", function() {
+	            var allChecked = document.querySelectorAll(".agreeCheck").length === document.querySelectorAll(".agreeCheck:checked").length;
+	            document.getElementById("agreeAll").checked = allChecked;
+	            
+	            toggleSubmitButton(); // 체크박스 변경 시 버튼 상태 갱신
+	        });
+	    });
+	
+	    // 초기 실행 시 버튼 상태 확인
+	    toggleSubmitButton();
 
 	</script>
 
