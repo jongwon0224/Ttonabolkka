@@ -15,7 +15,7 @@ function filterAction(button, id, type) {
 
     button.classList.add('selected');
 	
-    let url = `/subMain?page=1&pageSize=${pageSize}`;
+    let url = `/main/subMain?page=1&pageSize=${pageSize}`;
 
     if (type == 'categories') {
         url += `&categoriesId=${id}`;
@@ -29,14 +29,15 @@ function filterAction(button, id, type) {
 }
 
 function resetBtnAction() {
-    location.href = '/subMain';
+    location.href = '/main/subMain';
 }
 
 function goToDetailPage(item) {
 	
 	const keyword = item.getAttribute("data-keyword");
 	const encodedKeyword = encodeURIComponent(keyword);
-	location.href = "/subMain/" + encodedKeyword;
+	location.href = "/main/subMain/detail/" + encodedKeyword;
+	
 }
 
 

@@ -18,9 +18,9 @@
 
     <!-- nav -->
 	<div class="nav">
-		<h1 class="logo">떠나볼까</h1>
+		<h1 class="logo" onclick="location.href='/main'">떠나볼까</h1>
 		<div class="nav-r">
-			<span class="login_menus"> 로그인 / 회원가입 </span> <span class="category"><i
+			<span class="login_menus" onclick="location.href='/login'"> 로그인 / 회원가입 </span> <span class="category"><i
 				class="fa-solid fa-bars"></i></span>
 		</div>
 		
@@ -28,10 +28,10 @@
 		<div class="category-menu">
 			<div class="menu-list">
 				<ul>
-					<li><a href="">국내여행</a></li>
-					<li><a href="">해외여행</a></li>
-					<li><a href="">이벤트</a></li>
-					<li><a href="">고객센터</a></li>
+					<li><a href="/main/subMain">국내여행</a></li>
+					<li><a href="/main/subMain">해외여행</a></li>
+					<li><a href="/main/subMain">이벤트</a></li>
+					<li><a href="/main/subMain">고객센터</a></li>
 				</ul>
 			</div>
 		</div>
@@ -172,6 +172,7 @@
 	</div>
 
     <script src="/js/detail.js"></script>
+    <script src="/js/main.js"></script>
 
 </body>
 </html>
