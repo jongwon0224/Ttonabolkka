@@ -28,7 +28,7 @@ public class DetailController {
 	FileService fileService;
 
     //상세 페이지
-    @GetMapping("/detail/{id}")
+    @GetMapping("/main/subMain/detail/{id}")
     public String getDetailById(@PathVariable("id") int id, Model model) throws Exception {
     	
     	
@@ -55,7 +55,7 @@ public class DetailController {
     }
     
     //saveTravelLog
-    @PostMapping("/detail/{id}")
+    @PostMapping("/main/subMain/detail/{id}")
     public String getDetailByIdAction(@ModelAttribute TravelLog travelLog) {
     	
     	System.out.println("Title: " + travelLog.getTitle());
