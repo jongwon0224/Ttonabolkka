@@ -1,9 +1,9 @@
 CREATE TABLE PLACES_IMG (
     id NUMBER NOT NULL,  -- 장소 ID (PLACES 테이블의 ID를 참조)
-    no NUMBER NOT NULL,  -- 사진 순번 (1부터 시작)
+    no NUMBER NOT NULL, -- 사진 순번 (1부터 시작)
     image_url VARCHAR2(255) NOT NULL,
-    CONSTRAINT fk_places FOREIGN KEY (id) REFERENCES PLACES(id) ON DELETE CASCADE,  -- ✅ PLACES 테이블과 연결
-    CONSTRAINT pk_places_img PRIMARY KEY (id, no)  -- 복합 기본키: id와 no 컬럼을 결합
+    CONSTRAINT pk_places_img PRIMARY KEY (id, no),  -- 복합 기본키: id와 no 컬럼을 결합
+    CONSTRAINT unique_image_url UNIQUE (image_url)
 );
 /*PLACES_IMG 테이블은 CONSTRAINT 없이 생성 X*/
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.app.dao.detail.DetailDAO;
 import com.app.dto.detail.Places;
 import com.app.dto.detail.TravelLog;
+import com.app.dto.detail.TravelLogImg;
 
 @Repository
 public class DetailDAOImpl implements DetailDAO {
@@ -49,4 +50,23 @@ public class DetailDAOImpl implements DetailDAO {
 		int result = sqlSessionTemplate.insert("detail_mapper.saveTravelLog", travelLog);
 		return result;
 	}
+	
+	// TravelLogImg 저장
+	@Override
+	public int saveTravelLogImg(TravelLogImg travelLogImg) {
+		
+		int result = sqlSessionTemplate.insert("detail_mapper.saveTravelLogImg", travelLogImg);
+		
+		return result;
+	}
+	
+	// id로 TravelLogImg 불러오기
+	@Override
+	public TravelLogImg findTravelLogImgById(int id) {
+		
+		TravelLogImg travelLogImg = sqlSessionTemplate.selectOne("detail_mapper.findTravelLogImgById", id);
+		
+		return travelLogImg;
+	}
+	
 }

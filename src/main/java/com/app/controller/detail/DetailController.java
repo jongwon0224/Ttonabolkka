@@ -13,12 +13,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.app.dto.detail.Places;
 import com.app.dto.detail.TravelLog;
 import com.app.service.detail.DetailService;
+import com.app.service.file.FileService;
 
 @Controller
 public class DetailController {
 
     @Autowired
     DetailService detailService;
+    
+    @Autowired
+	FileService fileService;
 
     //상세 페이지
     @GetMapping("/detail/{id}")

@@ -95,6 +95,7 @@
             		<input type="hidden" name="placeId" value="${places.id}">
             		<input type="text" id="title" class="title" name="title" required>
 	                <textarea id="content" class="content" name="content" placeholder="악플 금지" required></textarea>
+	                <input type="file" name="image">
 	                <button type="submit">등록</button>
             	</form>
             </div>
@@ -110,7 +111,7 @@
 				            ${tl.content}
 				        </div>
 				        <div class="comment-date">
-				            ${tl.createdAt} <!-- 날짜 필드가 있다면 사용 -->
+				            ${tl.createdAt} 
 				        </div>
 				    </div>
 				</c:forEach>

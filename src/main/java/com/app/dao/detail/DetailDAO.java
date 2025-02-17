@@ -2,6 +2,7 @@ package com.app.dao.detail;
 
 import com.app.dto.detail.Places;
 import com.app.dto.detail.TravelLog;
+import com.app.dto.detail.TravelLogImg;
 
 import java.util.List;
 
@@ -17,4 +18,11 @@ public interface DetailDAO {
     
     //saveTravelLog 
     int saveTravelLog(TravelLog travelLog);
+    
+    // TravelLogImg 저장
+    int saveTravelLogImg(TravelLogImg travelLogImg);
+	
+    // id로 TravelLogImg 불러오기
+	public TravelLogImg findTravelLogImgById(int id);
+	
 }
