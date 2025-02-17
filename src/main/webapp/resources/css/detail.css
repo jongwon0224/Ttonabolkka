@@ -400,63 +400,105 @@
 
 /* 🔹 평가 (댓글) 섹션 */
 .community {
-	margin-top: 40px;
-	padding: 20px;
-	background-color: #f8f8f8;
-	border-top: 1px solid #ddd;
+    width: 100%;
+    padding: 40px 10px;
+    margin:40px 0px;
+    background-color: #f9f9f9;
+}
+
+.community h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
 .comment-box {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	max-width: 500px;
-	margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
 }
 
-.comment-box textarea {
-	width: 100%;
-	height: 100px;
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	resize: none;
+.comment-box .title {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.comment-box .content {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin: 5px 0px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    resize: none;
 }
 
 .comment-box button {
-	padding: 10px;
-	background-color: #007bff;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
+    padding: 10px;
+    background-color: #ff4a57;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .comment-box button:hover {
-	background-color: #0056b3;
+    background-color: #e13b48;
 }
 
+/* 🔹 댓글 리스트 */
 .comment-list {
-	max-width: 500px;
-	margin: 20px auto;
-}
-
-.comment-list div {
-	padding: 10px;
-	border-bottom: 1px solid #ddd;
-}
-
-/* 썸네일 갤러리 (하단 위치) */
-.thumbnail-gallery {
-    display: flex;
-    flex-direction: row; /* 썸네일을 가로로 배치 */
-    justify-content: center; /* 썸네일을 가운데로 정렬 */
-    overflow-x: auto; /* 가로로 넘칠 경우 스크롤 */
+    width: 100%;
     margin-top: 20px;
-    position: absolute;
-    bottom: 10px; /* 모달창 하단에 위치 */
-    left: 50%;
-    transform: translateX(-50%); /* 가로 중앙 정렬 */
+}
+
+.comment-list .comment {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.comment .user-info {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+}
+
+.comment .comment-content {
+    font-size: 14px;
+    color: #333;
+}
+
+.comment .comment-date {
+    font-size: 12px;
+    color: #999;
+    text-align: right;
+}
+
+
+
+.modal {
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 1000;
 }
 
 .thumbnail-gallery img {
