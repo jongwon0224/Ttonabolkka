@@ -14,6 +14,8 @@ import com.app.dto.detail.Places;
 import com.app.dto.detail.TravelLog;
 import com.app.service.detail.DetailService;
 import com.app.service.file.FileService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 public class DetailController {
@@ -26,15 +28,23 @@ public class DetailController {
 
     //상세 페이지
     @GetMapping("/detail/{id}")
-    public String getDetailById(@PathVariable("id") int id, Model model) {
+    public String getDetailById(@PathVariable("id") int id, Model model) throws Exception {
     	
-    	// id로 관광지 상세 정보 조회
+    	
         Places places = detailService.getPlaceDetail(id);
         model.addAttribute("places", places);
-        
-        // id로 관광지 이미지 목록 조회
-        List<String> images = detailService.getPlaceImages(id);
-        model.addAttribute("images", images);
+
+        String mainImageUrl = detailService.getMainImageUrl(id);
+        model.addAttribute("mainImageUrl", mainImageUrl);
+
+        List<String> subImageUrls = detailService.getSubImageUrls(id);
+        model.addAttribute("subImageUrls", subImageUrls);
+
+        // List<String>을 JSON 문자열로 변환하여 subImageUrlsJson 속성으로 추가
+        ObjectMapper mapper = new ObjectMapper();
+        String subImageUrlsJson = mapper.writeValueAsString(subImageUrls);
+        model.addAttribute("subImageUrlsJson", subImageUrlsJson);
+
         
         // id로 TravelLog 불러오기
         List<TravelLog> tlList = detailService.findTravelLogListById(id);

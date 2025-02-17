@@ -16,6 +16,13 @@
         WHERE id = #{id} AND no = 2
     </select>
     
+      <!-- 관광지 서브 이미지 목록 조회 (no >= 3) -->
+    <select id="getSubImageUrls" resultType="string" parameterType="int">
+        SELECT image_url
+        FROM PLACES_IMG
+        WHERE id = #{id} AND no >= 3
+    </select>
+    
 	<!-- id로 TravelLogList 불러오기 -->
 	<select id="findTravelLogListById" resultType="TravelLog">
         SELECT *
@@ -46,13 +53,5 @@
 		WHERE id = #{id}
 		
 	</select>
-
-
-    <!-- 관광지 서브 이미지 목록 조회 (no >= 3) -->
-    <select id="getSubImageUrls" resultType="string" parameterType="int">
-        SELECT image_url
-        FROM PLACES_IMG
-        WHERE id = #{id} AND no >= 3
-    </select>
 
 </mapper>
