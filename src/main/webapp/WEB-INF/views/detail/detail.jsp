@@ -120,6 +120,29 @@
 			<button id="showMoreBtn">사진 더 보기🔽</button>
 		</section>
 
+		<h2>
+			<c:out value="${places.name}" />
+		</h2>
+		<div class="description">
+			<c:out value="${places.description}" />
+		</div>
+
+		<section class="image-list">
+			<div class="photo-list">
+				<!-- 대표 이미지 추가 -->
+				<img src="<c:url value='/resources/${mainImageUrl}' />"
+					alt="<c:out value='${places.name}' /> 대표사진" class="photo-item">
+
+				<!-- 서브 이미지 리스트 -->
+				<c:forEach items="${subImageUrls}" var="imageUrl" varStatus="status">
+					<img src="<c:url value='/resources/${imageUrl}' />"
+						alt="<c:out value='${places.name}' />"
+						class="photo-item ${status.index >= 1 ? 'hidden' : ''}">
+				</c:forEach>
+			</div>
+			<button id="showMoreBtn">사진 더 보기🔽</button>
+		</section>
+
 		<section class="community">
 			<h3>
 				<c:out value="${places.name}" />
@@ -176,6 +199,9 @@
 		</div>
 	</div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ft-detail
     <!-- JSP에서 전역 변수 설정 -->
     <script type="text/javascript">
         window.contextPath = "${pageContext.request.contextPath}";
@@ -187,6 +213,7 @@
         ];
         console.log(window.photos); // 디버깅용
     </script>
+<<<<<<< HEAD
     <script src="<c:url value='/resources/js/detail.js' />"></script>
 =======
 
@@ -194,5 +221,10 @@
     <script src="/js/main.js"></script>
 
 >>>>>>> 52aa9ad21a2109f0c41e65b8ad400acc3671b655
+=======
+    <script src="/js/detail.js"></script>
+    <script src="/js/main.js"></script>
+>>>>>>> ft-detail
 </body>
 </html>
+
