@@ -45,6 +45,14 @@ public class DetailDAOImpl implements DetailDAO {
 		return tlList;
 	}
     
+    @Override
+	public TravelLog findTravelLogById(int id) {
+		
+    	TravelLog travelLog = sqlSessionTemplate.selectOne("detail_mapper.findTravelLogById", id);
+    	
+		return travelLog;
+	}
+    
     //saveTravelLog 
 	@Override
 	public int saveTravelLog(TravelLog travelLog) {

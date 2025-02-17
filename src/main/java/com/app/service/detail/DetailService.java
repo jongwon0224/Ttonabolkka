@@ -20,6 +20,8 @@ public interface DetailService {
     // id로 TravelLog 불러오기
     List<TravelLog> findTravelLogListById(int placeId);
     
+    TravelLog findTravelLogById(int id);
+    
     //saveTravelLog 
     int saveTravelLog(TravelLog travelLog);
     

@@ -29,11 +29,18 @@
         FROM TRAVEL_LOGS
         WHERE place_id = #{id}
     </select>
+    
+    <!-- id로 TravelLog 하나 불러오기 -->
+    <select id="findTravelLogById" resultType="TravelLog" parameterType="int">
+		SELECT *
+        FROM TRAVEL_LOGS
+        WHERE id = #{id}	
+	</select>
         
 	<!-- TravelLog 저장 -->
 	<insert id="saveTravelLog" parameterType="TravelLog">
-	    INSERT INTO TRAVEL_LOGS (id, user_id, place_id, title, content, created_at)
-	    VALUES (SEQ_TRAVEL_LOGS_PK.NEXTVAL, #{userId}, #{placeId}, #{title}, #{content}, SYSDATE)
+	    INSERT INTO TRAVEL_LOGS (id, user_id, place_id, title, content, created_at, ,file_name)
+	    VALUES (SEQ_TRAVEL_LOGS_PK.NEXTVAL, #{userId}, #{placeId}, #{title}, #{content}, SYSDATE, #{fileName})
 	</insert>
 
 	<!-- TravelLogImg 저장  -->
