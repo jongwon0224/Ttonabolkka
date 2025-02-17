@@ -103,16 +103,3 @@ document.addEventListener("DOMContentLoaded", function () {
         isExpanded = !isExpanded;
     });
 });
-
-// 댓글 추가 함수
-function addComment() {
-    let commentInput = document.getElementById("commentInput");
-    let commentList = document.getElementById("commentList");
-
-    if (commentInput.value.trim() !== "") {
-        let newComment = document.createElement("div");
-        newComment.textContent = commentInput.value;
-        commentList.appendChild(newComment);
-        commentInput.value = ""; // 입력 필드 초기화
-    }
-}

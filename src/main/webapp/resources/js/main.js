@@ -71,7 +71,7 @@
 	        card.addEventListener("click", function () {
 	            const placeId = this.getAttribute("data-id"); // data-id 속성에서 ID 가져오기
 	            if (placeId) {
-	                location.href = `/place/detail?id=${placeId}`;
+	                location.href = `/detail/${placeId}`;
 	            }
 	        });
 	    });
