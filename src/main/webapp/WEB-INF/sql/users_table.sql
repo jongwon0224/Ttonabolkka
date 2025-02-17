@@ -1,10 +1,9 @@
 CREATE TABLE USERS(
-    id NUMBER Primary key,
+    userno NUMBER Primary key,
+    id VARCHAR2(50) UNIQUE,
     username VARCHAR2(50) NOT NULL,
-    nickname VARCHAR2(50) NOT NULL,
-    tel VARCHAR2(100) NOT NULL,
     password VARCHAR2(255) NOT NULL,
-    user_status NUMBER(1)
+    tel VARCHAR2(100) NOT NULL
 );
 
 

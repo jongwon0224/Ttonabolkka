@@ -97,50 +97,7 @@
 			<a href="javascript:void(0);" onclick="openModal()">더보기</a>
 		</div>
 
-        <section class="community">
-            <h3>
-                <c:out value="${places.name}" /> 에 대한 평가
-            </h3>
-            <div class="comment-box">
-            	<form action="/detail/${places.id}" method="post" id="frm_comment">
-					<!-- 로그인 기능 구현 이후 value 수정 -->
-            		<input type="hidden" name="userId" value="1"> 
-            		<input type="hidden" name="placeId" value="${places.id}">
-            		<input type="text" id="title" class="title" name="title" required>
-	                <textarea id="content" class="content" name="content" placeholder="악플 금지" required></textarea>
-	                <input type="file" name="travelLogImg"> <br/>
-	                 <div class="button-wrapper">
-				        <button type="submit" class="comment_btn">등록</button>
-				    </div>
-            	</form>
-            </div>
-            <div class="comment-list" id="commentList">
-	            <c:forEach var="tl" items="${travelLogs}">
-				    <div class="comment">
-				        <div class="user-info">
-				            <!-- 향후 사용자 수정 -->
-				            <span>익명</span>
-				        </div>
-				        <div class="comment-content">
-				            <strong>${tl.title}</strong><br>
-				            ${tl.content}
-				        </div>
-				        <div class="comment-date">
-				            ${tl.createdAt} 
-				        </div>
-				        <!-- fileInfo 값이 있을 때만 표시 -->
-			            <c:if test="${not empty fileInfo}">
-			                <div>
-			                    <img src="${fileInfo.urlFilePath}${fileInfo.fileName}" style="width:100px; height:100px;">
-			                    <p>기존 프로필 파일명 : ${fileInfo.originalFileName} </p>
-			                </div>
-			            </c:if>
-				    </div>
-				</c:forEach>
-			</div>
-			<button id="showMoreBtn">사진 더 보기🔽</button>
-		</section>
-
+        
 		<h2>
 			<c:out value="${places.name}" />
 		</h2>

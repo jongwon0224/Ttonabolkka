@@ -69,9 +69,9 @@
 	
 	    cards.forEach(card => {
 	        card.addEventListener("click", function () {
-	            const placeId = this.getAttribute("data-id"); // data-id 속성에서 ID 가져오기
-	            if (placeId) {
-	                location.href = `/detail/${placeId}`;
+	            const id = this.getAttribute("data-id"); // data-id 속성에서 ID 가져오기
+	            if (id) {
+	                location.href = `/main/subMain?page=1&pageSize=5&areasId=${id}`;
 	            }
 	        });
 	    });
