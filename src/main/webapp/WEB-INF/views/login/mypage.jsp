@@ -5,13 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link href="/css/myPage.css" rel="stylesheet">
 </head>
 <body>
-	<h1>사용자 마이페이지</h1>
+	<div class="container">
+		<div class="title">${loginUserId.id}님 환영합니다.
+		</div>
+		<div class="input-group">
+			<label for="password">비밀번호</label>
+			<input type="password" id="password" class="input-style" placeholder="새로운 비밀번호 입력">
+		</div>
 
-	<p>아이디 : ${loginUserId.nickname}</p>
-	<p>
+		<button class="btn btn-save">정보 수정</button>
+		<button class="btn btn-delete">회원 탈퇴</button>
+
 		<a href="/main">메인화면으로</a>
-	</p>
+	</div>
 </body>
 </html>

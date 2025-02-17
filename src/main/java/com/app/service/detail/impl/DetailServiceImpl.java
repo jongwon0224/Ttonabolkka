@@ -17,7 +17,7 @@ public class DetailServiceImpl implements DetailService {
 
     @Override
     public Places getPlaceDetail(int id) {
-        return detailDAO.getPlaceDetail(id);
+    	return detailDAO.getPlaceDetail(id);
     }
 
     @Override

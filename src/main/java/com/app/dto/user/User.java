@@ -7,16 +7,16 @@ import lombok.Data;
 
 @Data
 public class User {
+
 	String id;
 
 	@NotBlank
-	@Size(min = 8, max=12)
+	@Size(min = 8, max = 12)
 	String password;
-	
-	
+
 	String username;
+
 	String tel;
-	
-	@NotBlank
-	String nickname;
+
+	String userno;
 }

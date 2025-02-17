@@ -18,11 +18,11 @@
 			<h2 class="h2T">회원가입</h2>
 
 			<div class="labelT">아이디</div>
-			<input type="text" name="nickname" class="input-group" required>
+			<input type="text" name="id" class="input-group" required>
 			<spring:hasBindErrors name="user">
-				<c:if test="${errors.hasFieldErrors('nickname')}">
-					<p id="nicknameError" class="error-msg">아이디 필수로 입력하세요.</p>
-					<p class="error-msg">${errors.getFieldError('nickname').defaultMessage}</p>
+				<c:if test="${errors.hasFieldErrors('id')}">
+					<p id="idError" class="error-msg">아이디 필수로 입력하세요.</p>
+					<p class="error-msg">${errors.getFieldError('id').defaultMessage}</p>
 				</c:if>
 			</spring:hasBindErrors>
 
@@ -90,8 +90,8 @@
 	
 	//발리드 메세지 숨기는 기능
 			document.addEventListener("DOMContentLoaded", function() {
-		    var nicknameInput = document.getElementsByName("nickname")[0];
-		    var errorMsg = document.getElementById("nicknameError"); // 아이디 필수 입력 메시지 선택
+		    var nicknameInput = document.getElementsByName("id")[0];
+		    var errorMsg = document.getElementById("idError"); // 아이디 필수 입력 메시지 선택
 	
 		    nicknameInput.addEventListener("input", function() {
 		        if (nicknameInput.value.trim() !== "") {

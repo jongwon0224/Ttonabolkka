@@ -38,16 +38,21 @@ public class RegisterController {
 			for (ObjectError er : errorList) {
 
 			}
-			return "/login/register";
+			return "login/register";
 		}
 		int result = userService.saveUser(user);
+		
+		System.out.println(result);
 
 		if (result > 0) {
-			return "redirect:/main";
+			
+			return "redirect:/login";
 
 		} else {
 
 			return "login/register";
 		}
+		
+		
 	}
 }

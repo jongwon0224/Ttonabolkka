@@ -7,10 +7,10 @@
 		insert into USERS
 		values (
 		SEQ_users_PK.NEXTVAL,
+		#{id},
 		#{username},
-		#{nickname},
-		#{tel},
-		#{password}
+		#{password},
+		#{tel}
 		)
 	</insert>
 
@@ -22,13 +22,13 @@
 		parameterType="String">
 		select *
 		FROM USERS
-		WHERE nickname = #{nickname}
+		WHERE id = #{id}
 	</select>
 	
 		<select id="checkUserLogin" resultType="User" parameterType="User">
 		select *
 		from USERS
-		where nickname = #{nickname} AND password = #{password}
+		where id = #{id} AND password = #{password}
 	</select>
 
 </mapper>
