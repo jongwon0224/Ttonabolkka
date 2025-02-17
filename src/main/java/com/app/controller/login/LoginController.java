@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.app.dto.user.User;
 import com.app.service.user.UserService;
+import com.app.util.LoginManager;
 
 @Controller
 public class LoginController {
@@ -45,6 +46,12 @@ public class LoginController {
 
 			return "redirect:/main";
 		}
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/main";
 	}
 
 }

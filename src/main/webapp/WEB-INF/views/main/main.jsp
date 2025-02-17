@@ -18,8 +18,17 @@
 		<div class="nav">
 			<h1 class="logo" onclick="location.href='/main'">떠나볼까</h1>
 			<div class="nav-r">
-				<span class="login_menus" onclick="location.href='/login'"> 로그인 / 회원가입 </span> <span class="category"><i
-					class="fa-solid fa-bars"></i></span>
+				<c:if test="${not empty loginUserId.id}">
+					<span>${loginUserId.id}님 환영합니다.</span>
+					<span class="login_menus" onclick="location.href='/login/mypage'"> 마이페이지 </span> 
+					<span class="login_menus" onclick="location.href='/logout'"> 로그아웃</span>
+					<span class="category"><i class="fa-solid fa-bars"></i></span>
+				</c:if>
+				<c:if test="${empty loginUserId.id}">
+					<span> 비로그인 </span>
+					<span class="login_menus" onclick="location.href='/login'"> 로그인 / 회원가입 </span> 
+					<span class="category"><i class="fa-solid fa-bars"></i></span>
+				</c:if>
 			</div>
 			
 			<!-- 카테고리 메뉴 -->
