@@ -115,8 +115,7 @@
 
         <section class="community">
             <h3>
-                <c:out value="${places.name}" />
-                에 대한 평가
+                <c:out value="${places.name}" /> 에 대한 평가
             </h3>
             <div class="comment-box">
             	<form action="/detail/${places.id}" method="post" id="frm_comment">
@@ -125,8 +124,10 @@
             		<input type="hidden" name="placeId" value="${places.id}">
             		<input type="text" id="title" class="title" name="title" required>
 	                <textarea id="content" class="content" name="content" placeholder="악플 금지" required></textarea>
-	                <input type="file" name="image">
-	                <button type="submit">등록</button>
+	                <input type="file" name="travelLogImg"> <br/>
+	                 <div class="button-wrapper">
+				        <button type="submit" class="comment_btn">등록</button>
+				    </div>
             	</form>
             </div>
             <div class="comment-list" id="commentList">
@@ -143,6 +144,13 @@
 				        <div class="comment-date">
 				            ${tl.createdAt} 
 				        </div>
+				        <!-- fileInfo 값이 있을 때만 표시 -->
+			            <c:if test="${not empty fileInfo}">
+			                <div>
+			                    <img src="${fileInfo.urlFilePath}${fileInfo.fileName}" style="width:100px; height:100px;">
+			                    <p>기존 프로필 파일명 : ${fileInfo.originalFileName} </p>
+			                </div>
+			            </c:if>
 				    </div>
 				</c:forEach>
             </div>

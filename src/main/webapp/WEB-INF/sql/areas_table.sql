@@ -1,7 +1,8 @@
 /*테이블 생성*/
 CREATE TABLE AREAS(
     id NUMBER Primary key,
-    name VARCHAR2(255)
+    name VARCHAR2(255),
+    image VARCHAR2(255) NOT NULL
 );
 
 /*시퀀스 생성*/

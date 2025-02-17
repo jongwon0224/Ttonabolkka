@@ -11,5 +11,6 @@ public class TravelLog {
 	String title;
 	String content;
 	String createdAt;
+	String fileName; //파일 이름 (FileInfo 파일이름)
 		
 }

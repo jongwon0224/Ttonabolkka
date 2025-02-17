@@ -37,6 +37,14 @@ public class DetailServiceImpl implements DetailService {
 		return tlList;
 	}
     
+    @Override
+	public TravelLog findTravelLogById(int id) {
+		
+    	TravelLog travelLog = detailDAO.findTravelLogById(id);
+    	
+		return travelLog;
+	}
+    
     //saveTravelLog 
 	@Override
 	public int saveTravelLog(TravelLog travelLog) {
@@ -49,15 +57,17 @@ public class DetailServiceImpl implements DetailService {
 	// TravelLogImg 저장
 	@Override
 	public int saveTravelLogImg(TravelLogImg travelLogImg) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = detailDAO.saveTravelLogImg(travelLogImg);
+		return result;
 	}
 	
 	// id로 TravelLogImg 불러오기
 	@Override
 	public TravelLogImg findTravelLogImgById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		TravelLogImg tli = detailDAO.findTravelLogImgById(id);
+		
+		return tli;
 	}
 	
 

@@ -442,8 +442,15 @@
     resize: none;
 }
 
+.comment-box .button-wrapper {
+    display: flex;
+    justify-content: flex-end; 
+    width: 100%;
+}
+
 .comment-box button {
     padding: 10px;
+    margin-top: 10px;
     background-color: #ff4a57;
     color: white;
     border: none;
@@ -487,8 +494,6 @@
     color: #999;
     text-align: right;
 }
-
-
 
 .modal {
 	display: none;
