@@ -1,5 +1,7 @@
 package com.app.dto.subMain;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -19,6 +21,9 @@ public class Places {
 	int categoryId; //관광지 유형(FK)
 	String imageUrl; // 대표이미지 URL주소 => LINKURL
 	
+    String mainImageUrl;  // 대표 사진 URL
+	String imageUrls;  // 여러 이미지 URL을 저장할 리스트 필드
+	List<String> subImageUrls;  // 서브 사진 URL 리스트
 
 	
 }

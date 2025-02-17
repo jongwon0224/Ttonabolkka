@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.app.dao.detail.DetailDAO;
-import com.app.dto.detail.Places;
+
 import com.app.dto.detail.TravelLog;
 import com.app.dto.detail.TravelLogImg;
+import com.app.dto.subMain.Places;
 
 @Repository
 public class DetailDAOImpl implements DetailDAO {

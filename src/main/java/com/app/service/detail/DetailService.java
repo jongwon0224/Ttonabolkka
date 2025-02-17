@@ -1,8 +1,9 @@
 package com.app.service.detail;
 
-import com.app.dto.detail.Places;
+
 import com.app.dto.detail.TravelLog;
 import com.app.dto.detail.TravelLogImg;
+import com.app.dto.subMain.Places;
 
 import java.util.List;
 

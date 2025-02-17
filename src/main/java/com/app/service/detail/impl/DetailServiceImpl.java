@@ -1,9 +1,10 @@
 package com.app.service.detail.impl;
 
 import com.app.dao.detail.DetailDAO;
-import com.app.dto.detail.Places;
+
 import com.app.dto.detail.TravelLog;
 import com.app.dto.detail.TravelLogImg;
+import com.app.dto.subMain.Places;
 import com.app.service.detail.DetailService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
