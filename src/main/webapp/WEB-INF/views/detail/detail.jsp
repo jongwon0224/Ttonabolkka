@@ -37,81 +37,87 @@
 		</div>
 	</div>
 
-    <main class="content">
-        <article class="gallery-container">
-            <div class="css-12lmpk7" style="display: flex; gap: 10px; height: 480px;">
-                <div class="big-photo">
-                    <img src="<c:url value='/resources${mainImageUrl}' />"
-                        alt="<c:out value='${places.name}' /> 대표사진" class="main-photo">
-                </div>
+	<main class="content">
+		<article class="gallery-container">
+			<div class="css-12lmpk7"
+				style="display: flex; gap: 10px; height: 480px;">
+				<div class="big-photo">
+					<img src="<c:url value='/resources${mainImageUrl}' />"
+						alt="<c:out value='${places.name}' /> 대표사진" class="main-photo">
+				</div>
 
-                <div class="small-photos">
-                    <c:forEach items="${subImageUrls}" var="imageUrl" varStatus="status">
-                        <div class="small-photo">
-                            <img src="<c:url value='/resources/${imageUrl}' />"
-                                alt="<c:out value='${places.name}' /> 서브사진 <c:out value='${status.count}' />">
-                        </div>
-                    </c:forEach>
-                </div>
-            </div>
-        </article>
+				<div class="small-photos">
+					<c:forEach items="${subImageUrls}" var="imageUrl"
+						varStatus="status">
+						<div class="small-photo">
+							<img src="<c:url value='/resources/${imageUrl}' />"
+								alt="<c:out value='${places.name}' /> 서브사진 <c:out value='${status.count}' />">
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+		</article>
 
-<!-- 모달창 -->
-<section id="photoModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <div class="modal-gallery">
-            <button class="prev" onclick="changePhoto(-1)">&#10094;</button>
-            <div class="slider">
-                <img id="modalImage" src="<c:url value='/resources${mainImageUrl}' />">
-            </div>
-            <button class="next" onclick="changePhoto(1)">&#10095;</button>
-        </div>
-        
-<!-- 작은 썸네일들 -->
-<div class="thumbnail-gallery" id="thumbnailGallery">
-    <!-- mainImageUrl을 첫 번째로 추가 -->
-    <img src="<c:url value='/resources/${mainImageUrl}' />" 
-         alt="<c:out value='${places.name}' /> 대표사진" 
-         class="thumbnail" onclick="setImage(0)">
-    
-    <!-- subImageUrls를 반복문으로 추가 -->
-    <c:forEach items="${subImageUrls}" var="imageUrl" varStatus="status">
-        <img src="<c:url value='/resources/${imageUrl}' />" 
-             alt="<c:out value='${places.name}' /> 서브사진 <c:out value='${status.index}' />" 
-             class="thumbnail" onclick="setImage(${status.index + 1})">
-    </c:forEach>
-</div>
-        </div>
-    </section>
+		<!-- 모달창 -->
+		<section id="photoModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeModal()">&times;</span>
 
-<!-- 더보기 버튼 -->
-<div class="more-photos">
-    <a href="javascript:void(0);" onclick="openModal()">더보기</a>
-</div>
+				<!-- 슬라이더 영역 -->
+				<div class="modal-gallery">
+					<button class="prev" onclick="changePhoto(-1)">&#10094;</button>
+					<div class="slider">
+						<img id="modalImage"
+							src="<c:url value='/resources/${mainImageUrl}' />" alt="메인 이미지">
+					</div>
+					<button class="next" onclick="changePhoto(1)">&#10095;</button>
+				</div>
 
-        <h2>
-            <c:out value="${places.name}" />
-        </h2>
-        <div class="description">
-            <c:out value="${places.description}" />
-        </div>
+				<!-- 썸네일 갤러리 (중앙 정렬) -->
+				<div class="thumbnail-gallery" id="thumbnailGallery">
+					<!-- 첫 번째: 메인 이미지 -->
+					<img src="<c:url value='/resources/${mainImageUrl}' />"
+						alt="<c:out value='${places.name}' /> 대표사진" class="thumbnail"
+						onclick="setImage(0)">
 
-        <section class="image-list">
-            <div class="photo-list">
-                <!-- 대표 이미지 추가 -->
-                <img src="<c:url value='/resources/${mainImageUrl}' />"
-                    alt="<c:out value='${places.name}' /> 대표사진" class="photo-item">
+					<!-- 두 번째부터: 서브 이미지 -->
+					<c:forEach items="${subImageUrls}" var="imageUrl"
+						varStatus="status">
+						<img src="<c:url value='/resources/${imageUrl}' />"
+							alt="<c:out value='${places.name}' /> 서브사진 <c:out value='${status.index}' />"
+							class="thumbnail" onclick="setImage(${status.index + 1})">
+					</c:forEach>
+				</div>
+			</div>
+		</section>
 
-                <!-- 서브 이미지 리스트 -->
-                <c:forEach items="${subImageUrls}" var="imageUrl" varStatus="status">
-                    <img src="<c:url value='/resources/${imageUrl}' />"
-                        alt="<c:out value='${places.name}' />"
-                        class="photo-item ${status.index >= 1 ? 'hidden' : ''}">
-                </c:forEach>
-            </div>
-            <button id="showMoreBtn">사진 더 보기🔽</button>
-        </section>
+		<!-- 더보기 버튼 -->
+		<div class="more-photos">
+			<a href="javascript:void(0);" onclick="openModal()">더보기</a>
+		</div>
+
+		<h2>
+			<c:out value="${places.name}" />
+		</h2>
+		<div class="description">
+			<c:out value="${places.description}" />
+		</div>
+
+		<section class="image-list">
+			<div class="photo-list">
+				<!-- 대표 이미지 추가 -->
+				<img src="<c:url value='/resources/${mainImageUrl}' />"
+					alt="<c:out value='${places.name}' /> 대표사진" class="photo-item">
+
+				<!-- 서브 이미지 리스트 -->
+				<c:forEach items="${subImageUrls}" var="imageUrl" varStatus="status">
+					<img src="<c:url value='/resources/${imageUrl}' />"
+						alt="<c:out value='${places.name}' />"
+						class="photo-item ${status.index >= 1 ? 'hidden' : ''}">
+				</c:forEach>
+			</div>
+			<button id="showMoreBtn">사진 더 보기🔽</button>
+		</section>
 
         <section class="community">
             <h3>
@@ -170,9 +176,19 @@
 			</div>
 		</div>
 	</div>
-
+    <!-- JSP에서 전역 변수 설정 -->
+    <script type="text/javascript">
+        window.contextPath = "${pageContext.request.contextPath}";
+        window.mainImageUrl = "<c:url value='/resources${mainImageUrl}' />";
+        window.subImageUrls = ${subImageUrlsJson};
+        window.photos = [
+            window.mainImageUrl, 
+            ...window.subImageUrls.map(url => window.contextPath + "/resources/" + url)
+        ];
+        console.log(window.photos); // 디버깅용
+    </script>
     <script src="/js/detail.js"></script>
     <script src="/js/main.js"></script>
-
 </body>
 </html>
+

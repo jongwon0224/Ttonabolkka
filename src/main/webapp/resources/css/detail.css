@@ -192,19 +192,21 @@
 }
 /* 모달 내용 컨테이너 */
 .modal-content {
-	background-color: #fff;
-	margin: 5% auto;
-	padding: 20px;
-	border-radius: 8px;
-	max-width: 80%;
-	overflow-y: auto;
-	position: relative;
-	width: 80%;
-	height: 80vh;
-	margin: 5vh auto;
+    position: relative;
+    width: 80%;
+    /* 높이는 내용에 따라 auto로 처리하거나 필요 시 고정 높이 지정 */
+    background: white;
+    margin: 5vh auto;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;  /* 세로 배치 */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-gallery {
 	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .modal-gallery img {
@@ -212,17 +214,17 @@
 	height: 100%;
 	border-radius: 8px;
 	object-fit: cover;
-	margin-left: 50%
+/* 	margin-left: 50% */
 }
 
 /* 닫기 버튼 */
 .close {
-	color: #aaa;
-	font-size: 30px;
-	font-weight: bold;
 	position: absolute;
 	top: 10px;
 	right: 20px;
+	color: #333;
+	font-size: 30px;
+	font-weight: bold;
 	cursor: pointer;
 	z-index: 3;
 }
@@ -255,14 +257,13 @@
 
 /* 이미지 스타일 */
 .slider img {
-	width: 500px; /* 고정 너비 설정 */
-	height: 500px; /* 고정 높이 설정 */
+	width: 800px; /* 고정 너비 설정 */
+	height: 600px; /* 고정 높이 설정 */
 	object-fit: cover; /* 이미지 비율 유지하면서 영역 채우기 */
 	border-radius: 8px;
-	transition: opacity 0.5s ease-in-out;
+	transition: opacity 0.3s ease-in-out;
 	display: block;
 	margin: 0 auto;
-	
 }
 
 /* 이미지 전환을 위한 스타일 */
@@ -499,6 +500,14 @@
 	height: 100%;
 	background: rgba(0, 0, 0, 0.8);
 	z-index: 1000;
+}
+
+.thumbnail-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;       /* 썸네일 간 간격 */
+    margin-top: 20px; /* 큰 사진과의 간격 */
 }
 
 .thumbnail-gallery img {
