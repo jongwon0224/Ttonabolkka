@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="subMain_mapper">
+
+<!-- 	전체 장소 리스트 -->
+	<select id="findPlacesList" resultType="Places">
+		SELECT * FROM PLACES
+	</select>
+
+<!-- 	카테고리 리스트 -->
+	<select id="findCategoriesList" resultType="Categories">
+		SELECT * FROM CATEGORIES
+	</select>
+
+<!-- 	지역 필터용 리스트 -->
+	<select id="findAreasList" resultType="Areas">
+		SELECT * FROM Areas
+	</select>
+
+<!-- 	필터기능 -> 지역 + 카테고리 + 페이지네이션 -->
+	<select id="findPlacesWithFilters" resultType="Places"
+		parameterType="java.util.Map">
+		SELECT p.*,
+		(
+			SELECT 
+				pi.image_url
+			FROM PLACES_IMG pi
+			WHERE pi.id = p.id AND pi.no = 1
+		) AS imageUrl
+		FROM PLACES p
+		<where>
+			<if test="categoriesId != null">
+				AND category_id = #{categoriesId}
+			</if>
+
+			<if test="areasId != null">
+				AND area_id = #{areasId}
+			</if>
+		</where>
+		ORDER BY id
+		OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY
+	</select>
+
+<!-- 	페이지네이션 총 번호 구하기 -->
+	<select id="getTotalPlacesWithFilters" resultType="int"
+		parameterType="java.util.Map">
+		SELECT COUNT(*)
+		FROM PLACES
+		<where>
+			<if test="categoriesId != null">
+				category_id = #{categoriesId}
+			</if>
+		</where>
+	</select>
+
+<!-- 	api -> db저장 -> 머지문 통해 중복저장 방지 -->
+<!-- selectkey사용으로 시퀀스값을 insert실행전에 아이디에 저장 -->
+	<insert id="savePlaces" parameterType="Places">
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+			SELECT SEQ_PLACES_PK.NEXTVAL FROM DUAL
+		</selectKey>
+		MERGE INTO PLACES p
+		USING (
+			SELECT #{name} AS name, #{address} As address FROM DUAL
+		) d
+		ON (p.name = d.name AND p.address = d.address)
+		WHEN MATCHED THEN
+			UPDATE SET
+				description = #{description},
+				area_id = #{areaId},
+				latitude = #{latitude},
+				longitude = #{longitude},
+				category_id = #{categoryId}
+		WHEN NOT MATCHED THEN
+			INSERT (id, name, description, area_id, address, latitude, longitude, category_id)
+			VALUES (#{id}, #{name},	#{description}, #{areaId}, #{address}, #{latitude}, #{longitude}, #{categoryId})
+	</insert>
+
+<!-- 	api -> db저장 -->
+	<insert id="savePlacesImg" parameterType="PlacesImg">
+		MERGE INTO PLACES_IMG p
+		USING(
+			SELECT
+				#{id} AS id,
+				#{imageUrl} AS image_url,
+				(SELECT NVL(MAX(no), 0) + 1 FROM PLACES_IMG WHERE id = #{id}) AS new_no
+			FROM DUAL
+		) d
+		ON (p.image_url = d.image_url)
+		WHEN NOT MATCHED THEN
+			INSERT (id, no, image_url)
+			VALUES (d.id, d.new_no, d.image_url)
+	</insert>
+
+</mapper>

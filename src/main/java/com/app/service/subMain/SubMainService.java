@@ -1,4 +1,4 @@
-package com.app.dao.subMain;
+package com.app.service.subMain;
 
 import java.util.List;
 import java.util.Map;
@@ -6,19 +6,13 @@ import java.util.Map;
 import com.app.dto.subMain.Areas;
 import com.app.dto.subMain.Categories;
 import com.app.dto.subMain.Places;
-import com.app.dto.subMain.PlacesImg;
 
-public interface SubMainDAO {
+public interface SubMainService {
 
-	
 	List<Places> findPlacesList();
 	List<Categories> findCategoriesList();
 	List<Areas> findAreasList();
 	
 	List<Places> findPlacesWithFilters(Map<String, Object> params);
 	int getTotalPlaces(Map<String, Object> params);
-	
-	// api 데이터 호출
-	int saveEatHtpPlaces(Places places);
-	int saveEatHtpPlacesImg(PlacesImg placesImg);
 }
