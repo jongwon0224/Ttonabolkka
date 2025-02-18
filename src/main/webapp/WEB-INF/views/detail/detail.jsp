@@ -127,7 +127,7 @@
 				에 대한 평가
 			</h3>
 			<div class="comment-box">
-				<form action="/detail/${places.id}" method="post" id="frm_comment">
+				<form action="/main/subMain/detail/${places.id}" method="post" enctype="multipart/form-data" id="frm_comment">
 					<!-- 로그인 기능 구현 이후 value 수정 -->
 					<input type="hidden" name="userId" value="1"> <input
 						type="hidden" name="placeId" value="${places.id}"> <input
@@ -139,19 +139,27 @@
 				</form>
 			</div>
 			<div class="comment-list" id="commentList">
-				<c:forEach var="tl" items="${travelLogs}">
-					<div class="comment">
-						<div class="user-info">
-							<!-- 향후 사용자 수정 -->
-							<span>익명</span>
-						</div>
-						<div class="comment-content">
-							<strong>${tl.title}</strong><br> ${tl.content}
-						</div>
-						<div class="comment-date">${tl.createdAt}</div>
-					</div>
-				</c:forEach>
+			    <c:forEach var="tl" items="${travelLogs}">
+			     <p>파일 이름: ${tl.fileName}</p> <!-- 디버깅용 -->
+			        <div class="comment">
+			            <div class="user-info">
+			                <span>${tl.userId}</span>
+			            </div>
+			            <div class="comment-content">
+			                <strong>${tl.title}</strong><br/> 
+			                ${tl.content}
+			            </div>
+			            <c:if test="${not empty tl.fileName}">
+						    <div class="comment-image">
+						        <img src="${tl.fileName}" alt="여행 기록 이미지" style="max-width: 300px; max-height: 300px;">
+						    </div>
+						</c:if>
+			
+			            <div class="comment-date">${tl.createdAt}</div>
+			        </div>
+			    </c:forEach>
 			</div>
+
 		</section>
 	</main>
 

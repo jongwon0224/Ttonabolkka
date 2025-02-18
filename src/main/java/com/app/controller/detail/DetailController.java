@@ -53,59 +53,58 @@ public class DetailController {
         model.addAttribute("subImageUrlsJson", subImageUrlsJson);
 
         
-        // id로 TravelLog 불러오기
+        // TravelLog 불러오기
         List<TravelLog> tlList = detailService.findTravelLogListById(id);
-        model.addAttribute("travelLogs",tlList);
-        
-        TravelLogImg tli = null;
-        
+
+        // 각 TravelLog의 파일 정보 조회
         for (TravelLog travelLog : tlList) {
-            int tlId = travelLog.getId(); 
-            tli = detailService.findTravelLogImgById(tlId);
+            if (travelLog.getFileName() != null && !travelLog.getFileName().isEmpty()) {
+                FileInfo fileInfo = fileService.findFileInfoByFileName(travelLog.getFileName());
+                if (fileInfo != null) {
+                    travelLog.setFileName("/fileStorage/" + fileInfo.getFileName());
+                    System.out.println("이미지 URL: " + travelLog.getFileName()); // 디버깅용 출력
+                }
+            }
         }
-        
-        if(tli != null) {
-			FileInfo fileInfo = fileService.findFileInfoByFileName(tli.getFileName());
-			model.addAttribute("fileInfo", fileInfo);
-		}
+
+        model.addAttribute("travelLogs", tlList);
         
         return "detail/detail";
     }
     
     //saveTravelLog findFileInfo
     @PostMapping("/main/subMain/detail/{id}")
-    public String getDetailByIdAction(@ModelAttribute TravelLog travelLog, 
-    		@ModelAttribute TravelLogRequestForm travelLogRequestForm) {
-    	
-    	System.out.println("Title: " + travelLog.getTitle());
-        System.out.println("Content: " + travelLog.getContent());
+    public String saveTravelLog(
+            @PathVariable("id") int placeId,
+            @RequestParam("title") String title,
+            @RequestParam("content") String content,
+            @RequestParam(value = "image", required = false) MultipartFile file) {
 
+        try {
+            TravelLog travelLog = new TravelLog();
+            travelLog.setPlaceId(placeId);
+            travelLog.setUserId(1); // 로그인 기능 추가 전, 임시 userId
+            travelLog.setTitle(title);
+            travelLog.setContent(content);
 
-        int result = detailService.saveTravelLog(travelLog);
-        
-        MultipartFile file = travelLogRequestForm.getTravelLogImg();
-        
-        if (file != null && !file.isEmpty()) {
-            try {
+            // 파일이 존재하면 저장
+            if (file != null && !file.isEmpty()) {
                 FileInfo fileInfo = FileManager.storeFile(file);
-                int result1 = fileService.saveFileInfo(fileInfo);
-
-                if (result1 > 0) {
-                    TravelLogImg tli = new TravelLogImg();
-                    tli.setId(travelLogRequestForm.getId()); // travelLog id
-                    tli.setFileName(fileInfo.getFileName()); // 파일 name
-
-                    int result2 = detailService.saveTravelLogImg(tli);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+                fileService.saveFileInfo(fileInfo);
+                travelLog.setFileName(fileInfo.getFileName());
             }
-        } else {
-            System.out.println("파일이 업로드되지 않았습니다.");
+
+            // DB에 저장
+            detailService.saveTravelLog(travelLog);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/main/subMain/detail/" + placeId + "?error";
         }
-        
-        return "redirect:/detail/" + travelLog.getPlaceId();
+
+        return "redirect:/main/subMain/detail/" + placeId;
     }
+
 
 
 };

@@ -25,6 +25,12 @@
         color: rgb(255, 71, 82);
         cursor: pointer;
     }
+    
+    .login_info {
+    	font-size: 0.9rem;
+        font-weight:bold;
+        margin-right: 20px;
+    }
 
  
     .login_menus {

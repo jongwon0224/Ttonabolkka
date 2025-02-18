@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class TravelLogRequestForm {
 	
-	String id;
+	int id;
 	String name;
 	MultipartFile travelLogImg;
 
