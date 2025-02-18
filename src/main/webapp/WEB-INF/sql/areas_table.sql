@@ -35,7 +35,7 @@ VALUES (SEQ_AREAS_PK.NEXTVAL, '제주도' , '/img/제주도.jpg');
 INSERT INTO AREAS(id, name, image)
 VALUES (SEQ_AREAS_PK.NEXTVAL, '강릉' , '/img/강릉.jpg');
 INSERT INTO AREAS(id, name, image)
-VALUES (SEQ_AREAS_PK.NEXTVAL, '대천' , '/img/대천.jpg'');
+VALUES (SEQ_AREAS_PK.NEXTVAL, '대천' , '/img/대천.jpg');
 
 
 

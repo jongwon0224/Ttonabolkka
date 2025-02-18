@@ -56,9 +56,9 @@
 				<div class="menu-list">
 					<ul>
 						<li><a href="/main/subMain">국내여행</a></li>
-						<li><a href="/main/subMain">해외여행</a></li>
-						<li><a href="/main/subMain">이벤트</a></li>
-						<li><a href="/main/subMain">고객센터</a></li>
+						<li><a href="" onclick="alert('구현중입니다')">해외여행</a></li>
+						<li><a href="" onclick="alert('구현중입니다')">이벤트</a></li>
+						<li><a href="" onclick="alert('구현중입니다')">고객센터</a></li>
 					</ul>
 				</div>
 			</div>

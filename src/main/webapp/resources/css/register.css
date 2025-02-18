@@ -2,6 +2,105 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'GmarketSansMedium', sans-serif;
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 상단 네비게이션 바 */
+.nav {
+	width: 100%;
+    margin: 0 auto;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    position: relative;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: rgb(255, 71, 82);
+    cursor: pointer;
+    font-family: 'Ownglyph_wiseelist-Rg';
+}
+
+.login_info {
+	font-size: 0.9rem;
+    font-weight:500;
+    margin-right: 20px;
+}
+
+
+.login_menus {
+    font-size: 0.7rem;
+    font-weight:400;
+    cursor: pointer;
+    margin-right: 18px;
+    border: 0.5px solid lightgray;
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.category {
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* 카테고리 */
+.category-menu {
+    display: none; 
+    position: absolute;
+    top: 85px;
+    right: 0;
+    width: 15%;
+    height: 400px;
+    background: black;
+    opacity: 0.6;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.category-menu.active {
+    display: flex;
+}
+
+.menu-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.menu-list {
+    padding: 50px 30px;
+}
+
+.menu-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-list li {
+    margin: 50px 0;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.menu-list a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+
+.menu-list a:hover {
+    color:  rgb(255, 71, 82);
 }
 
 .mainBox {
@@ -93,4 +192,17 @@
 .error-msg1 {
 	color: red;
 	font-size: 12px;
+}
+
+/* footer */
+.footer {
+    background: #f9f9f9;
+    color: #333;
+    font-size: 0.7rem;
+	 line-height: 1rem;
+	 letter-spacing: 0px;
+	 font-weight: 400;
+	 color: rgb(153 153 153);
+    text-align: left;
+    padding: 80px;
 }

@@ -22,11 +22,6 @@ NOCYCLE;
 drop sequence SEQ_TRAVEL_LOGS_PK;
 */
 
-/*컬럼삽입*/
-INSERT INTO TRAVEL_LOGS(id, user_id, place_id, title, content, visited_date, created_at,file_name)
-VALUES (SEQ_TRAVEL_LOGS_PK.NEXTVAL, 1, 1, '경주여행제목1' , '경주여행내용1', TO_DATE('2025-01-01', 'YYYY-MM-DD'), TO_DATE('2025-01-16', 'YYYY-MM-DD'),null);
-INSERT INTO TRAVEL_LOGS(id, user_id, place_id, title, content,visited_date, created_at, file_name)
-VALUES (SEQ_TRAVEL_LOGS_PK.NEXTVAL, 1, 1, '경주여행제목2' , '경주여행내용2', TO_DATE('2025-01-02', 'YYYY-MM-DD'), TO_DATE('2025-01-30', 'YYYY-MM-DD'), null);
 
 
 /* 테이블 삭제

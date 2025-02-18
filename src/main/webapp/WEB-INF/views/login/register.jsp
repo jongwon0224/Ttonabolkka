@@ -13,6 +13,25 @@
 
 
 <body>
+	<!-- nav -->
+	<div class="nav">
+		<h1 class="logo" onclick="location.href='/main'">떠나볼까</h1>
+		<div class="nav-r">
+			<span class="category"><i class="fa-solid fa-bars"></i></span>
+		</div>
+		
+		<!-- 카테고리 메뉴 -->
+		<div class="category-menu">
+			<div class="menu-list">
+				<ul>
+					<li><a href="/main/subMain">국내여행</a></li>
+					<li><a href="" onclick="alert('구현중입니다')">해외여행</a></li>
+					<li><a href="" onclick="alert('구현중입니다')">이벤트</a></li>
+					<li><a href="" onclick="alert('구현중입니다')">고객센터</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 	<form action="" method="post" onsubmit="return validateForm()">
 		<div class="mainBox">
 			<h2 class="h2T">회원가입</h2>
@@ -76,6 +95,28 @@
 			<i class="fa-solid fa-right-to-bracket"></i> 회원가입 완료</button>
 		</div>
 	</form>
+	
+	<!-- footer -->
+	<div class="footer">
+		<div class="footer-t"></div>
+		<div class="footer-b">
+			<div>
+				<p>ⓒ 2025 떠나볼까 | 여행을 떠나고 싶은 모든 순간</p>
+				<p>주소 : 충남 천안시 동남구 대흥로 215 7층 3교육실 | 대표이사 : 황종원 | 사업자등록번호 :
+					123-45-67890</p>
+				<p>전자우편주소 : help@ttonabolkka.com | 통신판매번호 : 2025-충남천안-01234 |
+					관광사업자 등록번호 : 제0000-00호 | 전화번호 : 1234-5678 | 호스팅서비스제공자의 상호 표시 :
+					(주)떠나볼까</p>
+				<p>(주)떠나볼까는 통신판매중개자로서 통신판매의 당사자가 아니며, 상품의 예약, 이용 및 환불 등과 관련한
+					의무와 책임은 각 판매자에게 있습니다.</p>
+			</div>
+			<br /> <br />
+			<div>
+				<span> 이용약관 </span> <span> 개인정보 처리방침 </span> <span> 소비자 분챙해결
+					기준 </span> <span> 콘텐츠산업진흥법에 의한 표시 </span>
+			</div>
+		</div>
+	</div>
 
 	<div id="modal" class="modal">
 		<div class="modal-content">

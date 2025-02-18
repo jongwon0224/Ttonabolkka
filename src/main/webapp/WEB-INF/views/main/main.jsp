@@ -36,9 +36,9 @@
 				<div class="menu-list">
 					<ul>
 						<li><a href="/main/subMain">국내여행</a></li>
-						<li><a href="">해외여행</a></li>
-						<li><a href="">이벤트</a></li>
-						<li><a href="">고객센터</a></li>
+						<li><a href="" onclick="alert('구현중입니다')">해외여행</a></li>
+						<li><a href="" onclick="alert('구현중입니다')">이벤트</a></li>
+						<li><a href="" onclick="alert('구현중입니다')">고객센터</a></li>
 					</ul>
 				</div>
 			</div>
@@ -46,9 +46,20 @@
 
 		<!-- body -->
 		<div class="body_img">
-			<img alt="임시사진"
-				src="https://static.yeogi.com/_next/static/media/05_Kv_PC_Light.a07cefd7.webp">
+			<img alt="임시사진" src="https://static.yeogi.com/_next/static/media/05_Kv_PC_Light.a07cefd7.webp" class="background-image">
 		</div>
+		<div class="body_img">
+	        <img src="https://static.yeogi.com/_next/static/media/05_Kv_PC_Light.a07cefd7.webp" alt="배경 이미지" class="background-image">
+	        <div class="body_overlay">
+	            <h1 class="title">국내부터 해외까지 여행할 때 여기어때</h1>
+	            <div class="search-box">
+	                <input type="text" placeholder="숙소 검색..." class="binput">
+	                <input type="date" class="binput">
+	                <input type="text" placeholder="성인 2, 객실 1" class="binput">
+	                <button class="body_search-button">검색</button>
+	            </div>
+	        </div>
+	    </div>
 
 
 		<div class="body-container">

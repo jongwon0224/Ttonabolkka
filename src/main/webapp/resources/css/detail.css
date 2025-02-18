@@ -27,14 +27,14 @@
 
 .login_info {
 	font-size: 0.9rem;
-    font-weight:bold;
+    font-weight:500;
     margin-right: 20px;
 }
 
 
 .login_menus {
     font-size: 0.7rem;
-    font-weight:bold;
+    font-weight:400;
     cursor: pointer;
     margin-right: 18px;
     border: 0.5px solid lightgray;
@@ -430,7 +430,7 @@
     border: 1px solid #ddd;
 }
 
-.comment-box .title {
+.comment-box .ctitle {
     width: 100%;
     height: 40px;
     padding: 10px;
@@ -439,7 +439,7 @@
     font-size: 14px;
 }
 
-.comment-box .content {
+.comment-box .ccontent {
     width: 100%;
     height: 100px;
     padding: 10px;
@@ -450,15 +450,14 @@
     resize: none;
 }
 
-.comment-box .button-wrapper {
-    display: flex;
-    justify-content: flex-end; 
-    width: 100%;
+.comment-box .file {
+	margin: 7px;
 }
 
 .comment-box button {
+	position:absolute;
+	right:50px;
     padding: 10px;
-    margin-top: 10px;
     background-color: #ff4a57;
     color: white;
     border: none;
@@ -485,16 +484,58 @@
     border: 1px solid #ddd;
     margin-bottom: 15px;
 }
+.comment_header{
+	display: flex;
+	justify-content: space-between;
+}
 
-.comment .user-info {
+.comment_header .user-info {
     font-size: 14px;
     font-weight: bold;
     color: #555;
+    display: flex;
+}
+
+.user-info .profile {
+	width: 30px;
+	height: 30px;
+	margin:10px;
+	object-fit: cover;
+}
+.user-info .comment-userId {
+	margin: 20px;
+	margin-left: 5px;
+}
+
+.comment_header .ccbutton {
+	margin: 20px;
+}
+
+.cbutton .cmodify, .cbutton .cremove{
+	margin:5px;
+	font-size: 0.8rem;
+	color: gray;
+	cursor: pointer;
 }
 
 .comment .comment-content {
     font-size: 14px;
     color: #333;
+}
+
+.comment-content .ctitle{
+	margin: 10px 20px;
+	font-size: 1.1rem;
+}
+
+.comment-content .ccontent{
+	margin: 5px 20px;
+	font-size: 0.9rem;
+}
+.comment-image .cimg {
+	max-width: 300px; 
+	max-height: 300px;
+	margin: 5px 20px;
 }
 
 .comment .comment-date {
