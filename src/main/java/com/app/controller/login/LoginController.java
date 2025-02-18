@@ -42,7 +42,7 @@ public class LoginController {
 
 			session.setAttribute("loginUserId", loginUser);
 
-			return "redirect:/login/mypage";
+			return "redirect:/main";
 		}
 	}
 	

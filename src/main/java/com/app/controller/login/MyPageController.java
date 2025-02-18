@@ -39,7 +39,7 @@ public class MyPageController {
 	}
 	
 	@PostMapping("/login/mypage/remove")
-	public String removeUserAction(User user, Model model) {
+	public String removeUserAction(User user, Model model, HttpSession session) {
 		
 		System.out.println(user);
 		
@@ -55,6 +55,7 @@ public class MyPageController {
 			
 			//삭제 코드 꼭 넣어라!!!
 			userService.removeUser(removeUser);
+			session.invalidate();
 			
 			return "redirect:/main";
 		}

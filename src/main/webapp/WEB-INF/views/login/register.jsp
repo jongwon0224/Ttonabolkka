@@ -237,6 +237,30 @@
 	
 	    // 초기 실행 시 버튼 상태 확인
 	    toggleSubmitButton();
+	    
+	  //우측 상단 category
+
+		const menuButton = document.querySelector(".category");
+		const categoryMenu = document.querySelector(".category-menu");
+		
+		// 메뉴 열기/닫기
+		menuButton.addEventListener("click", function (event) {
+		    event.stopPropagation(); // 이벤트 버블링 방지 (메뉴 클릭 시 창이 바로 닫히는 문제 해결)
+		    
+		    if (categoryMenu.style.display === "none" || categoryMenu.style.display === "") {
+		        categoryMenu.style.display = "flex"; // 보이게 설정
+		    } else {
+		        categoryMenu.style.display = "none"; // 숨김 처리
+		    }
+		});
+		
+		// 메뉴 바깥을 클릭하면 닫기
+		window.addEventListener("click", function (event) {
+		    if (!categoryMenu.contains(event.target) && !menuButton.contains(event.target)) {
+		        categoryMenu.style.display = "none"; // 메뉴 닫기
+		    }
+		});
+
 
 	</script>
 
