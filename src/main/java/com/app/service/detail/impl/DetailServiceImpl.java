@@ -3,7 +3,6 @@ package com.app.service.detail.impl;
 import com.app.dao.detail.DetailDAO;
 
 import com.app.dto.detail.TravelLog;
-import com.app.dto.detail.TravelLogImg;
 import com.app.dto.subMain.Places;
 import com.app.service.detail.DetailService;
 import java.util.List;
@@ -38,14 +37,6 @@ public class DetailServiceImpl implements DetailService {
 		return tlList;
 	}
     
-    @Override
-	public TravelLog findTravelLogById(int id) {
-		
-    	TravelLog travelLog = detailDAO.findTravelLogById(id);
-    	
-		return travelLog;
-	}
-    
     //saveTravelLog 
 	@Override
 	public int saveTravelLog(TravelLog travelLog) {
@@ -53,22 +44,6 @@ public class DetailServiceImpl implements DetailService {
 		int result = detailDAO.saveTravelLog(travelLog);
 		
 		return result;
-	}
-	
-	// TravelLogImg 저장
-	@Override
-	public int saveTravelLogImg(TravelLogImg travelLogImg) {
-		int result = detailDAO.saveTravelLogImg(travelLogImg);
-		return result;
-	}
-	
-	// id로 TravelLogImg 불러오기
-	@Override
-	public TravelLogImg findTravelLogImgById(int id) {
-		
-		TravelLogImg tli = detailDAO.findTravelLogImgById(id);
-		
-		return tli;
 	}
 	
 

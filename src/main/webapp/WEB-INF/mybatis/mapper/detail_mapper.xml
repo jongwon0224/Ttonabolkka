@@ -26,39 +26,14 @@
 	<!-- id로 TravelLogList 불러오기 -->
 	<select id="findTravelLogListById" resultType="TravelLog">
         SELECT *
-        FROM TRAVEL_LOGS
-        WHERE place_id = #{id}
+		FROM TRAVEL_LOGS t, FILE_INFO f
+		WHERE t.file_name = f.file_name AND place_id = #{id}
     </select>
-    
-<!--     id로 TravelLog 하나 불러오기 -->
-<!--     <select id="findTravelLogById" resultType="TravelLog" parameterType="int"> -->
-<!-- 		SELECT * -->
-<!--         FROM TRAVEL_LOGS -->
-<!--         WHERE id = #{id}	 -->
-<!-- 	</select> -->
         
 	<!-- TravelLog 저장 -->
 	<insert id="saveTravelLog" parameterType="TravelLog">
 	    INSERT INTO TRAVEL_LOGS (id, user_id, place_id, title, content, created_at, file_name)
 	    VALUES (SEQ_TRAVEL_LOGS_PK.NEXTVAL, #{userId}, #{placeId}, #{title}, #{content}, SYSDATE, #{fileName})
 	</insert>
-
- 	<!-- TravelLogImg 저장  -->
-<!-- 	<insert id="saveTravelLogImg" parameterType="TravelLogImg"> -->
-<!-- 		INSERT INTO TRAVEL_LOG_IMG -->
-<!-- 		VALUES ( -->
-<!-- 			#{id}, -->
-<!-- 			#{fileName} -->
-<!-- 		) -->
-<!-- 	</insert> -->
-	
- 	<!-- id로 TravelLogImg 불러오기  --> 
-<!-- 	<select id="findTravelLogImgById" parameterType="int" resultType="TravelLogImg"> -->
-		
-<!-- 		SELECT *  -->
-<!-- 		FROM TRAVEL_LOG_IMG -->
-<!-- 		WHERE id = #{id} -->
-		
-<!-- 	</select> -->
 
 </mapper>

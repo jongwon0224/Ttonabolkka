@@ -21,8 +21,17 @@
 	<div class="nav">
 		<h1 class="logo" onclick="location.href='/main'">떠나볼까</h1>
 		<div class="nav-r">
-			<span class="login_menus" onclick="location.href='/login'"> 로그인 / 회원가입 </span> <span class="category"><i
-				class="fa-solid fa-bars"></i></span>
+			<c:if test="${not empty loginUserId.id}">
+				<span class="login_info">${loginUserId.id}님 환영합니다. </span>
+				<span class="login_menus" onclick="location.href='/login/mypage'"> 마이페이지 </span> 
+				<span class="login_menus" onclick="location.href='/logout'"> 로그아웃</span>
+				<span class="category"><i class="fa-solid fa-bars"></i></span>
+			</c:if>
+			<c:if test="${empty loginUserId.id}">
+				<span class="login_info"> 비로그인 </span>
+				<span class="login_menus" onclick="location.href='/login'"> 로그인 / 회원가입 </span> 
+				<span class="category"><i class="fa-solid fa-bars"></i></span>
+			</c:if>
 		</div>
 
 		<!-- 카테고리 메뉴 -->
@@ -123,15 +132,14 @@
 
 		<section class="community">
 			<h3>
-				<c:out value="${places.name}" />
-				에 대한 평가
+				<c:out value="${places.name}" />에 대한 평가
 			</h3>
 			<div class="comment-box">
 				<form action="/main/subMain/detail/${places.id}" method="post" enctype="multipart/form-data" id="frm_comment">
 					<!-- 로그인 기능 구현 이후 value 수정 -->
-					<input type="hidden" name="userId" value="1"> <input
-						type="hidden" name="placeId" value="${places.id}"> <input
-						type="text" id="title" class="title" name="title" required>
+					<input type="hidden" name="userId" value="${session.loginUser.id}">
+					<input type="hidden" name="placeId" value="${places.id}"> 
+					<input type="text" id="title" class="title" name="title" required>
 					<textarea id="content" class="content" name="content"
 						placeholder="악플 금지" required></textarea>
 					<input type="file" name="image">
@@ -140,7 +148,6 @@
 			</div>
 			<div class="comment-list" id="commentList">
 			    <c:forEach var="tl" items="${travelLogs}">
-			     <p>파일 이름: ${tl.fileName}</p> <!-- 디버깅용 -->
 			        <div class="comment">
 			            <div class="user-info">
 			                <span>${tl.userId}</span>
@@ -151,7 +158,7 @@
 			            </div>
 			            <c:if test="${not empty tl.fileName}">
 						    <div class="comment-image">
-						        <img src="${tl.fileName}" alt="여행 기록 이미지" style="max-width: 300px; max-height: 300px;">
+						        <img src="${tl.urlFilePath}${tl.fileName}" alt="여행 기록 이미지" style="max-width: 300px; max-height: 300px;">
 						    </div>
 						</c:if>
 			

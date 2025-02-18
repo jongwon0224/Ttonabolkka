@@ -2,6 +2,8 @@ package com.app.controller.detail;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.app.dto.detail.TravelLog;
 import com.app.dto.subMain.Places;
-import com.app.dto.detail.TravelLogImg;
+import com.app.dto.user.User;
 import com.app.dto.detail.TravelLogRequestForm;
 import com.app.dto.file.FileInfo;
 import com.app.service.detail.DetailService;
@@ -35,8 +37,13 @@ public class DetailController {
 
     //상세 페이지
     @GetMapping("/main/subMain/detail/{id}")
-    public String getDetailById(@PathVariable("id") int id, Model model) throws Exception {
+    public String getDetailById(@PathVariable("id") int id, HttpSession session, Model model) throws Exception {
     	
+    	User loginUser = (User) session.getAttribute("loginUserId");
+		if (loginUser != null) {
+			model.addAttribute("loginUser", loginUser);
+			session.setAttribute("loginUserId", loginUser);
+		} 
     	
         Places places = detailService.getPlaceDetail(id);
         model.addAttribute("places", places);
@@ -61,8 +68,7 @@ public class DetailController {
             if (travelLog.getFileName() != null && !travelLog.getFileName().isEmpty()) {
                 FileInfo fileInfo = fileService.findFileInfoByFileName(travelLog.getFileName());
                 if (fileInfo != null) {
-                    travelLog.setFileName("/fileStorage/" + fileInfo.getFileName());
-                    System.out.println("이미지 URL: " + travelLog.getFileName()); // 디버깅용 출력
+                    travelLog.setFileName(fileInfo.getFileName());
                 }
             }
         }
@@ -72,18 +78,25 @@ public class DetailController {
         return "detail/detail";
     }
     
-    //saveTravelLog findFileInfo
+    //saveTravelLog 
     @PostMapping("/main/subMain/detail/{id}")
     public String saveTravelLog(
             @PathVariable("id") int placeId,
             @RequestParam("title") String title,
             @RequestParam("content") String content,
-            @RequestParam(value = "image", required = false) MultipartFile file) {
+            @RequestParam(value = "image", required = false) MultipartFile file,
+            HttpSession session) {
+    	
+    	User loginUser = (User) session.getAttribute("loginUserId");
+		if (loginUser != null) {
+			session.setAttribute("loginUserId", loginUser);
+		} 
+    	
 
         try {
             TravelLog travelLog = new TravelLog();
             travelLog.setPlaceId(placeId);
-            travelLog.setUserId(1); // 로그인 기능 추가 전, 임시 userId
+            travelLog.setUserId(loginUser.getId());
             travelLog.setTitle(title);
             travelLog.setContent(content);
 

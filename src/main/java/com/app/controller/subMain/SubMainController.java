@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import com.app.dao.subMain.SubMainDAO;
 import com.app.dto.subMain.Areas;
 import com.app.dto.subMain.Categories;
 import com.app.dto.subMain.Places;
+import com.app.dto.user.User;
 import com.app.service.subMain.SubMainService;
 import com.app.service.api.EatHtpService;
 
@@ -34,9 +37,15 @@ public class SubMainController {
 
 	@GetMapping("/main/subMain")
 	public String subMain(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int pageSize,
-			@RequestParam(required = false) Integer categoriesId, @RequestParam(required = false) Integer areasId,
+			@RequestParam(required = false) Integer categoriesId, @RequestParam(required = false) Integer areasId, HttpSession session,
 			Model model) throws IOException {
-
+		
+		User loginUser = (User) session.getAttribute("loginUserId");
+		if (loginUser != null) {
+			model.addAttribute("loginUser", loginUser);
+			session.setAttribute("loginUserId", loginUser);
+		} 
+		
 		//api디버깅
 		//places 확인
 		int countPlaces = eatHtpService.saveEatHtpPlaces().size(); 

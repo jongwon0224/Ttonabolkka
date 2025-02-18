@@ -2,7 +2,6 @@ package com.app.service.detail;
 
 
 import com.app.dto.detail.TravelLog;
-import com.app.dto.detail.TravelLogImg;
 import com.app.dto.subMain.Places;
 
 import java.util.List;
@@ -20,14 +19,7 @@ public interface DetailService {
     // id로 TravelLog 불러오기
     List<TravelLog> findTravelLogListById(int placeId);
     
-    TravelLog findTravelLogById(int id);
-    
     //saveTravelLog 
     int saveTravelLog(TravelLog travelLog);
-    
-    // TravelLogImg 저장
-    int saveTravelLogImg(TravelLogImg travelLogImg);
-	
-    // id로 TravelLogImg 불러오기
-	public TravelLogImg findTravelLogImgById(int id);
+
 }

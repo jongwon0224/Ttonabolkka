@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.app.dao.detail.DetailDAO;
 
 import com.app.dto.detail.TravelLog;
-import com.app.dto.detail.TravelLogImg;
 import com.app.dto.subMain.Places;
 
 @Repository
@@ -44,14 +43,7 @@ public class DetailDAOImpl implements DetailDAO {
     	
 		return tlList;
 	}
-    
-    @Override
-	public TravelLog findTravelLogById(int id) {
-		
-    	TravelLog travelLog = sqlSessionTemplate.selectOne("detail_mapper.findTravelLogById", id);
-    	
-		return travelLog;
-	}
+
     
     //saveTravelLog 
 	@Override
@@ -60,22 +52,5 @@ public class DetailDAOImpl implements DetailDAO {
 		return result;
 	}
 	
-	// TravelLogImg 저장
-	@Override
-	public int saveTravelLogImg(TravelLogImg travelLogImg) {
-		
-		int result = sqlSessionTemplate.insert("detail_mapper.saveTravelLogImg", travelLogImg);
-		
-		return result;
-	}
-	
-	// id로 TravelLogImg 불러오기
-	@Override
-	public TravelLogImg findTravelLogImgById(int id) {
-		
-		TravelLogImg travelLogImg = sqlSessionTemplate.selectOne("detail_mapper.findTravelLogImgById", id);
-		
-		return travelLogImg;
-	}
 	
 }

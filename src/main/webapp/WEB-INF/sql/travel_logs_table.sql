@@ -1,7 +1,7 @@
 // 여행 기록, 리뷰
 CREATE TABLE TRAVEL_LOGS(
 	id NUMBER PRIMARY KEY,
-	user_id NUMBER(2) NOT NULL,
+	user_id VARCHAR2(255) NOT NULL,
     place_id NUMBER(2) NOT NULL,
     title VARCHAR2(255) NOT NULL,
     content VARCHAR2(3000) NOT NULL,
