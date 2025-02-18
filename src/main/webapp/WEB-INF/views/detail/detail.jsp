@@ -39,9 +39,9 @@
 			<div class="menu-list">
 				<ul>
 					<li><a href="/main/subMain">국내여행</a></li>
-					<li><a href="/main/subMain">해외여행</a></li>
-					<li><a href="/main/subMain">이벤트</a></li>
-					<li><a href="/main/subMain">고객센터</a></li>
+					<li><a href="" onclick="alert('구현중입니다')">해외여행</a></li>
+					<li><a href="" onclick="alert('구현중입니다')">이벤트</a></li>
+					<li><a href="" onclick="alert('구현중입니다')">고객센터</a></li>
 				</ul>
 			</div>
 		</div>
@@ -139,26 +139,35 @@
 					<!-- 로그인 기능 구현 이후 value 수정 -->
 					<input type="hidden" name="userId" value="${session.loginUser.id}">
 					<input type="hidden" name="placeId" value="${places.id}"> 
-					<input type="text" id="title" class="title" name="title" required>
-					<textarea id="content" class="content" name="content"
+					<input type="text" id="title" class="ctitle" name="title" required>
+					<textarea id="content" class="ccontent" name="content"
 						placeholder="악플 금지" required></textarea>
-					<input type="file" name="image">
+					<input type="file" name="image" class="file">
 					<button type="submit">등록</button>
 				</form>
 			</div>
 			<div class="comment-list" id="commentList">
 			    <c:forEach var="tl" items="${travelLogs}">
 			        <div class="comment">
-			            <div class="user-info">
-			                <span>${tl.userId}</span>
+			        	<div class="comment_header">
+				            <div class="user-info">
+				            	<img src="/img/profile.jpg" class="profile">
+				                <span class="comment-userId">${tl.userId}</span>
+				            </div>
+				            <div class="cbutton">
+				        		<c:if test="${not empty loginUserId.id}">
+									<span class="cmodify" onclick="alert('구현중입니다')"> 수정 </span>
+									<span class="cremove" onclick="alert('구현중입니다')"> 삭제 </span> 
+								</c:if>
+				        	</div>
 			            </div>
 			            <div class="comment-content">
-			                <strong>${tl.title}</strong><br/> 
-			                ${tl.content}
+			                <strong class="ctitle">${tl.title}</strong><br/> 
+			                <p class="ccontent">${tl.content}</p>
 			            </div>
 			            <c:if test="${not empty tl.fileName}">
 						    <div class="comment-image">
-						        <img src="${tl.urlFilePath}${tl.fileName}" alt="여행 기록 이미지" style="max-width: 300px; max-height: 300px;">
+						        <img src="${tl.urlFilePath}${tl.fileName}" alt="여행 기록 이미지" class="cimg">
 						    </div>
 						</c:if>
 			
