@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html style="margin-top:5%;">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -15,7 +15,6 @@
 
 <body>
 	<form action="" method="post" class=mainBox>
-		<div class="logo">로고</div>
 		<h2 class=h2T>로그인</h2>
 		<div class=labelT>아이디</div>
 		<input type="text" name="id" id="nickname" class=input-group>
@@ -30,7 +29,6 @@
 			<div>
 				<input type="checkbox" checked>로그인 유지
 			</div>
-			<span class="resetT">비밀번호 재설정</span>
 		</div>
 		<br>
 		<button type="submit" class="input-login">로그인</button>
