@@ -47,7 +47,12 @@ function openModal(index) {
     const modal = document.getElementById("photoModal");
     modal.style.display = "block";
     document.body.style.overflow = "hidden"; // 배경 스크롤 방지
-    updateModalImage();
+    
+    // 모달이 처음 열릴 때는 그냥 현재 이미지로 세팅
+    const modalImage = document.getElementById("modalImage");
+    modalImage.src = photos[currentIndex];
+    modalImage.style.transform = "translateX(0)";
+    modalImage.style.opacity = "1";
 }
 
 // 모달 닫기 함수
@@ -57,23 +62,59 @@ function closeModal() {
     document.body.style.overflow = "auto"; // 배경 스크롤 복원
 }
 
-// 모달 내 이미지 업데이트 함수
-function updateModalImage() {
-    const modalImage = document.getElementById("modalImage");
-    modalImage.src = photos[currentIndex]; // 현재 인덱스의 이미지 URL 사용
+// 슬라이드 애니메이션을 적용해 이미지 전환
+function slideToPhoto(direction) {
+    const slider = document.querySelector('.slider');
+    const currentImg = document.getElementById("modalImage");
+
+    // 새 이미지 엘리먼트를 생성하여 슬라이더에 추가
+    const newImg = document.createElement('img');
+    newImg.src = photos[currentIndex];
+    newImg.alt = "슬라이드 이미지";
+	
+    // 초기 위치: 오른쪽에서 왼쪽으로 슬라이드할 때는 오른쪽에 배치, 반대면 왼쪽에 배치
+    newImg.style.transform = direction > 0 ? "translateX(100%)" : "translateX(-100%)";
+    newImg.style.opacity = "0";
+
+    
+    // 새 이미지 삽입
+    slider.appendChild(newImg);
+    
+    // 강제 리플로우 (transition을 보장)
+    newImg.offsetWidth;
+    
+    // 슬라이드 애니메이션 시작
+    newImg.style.transform = "translateX(0)";
+    newImg.style.opacity = "1";
+    
+    // 동시에 기존 이미지는 반대 방향으로 슬라이드하면서 사라지게 함
+    currentImg.style.transform = direction > 0 ? "translateX(-100%)" : "translateX(100%)";
+    currentImg.style.opacity = "0";
+    
+    // 애니메이션이 끝난 후 (0.5초 후) 기존 이미지를 제거하고 새 이미지의 id를 "modalImage"로 변경
+    setTimeout(() => {
+        slider.removeChild(currentImg);
+        newImg.id = "modalImage";
+    }, 300);
 }
 
 // 좌우 버튼을 통한 이미지 변경 함수
 function changePhoto(direction) {
+    // 업데이트할 인덱스 계산
     currentIndex = (currentIndex + direction + photos.length) % photos.length;
-    updateModalImage();
+    // 부드러운 슬라이드 애니메이션 실행
+    slideToPhoto(direction);
 }
 
-// 썸네일 클릭 시 해당 이미지로 업데이트
+// 썸네일 클릭 시 해당 이미지로 슬라이드 전환
 function setImage(index) {
+    if (index === currentIndex) return; // 이미 선택된 이미지면 아무 작업도 하지 않음
+    // 기존 currentIndex와 비교하여 슬라이드 방향 결정
+    let direction = (index > currentIndex) ? 1 : -1;
     currentIndex = index;
-    updateModalImage();
+    slideToPhoto(direction);
 }
+
 
 // 중앙 "사진 더 보기" 버튼 관련 코드
 document.addEventListener("DOMContentLoaded", function () {
@@ -93,12 +134,12 @@ document.addEventListener("DOMContentLoaded", function () {
             images.forEach((img, index) => {
                 if (index >= 2) img.style.display = "none";
             });
-            showMoreBtn.innerText = "사진 더 보기 🔽";
+            showMoreBtn.innerText = "사진 더 보기 ";
         } else {
             images.forEach((img, index) => {
                 if (index >= 2) img.style.display = "block";
             });
-            showMoreBtn.innerText = "사진 접기 🔼";
+            showMoreBtn.innerText = "사진 접기 ";
         }
         isExpanded = !isExpanded;
     });
