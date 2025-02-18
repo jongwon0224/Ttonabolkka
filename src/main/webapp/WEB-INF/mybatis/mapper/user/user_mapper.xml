@@ -24,11 +24,25 @@
 		FROM USERS
 		WHERE id = #{id}
 	</select>
-	
-		<select id="checkUserLogin" resultType="User" parameterType="User">
+
+	<select id="checkUserLogin" resultType="User"
+		parameterType="User">
 		select *
 		from USERS
-		where id = #{id} AND password = #{password}
+		where id = #{id} AND password =
+		#{password}
 	</select>
+
+	<update id="modifyUser" parameterType="User">
+		UPDATE USERS
+		SET password =
+		#{password}
+		WHERE id = #{id}
+	</update>
+
+	<delete id="removeUser" parameterType="User">
+		DELETE FROM USERS
+		WHERE id = #{id} AND password = #{password}
+	</delete>
 
 </mapper>

@@ -40,10 +40,10 @@ public class LoginController {
 
 		} else { // 아이디&비번이 맞으면 loginUser
 			// 로그인 정보가 맞아서 로그인 성공
-//			 session.setAttribute("loginUser", loginUser);
+
 			session.setAttribute("loginUserId", loginUser);
 
-			return "redirect:/main";
+			return "redirect:/login/mypage";
 		}
 	}
 

@@ -31,17 +31,34 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User checkUserLogin(User user) {
-		
+
 		// 1) 서비스 자체에서 로직을 수행
-		
+
 		User loginUser = userDAO.findUserById(user.getId());
 
 		if (loginUser != null && user.getPassword().equals(loginUser.getPassword())) { // 비밀번호 맞다!
-			
+
 			return loginUser;
 		}
-		
+
 		return null;
+
+	}
+
+	@Override
+	public int modifyUser(User user) {
+
+		int result = userDAO.modifyUser(user);
+
+		return result;
+	}
+
+	@Override
+	public int removeUser(User user) {
+		
+		int result = userDAO.removeUser(user);
+
+		return result;
 		
 	}
 }

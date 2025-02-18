@@ -44,5 +44,21 @@ public class UserDAOImpl implements UserDAO {
 
 		return loginUser;
 	}
+	
+	@Override
+	public int modifyUser(User user) {
+		
+		int result = sqlSessionTemplate.update("user_mapper.modifyUser", user);
+		
+		return result;
+	}
+	
+	@Override
+	public int removeUser(User user) {
+		
+		int removeUser = sqlSessionTemplate.delete("user_mapper.removeUser", user);
+		
+		return removeUser;
+	}
 
 }

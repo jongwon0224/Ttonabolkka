@@ -13,4 +13,8 @@ public interface UserDAO {
 	User findUserById(String id);
 	
 	public User checkUserLogin(User user);
+	
+	public int modifyUser(User user);
+
+	public int removeUser(User user);
 }
