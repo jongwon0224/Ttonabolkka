@@ -31,14 +31,14 @@ public class MyPageController {
 		int result = userService.modifyUser(user);
 
 		if (result > 0) {
-			return "redirect:/login/main";
+			return "redirect:/main";
 		} else {
 			return "redirect:/login/mypage/";
 		}
 
 	}
 	
-	@PostMapping("/login/mypage1")
+	@PostMapping("/login/mypage/remove")
 	public String removeUserAction(User user, Model model) {
 		
 		System.out.println(user);

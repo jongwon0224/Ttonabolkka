@@ -213,3 +213,7 @@
 	display: block;
 }
 
+.error-msg1 {
+	color: red;
+	font-size: 12px;
+}

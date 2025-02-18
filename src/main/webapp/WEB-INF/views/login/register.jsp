@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html style="margin-top:5%;">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link href="/css/register.css" rel="stylesheet">
 <link href="/css/login.css" rel="stylesheet">
 </head>
@@ -14,9 +15,7 @@
 <body>
 	<form action="" method="post" onsubmit="return validateForm()">
 		<div class="mainBox">
-			<div class="logo">로고</div>
 			<h2 class="h2T">회원가입</h2>
-
 			<div class="labelT">아이디</div>
 			<input type="text" name="id" class="input-group" required>
 			<spring:hasBindErrors name="user">
@@ -73,8 +72,8 @@
 				<div class="registerAgreeT1">(필수)개인정보 수집 및 이용 동의</div>
 			</div>
 
-			<button type="submit" class="input-login" id="submitBtn" disabled>회원가입
-				완료</button>
+			<button type="submit" class="input-login" id="submitBtn" disabled>
+			<i class="fa-solid fa-right-to-bracket"></i> 회원가입 완료</button>
 		</div>
 	</form>
 

@@ -9,7 +9,6 @@
 	flex-direction: column;
 	justify-content: center; /* 세로 중앙 정렬 */
 	align-items: center; /* 가로 중앙 정렬 */
-	height: 90vh;
 }
 
 .registerAgreeBox {
