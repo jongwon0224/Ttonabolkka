@@ -1,11 +1,52 @@
+@font-face {
+	font-family: '전기안전체';
+	src: url('/resources/fonts/전기안전체-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Ownglyph_wiseelist-Rg';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/2501-1@1.1/Ownglyph_wiseelist-Rg.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Danjo-bold-Regular';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Danjo-bold-Regular.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'BookkMyungjo-Bd';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2')
+		format('woff2');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
 /* 기본 스타일 */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Arial', sans-serif;
-    }
-    
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'GmarketSansMedium';
+}
+
 /* 상단 네비게이션 바 << 정민님 */
 .nav {
 	width: 100%;
@@ -19,7 +60,8 @@
 }
 
 .logo {
-	font-size: 24px;
+	font-family: 'Ownglyph_wiseelist-Rg';
+	font-size: 2.5rem;
 	font-weight: bold;
 	color: rgb(255, 71, 82);
 	cursor: pointer;
@@ -30,7 +72,6 @@
     font-weight:500;
     margin-right: 20px;
 }
-
 
 .login_menus {
     font-size: 0.7rem;
@@ -109,69 +150,69 @@
 	object-fit: cover;
 	border-radius: 8px;
 	display: block;
-	width: 100%; 
-	height: 100%; 
-	border-radius: 15px; 
+	width: 100%;
+	height: 100%;
+	border-radius: 15px;
 }
 
 .main-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
-.big-photo { 	/*큰 사진 크기 조절*/
-    width: 750px; /* 원하는 크기로 고정 */
-    height: 465px; /* 고정 크기 설정 */
+.big-photo { /*큰 사진 크기 조절*/
+	width: 750px; /* 원하는 크기로 고정 */
+	height: 465px; /* 고정 크기 설정 */
 }
 
 /* 작은 사진들을 포함하는 그리드 */
 .small-photos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 480px; /* 원하는 고정된 너비 설정 */
-    height: 464px; /* 메인 사진과 같은 높이로 설정 */
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	width: 480px; /* 원하는 고정된 너비 설정 */
+	height: 464px; /* 메인 사진과 같은 높이로 설정 */
 }
 
 .small-photo {
-    width: calc(50% - 5px); /* 두 개씩 배치되도록 설정 */
-    height: calc(50% - 5px); /* 동일한 높이 유지 */
-    border-radius: 8px; /* 둥근 모서리 적용 */
-    overflow: hidden; /* 넘치는 부분 잘라내기 */
-    position: relative;
+	width: calc(50% - 5px); /* 두 개씩 배치되도록 설정 */
+	height: calc(50% - 5px); /* 동일한 높이 유지 */
+	border-radius: 8px; /* 둥근 모서리 적용 */
+	overflow: hidden; /* 넘치는 부분 잘라내기 */
+	position: relative;
 }
 /* 서브사진의 이미지 스타일 */
 .small-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 8px; /* 여기서도 한 번 더 적용 */
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	border-radius: 8px; /* 여기서도 한 번 더 적용 */
 }
 
 /* 첫 번째 사진을 왼쪽 위에 배치 */
 .small-photo:nth-child(1) {
-    grid-column: 1; /* 첫 번째 열 */
-    grid-row: 1; /* 첫 번째 행 */
+	grid-column: 1; /* 첫 번째 열 */
+	grid-row: 1; /* 첫 번째 행 */
 }
 
 /* 두 번째 사진을 오른쪽 위에 배치 */
 .small-photo:nth-child(2) {
-    grid-column: 2; /* 두 번째 열 */
-    grid-row: 1; /* 첫 번째 행 */
+	grid-column: 2; /* 두 번째 열 */
+	grid-row: 1; /* 첫 번째 행 */
 }
 
 /* 세 번째 사진을 왼쪽 아래에 배치 */
 .small-photo:nth-child(3) {
-    grid-column: 1; /* 첫 번째 열 */
-    grid-row: 2; /* 두 번째 행 */
+	grid-column: 1; /* 첫 번째 열 */
+	grid-row: 2; /* 두 번째 행 */
 }
 
 /* 네 번째 사진을 오른쪽 아래에 배치 */
 .small-photo:nth-child(4) {
-    grid-column: 2; /* 두 번째 열 */
-    grid-row: 2; /* 두 번째 행 */
+	grid-column: 2; /* 두 번째 열 */
+	grid-row: 2; /* 두 번째 행 */
 }
 
 /* ✨ 마우스오버 효과 추가 */
@@ -185,35 +226,30 @@
 	cursor: pointer;
 }
 
-
 /* 모달 스타일 */
 .modal {
-	display: none; /* 모달은 기본적으로 숨겨놓기 */
+	display: none;
 	position: fixed;
-	z-index: 1; /* 가장 위에 오도록 설정 */
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 1000;
 }
 /* 모달 내용 컨테이너 */
 .modal-content {
-    position: relative;
-    width: 80%;
-    /* 높이는 내용에 따라 auto로 처리하거나 필요 시 고정 높이 지정 */
-    background: white;
-    margin: 5vh auto;
-    padding: 20px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;  /* 세로 배치 */
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-gallery {
+	position: relative;
+	width: 80%;
+	/* 높이는 내용에 따라 auto로 처리하거나 필요 시 고정 높이 지정 */
+	background: white;
+	margin: 5vh auto;
+	padding: 20px;
+	border-radius: 8px;
 	display: flex;
+	flex-direction: column; /* 세로 배치 */
+	justify-content: center;
+	align-items: center;
 }
 
 .modal-gallery img {
@@ -221,7 +257,7 @@
 	height: 100%;
 	border-radius: 8px;
 	object-fit: cover;
-/* 	margin-left: 50% */
+	/* 	margin-left: 50% */
 }
 
 /* 닫기 버튼 */
@@ -260,6 +296,7 @@
 	justify-content: center;
 	align-items: center;
 	position: relative;
+	overflow: hidden; /* 넘치는 이미지 숨기기 */
 }
 
 /* 이미지 스타일 */
@@ -268,18 +305,24 @@
 	height: 600px; /* 고정 높이 설정 */
 	object-fit: cover; /* 이미지 비율 유지하면서 영역 채우기 */
 	border-radius: 8px;
-	transition: opacity 0.3s ease-in-out;
+	transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+	/* transform에 부드러운 전환 효과 추가 */
+	display: block;
+	margin: 0 auto;
+	will-change: transform, opacity;
 	display: block;
 	margin: 0 auto;
 }
 
 /* 이미지 전환을 위한 스타일 */
 .slider img.active {
-    transform: translateX(0); /* 기본 위치 */
+	transform: translateX(0); /* 기본 위치 */
+	opacity: 1; /* 이미지가 보이도록 설정 */
 }
 
 .slider img.inactive {
-    transform: translateX(100%); /* 오른쪽으로 슬라이드 */
+	transform: translateX(100%); /* 오른쪽으로 슬라이드 */
+	opacity: 0; /* 이미지가 사라지도록 설정 */
 }
 
 /* 이전/다음 버튼 */
@@ -287,30 +330,31 @@
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	background: rgba(0, 0, 0, 0.5);
-	color: white;
-	padding: 15px;
+	background: white; /* 흰색 배경 */
+	color: #007bff; /* 파란색 글씨 */
+	padding: 5px 15px;
 	cursor: pointer;
-	border: none;
-	border-radius: 50%;
+	border: 2px solid #007bff; /* 파란색 테두리 */
+	border-radius: 100%; /* 둥근 모양 */
 	font-size: 24px;
 	z-index: 2;
-	transition: background-color 0.3s;
+	transition: all 0.3s ease; /* 부드러운 효과 */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
 }
 
 .prev {
 	left: 20px;
+	margin-top: 30px;
 }
 
 .next {
 	right: 20px;
+	margin-top: 30px;
 }
 
-.prev:hover, .next:hover {
-	background: rgba(0, 0, 0, 0.8);
+.place-title {
+	font-weight: bold;
 }
-
-
 
 /* 중앙 사진 더 보기 css */
 .small-photos li:last-child .more-photos {
@@ -355,7 +399,6 @@
 	margin-top: 30px;
 }
 
-
 /*중앙 사진 css*/
 .image-list img {
 	width: 80%;
@@ -382,52 +425,79 @@
 }
 
 .photo-item {
-    width: 200px; /* 각 이미지 너비 */
-    height: 150px; /* 각 이미지 높이 */
-    object-fit: cover; /* 이미지 비율 유지하면서 채우기 */
-    border-radius: 10px; /* 모서리 둥글게 */
+	width: 200px; /* 각 이미지 너비 */
+	height: 150px; /* 각 이미지 높이 */
+	object-fit: cover; /* 이미지 비율 유지하면서 채우기 */
+	border-radius: 10px; /* 모서리 둥글게 */
 }
 
 #showMoreBtn {
+	background-color: white; /* 버튼 배경색을 흰색으로 설정 */
+	font-size: 13px;
 	margin-top: 10px;
 	padding: 8px 15px;
 	cursor: pointer;
-	background-color: #007BFF;
-	color: white;
+	color: blue;
 	border: none;
 	border-radius: 5px;
+	position: relative;
+	text-decoration: none;
+	margin-top: 10px;
 }
 
-#showMoreBtn:hover {
-	background-color: #0056b3;
+#showMoreBtn:hover::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: -2px;
+	width: 100%;
+	height: 2px;
+	background-color: blue;
+	transition: width 0.3s ease-in-out;
+}
+
+#showMoreBtn::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: -2px;
+	width: 0;
+	height: 2px;
+	background-color: blue;
+	transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+#showMoreBtn:hover::after {
+	width: 100%;
+	left: 0;
 }
 
 .photo-item.hidden {
-    display: none; /* 기본적으로 숨김 */
+	display: none; /* 기본적으로 숨김 */
 }
 
 /* 🔹 평가 (댓글) 섹션 */
 .community {
-    width: 100%;
-    padding: 40px 10px;
-    margin:40px 0px;
-    background-color: #f9f9f9;
+	width: 100%;
+	padding: 40px 10px;
+	margin: 40px 0px;
+	background-color: #f9f9f9;
 }
 
 .community h3 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 15px;
 }
 
 .comment-box {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	background: white;
+	padding: 15px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
 }
 
 .comment-box .ctitle {
@@ -468,21 +538,21 @@
 }
 
 .comment-box button:hover {
-    background-color: #e13b48;
+	background-color: #e13b48;
 }
 
 /* 🔹 댓글 리스트 */
 .comment-list {
-    width: 100%;
-    margin-top: 20px;
+	width: 100%;
+	margin-top: 20px;
 }
 
 .comment-list .comment {
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    margin-bottom: 15px;
+	background: white;
+	padding: 15px;
+	border-radius: 5px;
+	border: 1px solid #ddd;
+	margin-bottom: 15px;
 }
 .comment_header{
 	display: flex;
@@ -519,8 +589,8 @@
 }
 
 .comment .comment-content {
-    font-size: 14px;
-    color: #333;
+	font-size: 14px;
+	color: #333;
 }
 
 .comment-content .ctitle{
@@ -539,55 +609,44 @@
 }
 
 .comment .comment-date {
-    font-size: 12px;
-    color: #999;
-    text-align: right;
-}
-
-.modal {
-	display: none;
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.8);
-	z-index: 1000;
+	font-size: 12px;
+	color: #999;
+	text-align: right;
 }
 
 .thumbnail-gallery {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;       /* 썸네일 간 간격 */
-    margin-top: 20px; /* 큰 사진과의 간격 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px; /* 썸네일 간 간격 */
+	margin-top: 20px; /* 큰 사진과의 간격 */
+	border-top: 2px solid gray; /* 하단에 구분선 추가 */
+	border-bottom: 2px solid gray; /* 하단에 구분선 추가 */
 }
 
 .thumbnail-gallery img {
-    width: 80px;
-    height: 60px;
-    margin: 5px;
-    cursor: pointer;
-    border: 2px solid transparent;
-    transition: border-color 0.3s;
+	width: 80px;
+	height: 60px;
+	margin: 5px;
+	cursor: pointer;
+	border: 2px solid transparent;
+	transition: border-color 0.3s;
 }
 
 .thumbnail-gallery img:hover {
-    border-color: white;
-    transform: scale(1.1);
+	border-color: white;
+	transform: scale(1.1);
 }
 
-
-
- /* 정민님 footer */
-    .footer {
-        background: #f9f9f9;
-        color: #333;
-        font-size: 0.7rem;
-	    line-height: 1rem;
-	    letter-spacing: 0px;
-	    font-weight: 400;
-	    color: rgb(153 153 153);
-        text-align: left;
-        padding: 80px;
-    }
+/* 정민님 footer */
+.footer {
+	background: #f9f9f9;
+	color: #333;
+	font-size: 0.7rem;
+	line-height: 1rem;
+	letter-spacing: 0px;
+	font-weight: 400;
+	color: rgb(153, 153, 153);
+	text-align: left;
+	padding: 80px;
+}

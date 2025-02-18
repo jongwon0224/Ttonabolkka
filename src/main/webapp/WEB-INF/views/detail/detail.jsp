@@ -23,13 +23,16 @@
 		<div class="nav-r">
 			<c:if test="${not empty loginUserId.id}">
 				<span class="login_info">${loginUserId.id}님 환영합니다. </span>
-				<span class="login_menus" onclick="location.href='/login/mypage'"> 마이페이지 </span> 
-				<span class="login_menus" onclick="location.href='/logout'"> 로그아웃</span>
+				<span class="login_menus" onclick="location.href='/login/mypage'">
+					마이페이지 </span>
+				<span class="login_menus" onclick="location.href='/logout'">
+					로그아웃</span>
 				<span class="category"><i class="fa-solid fa-bars"></i></span>
 			</c:if>
 			<c:if test="${empty loginUserId.id}">
 				<span class="login_info"> 비로그인 </span>
-				<span class="login_menus" onclick="location.href='/login'"> 로그인 / 회원가입 </span> 
+				<span class="login_menus" onclick="location.href='/login'">
+					로그인 / 회원가입 </span>
 				<span class="category"><i class="fa-solid fa-bars"></i></span>
 			</c:if>
 		</div>
@@ -106,13 +109,15 @@
 			<a href="javascript:void(0);" onclick="openModal()">더보기</a>
 		</div>
 
-        
-		<h2>
+
+		<h2 class="place-title">
 			<c:out value="${places.name}" />
 		</h2>
-		<div class="description">
+		<div class="place-description">
 			<c:out value="${places.description}" />
 		</div>
+
+
 
 		<section class="image-list">
 			<div class="photo-list">
@@ -127,15 +132,17 @@
 						class="photo-item ${status.index >= 1 ? 'hidden' : ''}">
 				</c:forEach>
 			</div>
-			<button id="showMoreBtn">사진 더 보기🔽</button>
+			<button id="showMoreBtn">사진 더 보기</button>
 		</section>
 
 		<section class="community">
 			<h3>
-				<c:out value="${places.name}" />에 대한 평가
+				<c:out value="${places.name}" />
+				에 대한 평가
 			</h3>
 			<div class="comment-box">
-				<form action="/main/subMain/detail/${places.id}" method="post" enctype="multipart/form-data" id="frm_comment">
+				<form action="/main/subMain/detail/${places.id}" method="post"
+					enctype="multipart/form-data" id="frm_comment">
 					<!-- 로그인 기능 구현 이후 value 수정 -->
 					<input type="hidden" name="userId" value="${session.loginUser.id}">
 					<input type="hidden" name="placeId" value="${places.id}"> 
@@ -170,10 +177,10 @@
 						        <img src="${tl.urlFilePath}${tl.fileName}" alt="여행 기록 이미지" class="cimg">
 						    </div>
 						</c:if>
-			
-			            <div class="comment-date">${tl.createdAt}</div>
-			        </div>
-			    </c:forEach>
+
+						<div class="comment-date">${tl.createdAt}</div>
+					</div>
+				</c:forEach>
 			</div>
 
 		</section>
@@ -201,8 +208,8 @@
 		</div>
 	</div>
 
-    <!-- JSP에서 전역 변수 설정 -->
-    <script type="text/javascript">
+	<!-- JSP에서 전역 변수 설정 -->
+	<script type="text/javascript">
         window.contextPath = "${pageContext.request.contextPath}";
         window.mainImageUrl = "<c:url value='/resources${mainImageUrl}' />";
         window.subImageUrls = ${subImageUrlsJson};
@@ -213,8 +220,8 @@
         console.log(window.photos); // 디버깅용
     </script>
 
-    <script src="/js/detail.js"></script>
-    <script src="/js/main.js"></script>
+	<script src="/js/detail.js"></script>
+	<script src="/js/main.js"></script>
 
 </body>
 </html>
