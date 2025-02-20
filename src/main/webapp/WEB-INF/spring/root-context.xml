@@ -13,6 +13,7 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 		<property name="username" value="scott" />
 		<property name="password" value="tiger" />
 	</bean>
+	
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean"
 		id="sqlSessionFactory">
 		<property name="dataSource" ref="data_source"></property>
@@ -20,12 +21,36 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 			value="/WEB-INF/mybatis/mapper/**/*_mapper.xml"></property>
 		<property name="configLocation"
 			value="/WEB-INF/mybatis/mapper/mybatis-config.xml"></property>
-			
 	</bean>
+	
 	<bean id="sqlSessionTemplate"
 		class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory"
 			ref="sqlSessionFactory" />
 	</bean>
 
-</beans>
+	<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:util="http://www.springframework.org/schema/util"
+		xmlns:task="http://www.springframework.org/schema/task"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+              http://www.springframework.org/schema/context
+             http://www.springframework.org/schema/context/spring-context.xsd">
+
+		<!-- 컨텍스트 추가로 service, dao에서 사용 -->
+		<context:component-scan
+			base-package="com.app.service"></context:component-scan>
+		<context:component-scan
+			base-package="com.app.dao"></context:component-scan>
+
+		<bean id="sampleScheduler"	class="com.app.scheduler.ApiScheduler" />
+		<task:scheduler id="mainScheduler" pool-size="10" />
+		<task:executor id="mainTaskExecutor" pool-size="10" />
+		<task:annotation-driven
+			executor="mainTaskExecutor" scheduler="mainScheduler" />
+	</beans>
+	</beans>

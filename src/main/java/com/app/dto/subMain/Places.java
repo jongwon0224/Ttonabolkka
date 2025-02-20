@@ -1,6 +1,11 @@
 package com.app.dto.subMain;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
+
 
 @Data
 public class Places {
@@ -19,6 +24,7 @@ public class Places {
 	int categoryId; //관광지 유형(FK)
 	String imageUrl; // 대표이미지 URL주소 => LINKURL
 	
-
+//	@DateTimeFormat(pattern = "yyyy-MM-dd")
+//	Date birth;
 	
 }
