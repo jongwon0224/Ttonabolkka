@@ -62,6 +62,20 @@
 
 
 
+//card
+	document.addEventListener("DOMContentLoaded", function () {
+	    // 모든 카드 요소 선택
+	    const cards = document.querySelectorAll(".slide .card");
 	
+	    cards.forEach(card => {
+	        card.addEventListener("click", function () {
+	            const placeId = this.getAttribute("data-id"); // data-id 속성에서 ID 가져오기
+	            if (placeId) {
+	                location.href = `/detail/${placeId}`;
+	            }
+	        });
+	    });
+	});
+		
 	
 	

@@ -32,7 +32,7 @@ public class SubMainController {
 	@Autowired
 	EatHtpService eatHtpService;
 
-	@GetMapping("/subMain")
+	@GetMapping("/main/subMain")
 	public String subMain(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int pageSize,
 			@RequestParam(required = false) Integer categoriesId, @RequestParam(required = false) Integer areasId,
 			Model model) throws IOException {
